@@ -10,15 +10,15 @@ namespace QLNhaSach1.Models
 
         [Required]
         [MaxLength(50)]
-        public string bookName { get; set; }
+        public string bookName { get; set; } = string.Empty;
 
         [Required]
         [MaxLength(1000)]
-        public string description { get; set; }
+        public string description { get; set; } = string.Empty;
 
         [Required]
         [MaxLength(30)]
-        public string author { get; set; }
+        public string author { get; set; }  = string.Empty;
         
         
         [Required]
@@ -32,10 +32,10 @@ namespace QLNhaSach1.Models
 
         [Required]
         public int CategoryId { get; set; }
-        public Category Category { get; set; }
+        public Category Category { get; set; } = null!;
 
         [Display(Name = "Image URL")]
-        public string ImageUrl { get; set; }
+        public string ImageUrl { get; set; } = string.Empty;
 
 
 

@@ -252,3 +252,4 @@ D:\DoAn\QLNhaSach1\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Scripting.resource
 D:\DoAn\QLNhaSach1\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Scripting.resources.dll
 D:\DoAn\QLNhaSach1\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
 D:\DoAn\QLNhaSach1\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
+D:\DoAn\QLNhaSach1\obj\Debug\net8.0\QLNhaSach1.sourcelink.json

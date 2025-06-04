@@ -40,12 +40,11 @@
 
     <div>
         <label>Thể loại:</label>
-        <select asp-for="CategoryId">
-            @foreach (var c in categories)
-            {
-                <option value="@c.Id" @(c.Id == Model.CategoryId ? "selected" : "")>@c.categoryName</option>
-            }
+        <select asp-for="CategoryId"
+            asp-items="@(new SelectList(ViewBag.Categories, "Id", "categoryName", Model.CategoryId))">
+            <option value="">-- Chọn thể loại --</option>
         </select>
+
         <span asp-validation-for="CategoryId" class="text-danger"></span>
     </div>
 

@@ -21,12 +21,11 @@
     <input type="checkbox" asp-for="bookStatus" /> Còn hàng<br />
 
     <label>Thể loại:</label>
-    <select asp-for="CategoryId">
-        @foreach (var c in categories)
-        {
-            <option value="@c.Id">@c.categoryName</option>
-        }
-    </select><br />
+    <select asp-for="CategoryId"
+        asp-items="@(new SelectList(ViewBag.Categories, "Id", "categoryName", Model.CategoryId))">
+        <option value="">-- Chọn thể loại --</option>
+    </select>
+    <br />
 
     <label>Image URL:</label>
     <input asp-for="ImageUrl" /><br />
