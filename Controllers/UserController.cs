@@ -13,7 +13,7 @@ public class UserController : Controller
 
     public async Task<IActionResult> Index()
     {
-        var users = await _context.Users.Include(u => u.Role).ToListAsync();
+        var users = await _context.Users.ToListAsync();
         return View(users);
     }
 
