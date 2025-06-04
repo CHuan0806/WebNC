@@ -1,0 +1,64 @@
+@model QLNhaSach1.Models.Book
+@{
+    var categories = ViewBag.Categories as List<QLNhaSach1.Models.Category>;
+}
+
+<h2>Cập nhật sách</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="bookId" />
+
+    <div>
+        <label>Tên sách:</label>
+        <input asp-for="bookName" />
+        <span asp-validation-for="bookName" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Mô tả:</label>
+        <textarea asp-for="description"></textarea>
+        <span asp-validation-for="description" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Tác giả:</label>
+        <input asp-for="author" />
+        <span asp-validation-for="author" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Giá:</label>
+        <input asp-for="price" />
+        <span asp-validation-for="price" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Trạng thái:</label>
+        <input type="checkbox" asp-for="bookStatus" /> Còn hàng
+        <span asp-validation-for="bookStatus" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Thể loại:</label>
+        <select asp-for="CategoryId">
+            @foreach (var c in categories)
+            {
+                <option value="@c.Id" @(c.Id == Model.CategoryId ? "selected" : "")>@c.categoryName</option>
+            }
+        </select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Image URL:</label>
+        <input asp-for="ImageUrl" />
+        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+    </div>
+
+    <button type="submit">Cập nhật</button>
+    <a asp-action="Index">Hủy</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

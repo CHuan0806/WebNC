@@ -1,0 +1,41 @@
+@model IEnumerable<QLNhaSach1.Models.Book>
+
+<h2>Danh sách sách</h2>
+<a asp-action="Create">Thêm sách</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Tên sách</th>
+            <th>Tác giả</th>
+            <th>Thể loại</th>
+            <th>Giá</th>
+            <th>Trạng thái</th>
+            <th>Ảnh</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var b in Model)
+        {
+            <tr>
+                <td>@b.bookName</td>
+                <td>@b.author</td>
+                <td>@b.Category?.categoryName</td>
+                <td>@b.price.ToString("N0")</td>
+                <td>@(b.bookStatus ? "Còn hàng" : "Hết hàng")</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(b.ImageUrl))
+                    {
+                        <img src="@b.ImageUrl" width="60" />
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@b.bookId">Sửa</a> |
+                    <a asp-action="Details" asp-route-id="@b.bookId">Chi tiết</a> |
+                    <a asp-action="Delete" asp-route-id="@b.bookId">Xoá</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

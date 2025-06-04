@@ -1,0 +1,10 @@
+@model QLNhaSach1.Models.Book
+
+<h2>Xoá sách</h2>
+<p>Bạn có chắc muốn xoá sách <strong>@Model.bookName</strong> không?</p>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="bookId" />
+    <button type="submit">Xoá</button>
+    <a asp-action="Index">Huỷ</a>
+</form>

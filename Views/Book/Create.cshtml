@@ -1,0 +1,35 @@
+@model QLNhaSach1.Models.Book
+@{
+    var categories = ViewBag.Categories as List<QLNhaSach1.Models.Category>;
+}
+
+<h2>Thêm sách</h2>
+<form asp-action="Create" method="post">
+    <label>Tên sách:</label>
+    <input asp-for="bookName" /><br />
+
+    <label>Mô tả:</label>
+    <textarea asp-for="description"></textarea><br />
+
+    <label>Tác giả:</label>
+    <input asp-for="author" /><br />
+
+    <label>Giá:</label>
+    <input asp-for="price" /><br />
+
+    <label>Trạng thái:</label>
+    <input type="checkbox" asp-for="bookStatus" /> Còn hàng<br />
+
+    <label>Thể loại:</label>
+    <select asp-for="CategoryId">
+        @foreach (var c in categories)
+        {
+            <option value="@c.Id">@c.categoryName</option>
+        }
+    </select><br />
+
+    <label>Image URL:</label>
+    <input asp-for="ImageUrl" /><br />
+
+    <button type="submit">Lưu</button>
+</form>

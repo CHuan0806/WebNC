@@ -1,0 +1,16 @@
+@model QLNhaSach1.Models.Book
+
+<h2>Chi tiết sách</h2>
+
+<p><strong>Tên:</strong> @Model.bookName</p>
+<p><strong>Mô tả:</strong> @Model.description</p>
+<p><strong>Tác giả:</strong> @Model.author</p>
+<p><strong>Giá:</strong> @Model.price.ToString("N0")</p>
+<p><strong>Trạng thái:</strong> @(Model.bookStatus ? "Còn hàng" : "Hết hàng")</p>
+<p><strong>Thể loại:</strong> @Model.Category?.categoryName</p>
+@if (!string.IsNullOrEmpty(Model.ImageUrl))
+{
+    <img src="@Model.ImageUrl" width="200" />
+}
+
+<a asp-action="Index">Quay lại</a>

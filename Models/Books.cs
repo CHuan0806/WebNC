@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace QLNhaSach.Models
+namespace QLNhaSach1.Models
 {
     public class Book
     {

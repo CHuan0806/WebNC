@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using QLNhaSach.Models;
+using QLNhaSach1.Models;
 
 public class AppDbContext : DbContext
 {
