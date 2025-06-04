@@ -1,0 +1,24 @@
+@model IEnumerable<QLNhaSach1.Models.User>
+
+<h2>Danh sách người dùng</h2>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Tên</th>
+        <th>Email</th>
+        <th>Điện thoại</th>
+        <th>Địa chỉ</th>
+    </tr>
+
+@foreach (var user in Model)
+{
+    <tr>
+        <td>@user.UserId</td>
+        <td>@user.UserName</td>
+        <td>@user.Email</td>
+        <td>@user.Phone</td>
+        <td>@user.Address</td>
+    </tr>
+}
+</table>

@@ -1,0 +1,32 @@
+@model QLNhaSach1.Models.User
+
+<h2>Cập nhật hồ sơ</h2>
+
+<form asp-action="EditProfile" method="post">
+    <input type="hidden" asp-for="UserId" />
+    <div>
+        <label>Tên người dùng:</label>
+        <input asp-for="UserName" />
+        <span asp-validation-for="UserName"></span>
+    </div>
+    <div>
+        <label>Email:</label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div>
+        <label>Số điện thoại:</label>
+        <input asp-for="Phone" />
+        <span asp-validation-for="Phone"></span>
+    </div>
+    <div>
+        <label>Địa chỉ:</label>
+        <input asp-for="Address" />
+        <span asp-validation-for="Address"></span>
+    </div>
+    <button type="submit">Lưu thay đổi</button>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
