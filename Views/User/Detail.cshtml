@@ -1,0 +1,12 @@
+@model QLNhaSach1.Models.User
+
+<h2>Chi tiết người dùng</h2>
+<ul>
+    <li>ID: @Model.UserId</li>
+    <li>Tên: @Model.UserName</li>
+    <li>Email: @Model.Email</li>
+    <li>Điện thoại: @Model.Phone</li>
+    <li>Địa chỉ: @Model.Address</li>
+    <li>Quyền: @Model.Role</li>
+</ul>
+<a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>

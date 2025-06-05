@@ -1,0 +1,16 @@
+@model QLNhaSach1.Models.User
+
+<h2>Xóa người dùng</h2>
+<div>
+    <p>Bạn có chắc chắn muốn xóa người dùng này?</p>
+    <ul>
+        <li>ID: @Model.UserId</li>
+        <li>Tên: @Model.UserName</li>
+        <li>Email: @Model.Email</li>
+    </ul>
+    <form asp-action="DeleteConfirmed" method="post">
+        <input type="hidden" asp-for="UserId" />
+        <button type="submit" class="btn btn-danger">Xóa</button>
+        <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+    </form>
+</div>
