@@ -1,34 +1,63 @@
 @model QLNhaSach1.Models.Book
+
 @{
-    var categories = ViewBag.Categories as List<QLNhaSach1.Models.Category>;
+    ViewData["Title"] = "Thêm Sách Mới";
 }
 
-<h2>Thêm sách</h2>
-<form asp-action="Create" method="post">
-    <label>Tên sách:</label>
-    <input asp-for="bookName" /><br />
+<h2 class="mb-4">@ViewData["Title"]</h2>
 
-    <label>Mô tả:</label>
-    <textarea asp-for="description"></textarea><br />
+<form asp-action="Create" method="post" class="needs-validation" novalidate>
+    @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
 
-    <label>Tác giả:</label>
-    <input asp-for="author" /><br />
+    <div class="mb-3">
+        <label asp-for="bookName" class="form-label">Tên sách</label>
+        <input asp-for="bookName" class="form-control" />
+        <span asp-validation-for="bookName" class="text-danger"></span>
+    </div>
 
-    <label>Giá:</label>
-    <input asp-for="price" /><br />
+    <div class="mb-3">
+        <label asp-for="description" class="form-label">Mô tả</label>
+        <textarea asp-for="description" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="description" class="text-danger"></span>
+    </div>
 
-    <label>Trạng thái:</label>
-    <input type="checkbox" asp-for="bookStatus" /> Còn hàng<br />
+    <div class="mb-3">
+        <label asp-for="author" class="form-label">Tác giả</label>
+        <input asp-for="author" class="form-control" />
+        <span asp-validation-for="author" class="text-danger"></span>
+    </div>
 
-    <label>Thể loại:</label>
-    <select asp-for="CategoryId" class="form-control" asp-items="@(new SelectList(ViewBag.Categories, "Id", "Name"))">
-        <option value="">-- Chọn danh mục --</option>
-    </select>
+    <div class="mb-3">
+        <label asp-for="price" class="form-label">Giá (VNĐ)</label>
+        <input asp-for="price" class="form-control" type="number" min="0" step="1000" />
+        <span asp-validation-for="price" class="text-danger"></span>
+    </div>
 
-    <br />
+    <div class="form-check mb-3">
+        <input asp-for="bookStatus" class="form-check-input" type="checkbox" />
+        <label asp-for="bookStatus" class="form-check-label">Còn hàng</label>
+        <span asp-validation-for="bookStatus" class="text-danger"></span>
+    </div>
 
-    <label>Image URL:</label>
-    <input asp-for="ImageUrl" /><br />
 
-    <button type="submit">Lưu</button>
+    <div class="mb-3">
+        <label asp-for="CategoryId" class="form-label">Danh mục</label>
+        <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.Categories">
+            <option value="">-- Chọn danh mục --</option>
+        </select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ImageUrl" class="form-label">URL hình ảnh</label>
+        <input asp-for="ImageUrl" class="form-control" />
+        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Thêm sách</button>
+    <a asp-action="Index" class="btn btn-secondary ms-2">Quay lại</a>
 </form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -10,18 +10,18 @@ namespace QLNhaSach1.Models
 
         [Required]
         [MaxLength(50)]
-        public string bookName { get; set; } = string.Empty;
+        public string? bookName { get; set; }
 
         [Required]
         [MaxLength(1000)]
-        public string description { get; set; } = string.Empty;
+        public string? description { get; set; } 
 
         [Required]
         [MaxLength(30)]
-        public string author { get; set; }  = string.Empty;
+        public string? author { get; set; } 
         
         
-        [Required]
+        [DisplayName("Trạng thái")]
         public bool bookStatus { get; set; }
         
         [Required,
@@ -32,10 +32,11 @@ namespace QLNhaSach1.Models
 
         [Required]
         public int CategoryId { get; set; }
-        public Category Category { get; set; } = null!;
+        
+        public Category? Category { get; set; } 
 
         [Display(Name = "Image URL")]
-        public string ImageUrl { get; set; } = string.Empty;
+        public string? ImageUrl { get; set; }
 
 
 

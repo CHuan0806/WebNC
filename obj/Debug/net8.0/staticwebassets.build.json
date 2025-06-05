@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "q/hx4l2HEBckdSpcFS/X2sT4H8A2Py16UsMAVpJhfeE=",
+  "Hash": "VCiaXo0Wx4v602RgzdOEClJCALTn98bhloFDMgCAME0=",
   "Source": "QLNhaSach1",
   "BasePath": "_content/QLNhaSach1",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\DoAn\\QLNhaSach1\\wwwroot\\images\\dacnhantam86.jpg",
+      "SourceId": "QLNhaSach1",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\wwwroot\\",
+      "BasePath": "_content/QLNhaSach1",
+      "RelativePath": "images/dacnhantam86.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\dacnhantam86.jpg"
     },
     {
       "Identity": "D:\\DoAn\\QLNhaSach1\\wwwroot\\js\\site.js",

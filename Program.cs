@@ -1,11 +1,12 @@
 using Microsoft.EntityFrameworkCore;
+using QLNhaSach1.Data; 
+
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddControllersWithViews();
-// Add services to the container.
+
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-
 
 var app = builder.Build();
 
@@ -13,7 +14,6 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -27,5 +27,13 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Book}/{action=Index}/{id?}");
+
+// Gọi seed data tại đây
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<AppDbContext>();
+    SeedData.Initialize(context);
+}
 
 app.Run();
