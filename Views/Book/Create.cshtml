@@ -21,10 +21,10 @@
     <input type="checkbox" asp-for="bookStatus" /> Còn hàng<br />
 
     <label>Thể loại:</label>
-    <select asp-for="CategoryId"
-        asp-items="@(new SelectList(ViewBag.Categories, "Id", "categoryName", Model.CategoryId))">
-        <option value="">-- Chọn thể loại --</option>
+    <select asp-for="CategoryId" class="form-control" asp-items="@(new SelectList(ViewBag.Categories, "Id", "Name"))">
+        <option value="">-- Chọn danh mục --</option>
     </select>
+
     <br />
 
     <label>Image URL:</label>

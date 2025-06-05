@@ -19,7 +19,9 @@ public class BookController : Controller
 
     public IActionResult Create()
     {
-        ViewBag.Categories = _context.Categories.ToList();
+        var categories = _context.Categories.ToList(); // Lấy danh sách danh mục
+        ViewBag.Categories = categories; // Truyền vào ViewBag
+
         return View();
     }
 
