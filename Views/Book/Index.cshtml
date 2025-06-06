@@ -1,10 +1,10 @@
 @model IEnumerable<QLNhaSach1.Models.Book>
 
 @{
-    ViewData["Title"] = "Danh sách sách";
+    ViewData["Title"] = "Danh mục sách";
 }
 
-<h2 style="margin-bottom: 20px;">📚 Danh sách sách</h2>
+<h2 style="margin-bottom: 20px;">📚 Danh mục sách</h2>
 
 <a asp-action="Create" class="btn btn-primary" style="margin-bottom: 20px;">➕ Thêm sách</a>
 
@@ -14,6 +14,7 @@
             <th>Tên sách</th>
             <th>Tác giả</th>
             <th>Thể loại</th>
+            <th>Số lượng</th>
             <th>Giá</th>
             <th>Trạng thái</th>
             <th>Ảnh</th>
@@ -27,6 +28,7 @@
                 <td>@b.bookName</td>
                 <td>@b.author</td>
                 <td>@b.Category?.categoryName</td>
+                <td>@b.quantity</td>
                 <td>@b.price.ToString("N0") ₫</td>
                 <td>
                     <span class="badge @(b.bookStatus ? "bg-success" : "bg-danger")">

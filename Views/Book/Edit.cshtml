@@ -4,15 +4,25 @@
     ViewData["Title"] = "Cập nhật sách";
 }
 
-<h2 class="mb-4">@ViewData["Title"]</h2>
+<h2 class="mb-4 text-primary">@ViewData["Title"]</h2>
 
 <form asp-action="Edit" method="post" class="needs-validation" novalidate>
     <input type="hidden" asp-for="bookId" />
 
-    <div class="mb-3">
-        <label asp-for="bookName" class="form-label">Tên sách</label>
-        <input asp-for="bookName" class="form-control" />
-        <span asp-validation-for="bookName" class="text-danger"></span>
+    @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label asp-for="bookName" class="form-label">Tên sách</label>
+            <input asp-for="bookName" class="form-control" />
+            <span asp-validation-for="bookName" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="author" class="form-label">Tác giả</label>
+            <input asp-for="author" class="form-control" />
+            <span asp-validation-for="author" class="text-danger"></span>
+        </div>
     </div>
 
     <div class="mb-3">
@@ -21,22 +31,27 @@
         <span asp-validation-for="description" class="text-danger"></span>
     </div>
 
-    <div class="mb-3">
-        <label asp-for="author" class="form-label">Tác giả</label>
-        <input asp-for="author" class="form-control" />
-        <span asp-validation-for="author" class="text-danger"></span>
-    </div>
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label asp-for="quantity" class="form-label">Số lượng</label>
+            <input asp-for="quantity" class="form-control" type="number" min="1" />
+            <span asp-validation-for="quantity" class="text-danger"></span>
+        </div>
 
-    <div class="mb-3">
-        <label asp-for="price" class="form-label">Giá (VNĐ)</label>
-        <input asp-for="price" class="form-control" type="number" min="0" step="1000" />
-        <span asp-validation-for="price" class="text-danger"></span>
-    </div>
+        <div class="col-md-4">
+            <label asp-for="price" class="form-label">Giá (VNĐ)</label>
+            <input asp-for="price" class="form-control" type="number" min="0" step="1000" />
+            <span asp-validation-for="price" class="text-danger"></span>
+        </div>
 
-    <div class="mb-3 form-check">
-        <input asp-for="bookStatus" class="form-check-input" type="checkbox" />
-        <label asp-for="bookStatus" class="form-check-label">Còn hàng</label>
-        <span asp-validation-for="bookStatus" class="text-danger"></span>
+        <div class="col-md-4">
+            <label class="form-label d-block">Tình trạng</label>
+            <div class="form-check">
+                <input asp-for="bookStatus" class="form-check-input" type="checkbox" />
+                <label asp-for="bookStatus" class="form-check-label">Còn hàng</label>
+            </div>
+            <span asp-validation-for="bookStatus" class="text-danger"></span>
+        </div>
     </div>
 
     <div class="mb-3">
@@ -53,8 +68,10 @@
         <span asp-validation-for="ImageUrl" class="text-danger"></span>
     </div>
 
-    <button type="submit" class="btn btn-success">Cập nhật</button>
-    <a asp-action="Index" class="btn btn-secondary ms-2">Hủy</a>
+    <div class="d-flex justify-content-start mt-4">
+        <button type="submit" class="btn btn-success me-2">Cập nhật</button>
+        <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+    </div>
 </form>
 
 @section Scripts {

@@ -36,8 +36,9 @@ namespace QLNhaSach1.Data
                             description = "Cuốn truyện thiếu nhi kinh điển của Tô Hoài.",
                             author = "Tô Hoài",
                             bookStatus = true,
+                            quantity = 20,
                             price = 50000,
-                            CategoryId = vanHoc.Id,
+                            CategoryId = vanHoc.CategoryId,
                             ImageUrl = "~/images/dacnhantam86.jpg"
                         },
                         new Book
@@ -46,8 +47,9 @@ namespace QLNhaSach1.Data
                             description = "Cuốn sách truyền cảm hứng dành cho giới trẻ.",
                             author = "Rosie Nguyễn",
                             bookStatus = true,
+                            quantity = 30,
                             price = 70000,
-                            CategoryId = vanHoc.Id,
+                            CategoryId = vanHoc.CategoryId,
                             ImageUrl = "~/images/dacnhantam86.jpg"
                         }
                     };

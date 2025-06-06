@@ -1,0 +1,13 @@
+@model QLNhaSach1.Models.Category
+
+<h2>Thêm danh mục</h2>
+
+<form asp-action="Create">
+    <div class="mb-3">
+        <label asp-for="categoryName" class="form-label">Tên danh mục</label>
+        <input asp-for="categoryName" class="form-control" />
+        <span asp-validation-for="categoryName" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success">Lưu</button>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</form>

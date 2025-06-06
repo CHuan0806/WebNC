@@ -1,0 +1,12 @@
+@model QLNhaSach1.Models.Category
+
+<h2>Xác nhận xoá danh mục</h2>
+
+<div>
+    <p>Bạn có chắc muốn xoá <strong>@Model.categoryName</strong> không?</p>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="CategoryId" />
+        <button type="submit" class="btn btn-danger">Xoá</button>
+        <a asp-action="Index" class="btn btn-secondary">Huỷ</a>
+    </form>
+</div>
