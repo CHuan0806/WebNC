@@ -1,0 +1,41 @@
+@model IEnumerable<QLNhaSach1.Models.User>
+
+@{
+    ViewData["Title"] = "Danh sách người dùng";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Danh sách người dùng</h2>
+
+    <a asp-action="Create" class="btn btn-success mb-3">➕ Thêm người dùng</a>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Tên</th>
+                <th>Email</th>
+                <th>Điện thoại</th>
+                <th>Địa chỉ</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.UserId</td>
+                    <td>@user.UserName</td>
+                    <td>@user.Email</td>
+                    <td>@user.Phone</td>
+                    <td>@user.Address</td>
+                    <td>
+                        <a asp-action="Detail" asp-route-id="@user.UserId" class="btn btn-info btn-sm">🔍 Xem</a>
+                        <a asp-action="Update" asp-route-id="@user.UserId" class="btn btn-warning btn-sm">✏️ Sửa</a>
+                        <a asp-action="Delete" asp-route-id="@user.UserId" class="btn btn-danger btn-sm">🗑️ Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

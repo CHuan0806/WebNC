@@ -1,0 +1,20 @@
+<h2>Đăng nhập</h2>
+
+<form asp-action="Login" method="post">
+    <div>
+        <label>Email:</label>
+        <input name="email" />
+    </div>
+    <div>
+        <label>Mật khẩu:</label>
+        <input name="password" type="password" />
+    </div>
+    <button type="submit">Đăng nhập</button>
+</form>
+
+@if (ViewData.ModelState.Count > 0)
+{
+    <p style="color:red">@Html.ValidationSummary()</p>
+}
+
+<a asp-action="Register">Chưa có tài khoản? Đăng ký</a>
