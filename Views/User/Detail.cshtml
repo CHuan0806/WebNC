@@ -1,12 +1,18 @@
 @model QLNhaSach1.Models.User
 
-<h2>Chi tiết người dùng</h2>
-<ul>
-    <li>ID: @Model.UserId</li>
-    <li>Tên: @Model.UserName</li>
-    <li>Email: @Model.Email</li>
-    <li>Điện thoại: @Model.Phone</li>
-    <li>Địa chỉ: @Model.Address</li>
-    <li>Quyền: @Model.Role</li>
-</ul>
-<a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+@{
+    ViewData["Title"] = "Chi tiết người dùng";
+}
+
+<div class="container mt-4">
+    <h2>Chi tiết người dùng</h2>
+    <table class="table table-bordered">
+        <tr><th>ID</th><td>@Model.UserId</td></tr>
+        <tr><th>Tên</th><td>@Model.UserName</td></tr>
+        <tr><th>Email</th><td>@Model.Email</td></tr>
+        <tr><th>Điện thoại</th><td>@Model.Phone</td></tr>
+        <tr><th>Địa chỉ</th><td>@Model.Address</td></tr>
+        <tr><th>Quyền</th><td>@Model.Role</td></tr>
+    </table>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+</div>

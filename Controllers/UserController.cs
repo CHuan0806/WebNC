@@ -62,7 +62,13 @@ public class UserController : Controller
     public IActionResult Login(string email, string password)
     {
         var user = _context.Users.FirstOrDefault(u => u.Email == email);
-        if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
+        if (user == null || string.IsNullOrEmpty(user.PasswordHash) || !user.PasswordHash.StartsWith("$2"))
+        {
+            ModelState.AddModelError("", "Email hoặc mật khẩu không đúng.");
+            return View();
+        }
+
+        if (!BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
         {
             ModelState.AddModelError("", "Email hoặc mật khẩu không đúng.");
             return View();
@@ -74,7 +80,7 @@ public class UserController : Controller
 
         if (user.Role == Role.Admin)
         {
-            return RedirectToAction("Index", "Admin");
+            return RedirectToAction("Index", "User");
         }
         else
         {
@@ -121,9 +127,9 @@ public class UserController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> Detail(int userId)
+    public async Task<IActionResult> Detail(int id)
     {
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.UserId == userId);
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.UserId == id);
         if (user == null) return NotFound();
 
         return View(user);
@@ -151,18 +157,19 @@ public class UserController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> Delete(int userId)
+    public async Task<IActionResult> Delete(int id)
     {
-        var user = await _context.Users.FindAsync(userId);
+        var user = await _context.Users.FindAsync(id);
         if (user == null) return NotFound();
 
         return View(user);
     }
 
-    [HttpDelete]
-    public IActionResult DeleteConfirmed(int userId)
+    [HttpPost, ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public IActionResult DeleteConfirmed(int id)
     {
-        var user = _context.Users.FirstOrDefault(u => u.UserId == userId);
+        var user = _context.Users.FirstOrDefault(u => u.UserId == id);
         if (user == null) return NotFound();
 
         _context.Users.Remove(user);
@@ -170,10 +177,11 @@ public class UserController : Controller
         return RedirectToAction("Index");
     }
 
+
     [HttpGet]
-    public async Task<IActionResult> Update(int userId)
+    public IActionResult Update(int id)
     {
-        var user = await _context.Users.FindAsync(userId);
+        var user = _context.Users.FirstOrDefault(u => u.UserId == id);
         if (user == null) return NotFound();
         return View(user);
     }
@@ -190,6 +198,7 @@ public class UserController : Controller
         existingUser.Email = user.Email;
         existingUser.Phone = user.Phone;
         existingUser.Address = user.Address;
+
         if (!string.IsNullOrEmpty(user.PasswordHash))
         {
             existingUser.PasswordHash = BCrypt.Net.BCrypt.HashPassword(user.PasswordHash);
@@ -198,4 +207,5 @@ public class UserController : Controller
         _context.SaveChanges();
         return RedirectToAction("Index");
     }
+
 }

@@ -1,12 +1,19 @@
 using Microsoft.EntityFrameworkCore;
+using QLNhaSach1;
+using QLNhaSach1.Models;
+
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddControllersWithViews();
-builder.Services.AddSession();
+
 // Add services to the container.
+builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Đăng ký DatabaseInitializer
+builder.Services.AddScoped<DatabaseInitializer>();
 
+// Thêm session
+builder.Services.AddSession();
 
 var app = builder.Build();
 
@@ -14,7 +21,6 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -22,12 +28,19 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-app.UseSession();
 
 app.UseAuthorization();
+app.UseSession();
+
+// Khởi tạo tài khoản admin
+using (var scope = app.Services.CreateScope())
+{
+    var initializer = scope.ServiceProvider.GetRequiredService<DatabaseInitializer>();
+    await initializer.SeedAdminUserAsync();
+}
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Book}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
