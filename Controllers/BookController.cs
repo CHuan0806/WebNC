@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using QLNhaSach1.Models;
 
@@ -19,7 +20,8 @@ public class BookController : Controller
 
     public IActionResult Create()
     {
-        ViewBag.Categories = _context.Categories.ToList();
+        // ✅ Sử dụng SelectList thay vì List<Category>
+        ViewBag.Categories = new SelectList(_context.Categories.ToList(), "Id", "categoryName");
         return View();
     }
 
@@ -32,8 +34,17 @@ public class BookController : Controller
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+        foreach (var key in ModelState.Keys)
+        {
+            var state = ModelState[key];
+            foreach (var error in state.Errors)
+            {
+                Console.WriteLine($"❌ Field: {key} - Error: {error.ErrorMessage}");
+            }
+        }
 
-        ViewBag.Categories = _context.Categories.ToList();
+        // ✅ Truyền lại SelectList nếu ModelState bị lỗi
+        ViewBag.Categories = new SelectList(_context.Categories.ToList(), "Id", "categoryName", book.CategoryId);
         return View(book);
     }
 
@@ -42,7 +53,7 @@ public class BookController : Controller
         var book = await _context.Books.FindAsync(id);
         if (book == null) return NotFound();
 
-        ViewBag.Categories = _context.Categories.ToList();
+        ViewBag.Categories = new SelectList(_context.Categories.ToList(), "Id", "categoryName", book.CategoryId);
         return View(book);
     }
 
@@ -56,7 +67,7 @@ public class BookController : Controller
             return RedirectToAction("Index");
         }
 
-        ViewBag.Categories = _context.Categories.ToList();
+        ViewBag.Categories = new SelectList(_context.Categories.ToList(), "Id", "categoryName", book.CategoryId);
         return View(book);
     }
 
@@ -70,14 +81,16 @@ public class BookController : Controller
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
         var book = await _context.Books.FindAsync(id);
-        _context.Books.Remove(book);
+        _context.Books.Remove(book); // ⚠️ CS8604
+
         await _context.SaveChangesAsync();
         return RedirectToAction("Index");
     }
 
     public async Task<IActionResult> Details(int id)
     {
-        var book = await _context.Books.Include(b => b.Category).FirstOrDefaultAsync(b => b.bookId == id);
+        var book = await _context.Books.Include(b => b.Category)
+                                       .FirstOrDefaultAsync(b => b.bookId == id);
         if (book == null) return NotFound();
         return View(book);
     }

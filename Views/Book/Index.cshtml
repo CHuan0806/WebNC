@@ -1,14 +1,20 @@
 @model IEnumerable<QLNhaSach1.Models.Book>
 
-<h2>Danh sách sách</h2>
-<a asp-action="Create">Thêm sách</a>
+@{
+    ViewData["Title"] = "Danh mục sách";
+}
 
-<table>
-    <thead>
+<h2 style="margin-bottom: 20px;">📚 Danh mục sách</h2>
+
+<a asp-action="Create" class="btn btn-primary" style="margin-bottom: 20px;">➕ Thêm sách</a>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
         <tr>
             <th>Tên sách</th>
             <th>Tác giả</th>
             <th>Thể loại</th>
+            <th>Số lượng</th>
             <th>Giá</th>
             <th>Trạng thái</th>
             <th>Ảnh</th>
@@ -22,18 +28,27 @@
                 <td>@b.bookName</td>
                 <td>@b.author</td>
                 <td>@b.Category?.categoryName</td>
-                <td>@b.price.ToString("N0")</td>
-                <td>@(b.bookStatus ? "Còn hàng" : "Hết hàng")</td>
+                <td>@b.quantity</td>
+                <td>@b.price.ToString("N0") ₫</td>
+                <td>
+                    <span class="badge @(b.bookStatus ? "bg-success" : "bg-danger")">
+                        @(b.bookStatus ? "Còn hàng" : "Hết hàng")
+                    </span>
+                </td>
                 <td>
                     @if (!string.IsNullOrEmpty(b.ImageUrl))
                     {
-                        <img src="@b.ImageUrl" width="60" />
+                        <img src="@Url.Content($"{b.ImageUrl}")" width="60" alt="Ảnh sách" />
+                    }
+                    else
+                    {
+                        <span>Không có ảnh</span>
                     }
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@b.bookId">Sửa</a> |
-                    <a asp-action="Details" asp-route-id="@b.bookId">Chi tiết</a> |
-                    <a asp-action="Delete" asp-route-id="@b.bookId">Xoá</a>
+                    <a asp-action="Edit" asp-route-id="@b.bookId" class="btn btn-sm btn-warning">Sửa</a>
+                    <a asp-action="Details" asp-route-id="@b.bookId" class="btn btn-sm btn-info">Chi tiết</a>
+                    <a asp-action="Delete" asp-route-id="@b.bookId" class="btn btn-sm btn-danger">Xoá</a>
                 </td>
             </tr>
         }

@@ -1,16 +1,32 @@
 @model QLNhaSach1.Models.Book
 
-<h2>Chi tiết sách</h2>
-
-<p><strong>Tên:</strong> @Model.bookName</p>
-<p><strong>Mô tả:</strong> @Model.description</p>
-<p><strong>Tác giả:</strong> @Model.author</p>
-<p><strong>Giá:</strong> @Model.price.ToString("N0")</p>
-<p><strong>Trạng thái:</strong> @(Model.bookStatus ? "Còn hàng" : "Hết hàng")</p>
-<p><strong>Thể loại:</strong> @Model.Category?.categoryName</p>
-@if (!string.IsNullOrEmpty(Model.ImageUrl))
-{
-    <img src="@Model.ImageUrl" width="200" />
+@{
+    ViewData["Title"] = "Chi tiết sách";
 }
 
-<a asp-action="Index">Quay lại</a>
+<h2 class="mb-4 text-primary">@ViewData["Title"]</h2>
+
+<div class="card shadow-sm p-4">
+    <div class="row">
+        <div class="col-md-8">
+            <p><strong>Tên sách:</strong> @Model.bookName</p>
+            <p><strong>Mô tả:</strong> @Model.description</p>
+            <p><strong>Tác giả:</strong> @Model.author</p>
+            <p><strong>Số lượng:</strong> @Model.quantity</p>
+            <p><strong>Giá:</strong> @Model.price.ToString("N0") VNĐ</p>
+            <p><strong>Trạng thái:</strong> @(Model.bookStatus ? "Còn hàng" : "Hết hàng")</p>
+            <p><strong>Thể loại:</strong> @Model.Category?.categoryName</p>
+        </div>
+        <div class="col-md-4 text-center">
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <img src="@Model.ImageUrl" alt="Ảnh sách" class="img-fluid rounded shadow" style="max-height: 250px;" />
+            }
+        </div>
+    </div>
+</div>
+
+<div class="mt-4">
+    <a asp-action="Edit" asp-route-id="@Model.bookId" class="btn btn-warning me-2">Chỉnh sửa</a>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</div>

@@ -1,0 +1,39 @@
+@model IEnumerable<QLNhaSach1.Models.Book>
+
+<h2>Sách trong danh mục: @ViewBag.CategoryName</h2>
+
+@if (!Model.Any())
+{
+    <p>Không có sách nào trong danh mục này.</p>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Tên sách</th>
+                <th>Tác giả</th>
+                <th>Số lượng</th>
+                <th>Giá (VNĐ)</th>
+                <th>Trạng thái</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.bookName</td>
+                <td>@book.author</td>
+                <td>@book.quantity</td>
+                <td>@book.price.ToString("N0")</td>
+                <td>@(book.bookStatus ? "Còn hàng" : "Hết hàng")</td>
+                <td>
+                    <a asp-controller="Book" asp-action="Details" asp-route-id="@book.bookId" class="btn btn-sm btn-primary">Xem</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+    
