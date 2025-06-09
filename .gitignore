@@ -1,0 +1,11 @@
+bin/
+obj/
+*.user
+*.suo
+*.log
+*.cache
+*.db
+.vscode/
+git rm -r --cached obj/
+git rm -r --cached bin/
+git commit -m "Bỏ obj/ và bin/ khỏi Git"
