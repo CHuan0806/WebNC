@@ -15,7 +15,7 @@ namespace QLNhaSach1
         public async Task SeedAdminUserAsync()
         {
             // Kiểm tra xem có tài khoản admin nào trong cơ sở dữ liệu chưa
-            bool hasAdmin = await _context.Users.AnyAsync(u => u.Role == Role.Admin);
+            bool hasAdmin = await _context.Users    .AnyAsync(u => u.Role == Role.Admin);
 
             if (!hasAdmin)
             {
