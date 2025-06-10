@@ -2,52 +2,54 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BookSaw</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - BookSaw</title>
 
-    <!-- ✅ Bootstrap 5.3.1 CSS (CDN) -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+	<!-- ✅ Bootstrap 5.3.1 CSS (CDN) -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
 
-    <!-- ✅ Custom CSS -->
-    <link rel="stylesheet" href="~/css/normalize.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/icomoon/icomoon.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/vendor.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/style.css" asp-append-version="true" />
+	<!-- ✅ Custom CSS -->
+	<link rel="stylesheet" href="~/css/normalize.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/icomoon/icomoon.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/css/vendor.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/style.css" asp-append-version="true" />
 
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#header" data-bs-offset="100" tabindex="0">
 
-    <!-- 🔰 Header -->
-    <div id="header-wrap">
-        <!-- Top Bar -->
-        <div class="top-content py-2 bg-light border-bottom">
-            <div class="container-fluid">
-                <div class="row align-items-center">
-                    <!-- Social -->
-                    <div class="col-md-6">
-                        <div class="social-links">
-                            <ul class="list-inline mb-0">
-                                <li class="list-inline-item"><a href="#"><i class="icon icon-facebook"></i></a></li>
-                                <li class="list-inline-item"><a href="#"><i class="icon icon-twitter"></i></a></li>
-                                <li class="list-inline-item"><a href="#"><i class="icon icon-youtube-play"></i></a></li>
-                                <li class="list-inline-item"><a href="#"><i class="icon icon-behance-square"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
+	<!-- 🔰 Header -->
+	<div id="header-wrap">
+		<!-- Top Bar -->
+		<div class="top-content py-2 bg-light border-bottom">
+			<div class="container-fluid">
+				<div class="row align-items-center">
+					<!-- Social -->
+					<div class="col-md-6">
+						<div class="social-links">
+							<ul class="list-inline mb-0">
+								<li class="list-inline-item"><a href="#"><i class="icon icon-facebook"></i></a></li>
+								<li class="list-inline-item"><a href="#"><i class="icon icon-twitter"></i></a></li>
+								<li class="list-inline-item"><a href="#"><i class="icon icon-youtube-play"></i></a></li>
+								<li class="list-inline-item"><a href="#"><i class="icon icon-behance-square"></i></a>
+								</li>
+							</ul>
+						</div>
+					</div>
 
-                    <!-- Account + Cart + Search -->
-                    <div class="col-md-6 d-flex justify-content-end">
-                        <div class="right-element d-flex align-items-center gap-3">
-                            <a asp-controller="User" asp-action="Index" class="user-account text-decoration-none">
-                                <i class="icon icon-user"></i><span class="ms-1">Tài khoản</span>
-                            </a>
-                            <a asp-controller="GioHang" asp-action="Index" class="cart text-decoration-none">
-                                <i class="icon icon-clipboard"></i>
-                                <span>Giỏ hàng (<span id="cart-count">0</span> đ)</span>
-                            </a>
-                            <div class="action-menu">
+					<!-- Account + Cart + Search -->
+					<div class="col-md-6 d-flex justify-content-end">
+						<div class="right-element d-flex align-items-center gap-3">
+							<a asp-controller="User" asp-action="Index" class="user-account text-decoration-none">
+								<i class="icon icon-user"></i><span class="ms-1">Tài khoản</span>
+							</a>
+							<a asp-controller="GioHang" asp-action="Index" class="cart text-decoration-none">
+								<i class="icon icon-clipboard"></i>
+								<span>Giỏ hàng (<span id="cart-count">0</span> đ)</span>
+							</a>
+							<div class="action-menu">
 
 								<div class="search-bar">
 									<a href="#" class="search-button search-toggle" data-selector="#header-wrap">
@@ -59,56 +61,60 @@
 									</form>
 								</div>
 							</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-        <!-- Navigation -->
-        <header id="header" class="bg-white border-bottom">
-            <div class="container-fluid">
-                <div class="row align-items-center">
-                    <div class="col-md-2">
-                        <div class="main-logo py-2">
-                            <a asp-controller="Home" asp-action="Index">
-                                <img src="~/images/main-logo.png" alt="logo" class="img-fluid" />
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-10">
-                        <nav id="navbar" class="navbar">
-                            <div class="main-menu d-flex justify-content-end">
-                                <ul class="menu-list d-flex gap-4 list-unstyled mb-0">
-                                    <li class="menu-item"><a href="#featured-books" class="nav-link">Trang Chủ</a></li>
-                                    <li class="menu-item"><a href="#featured-books" class="nav-link">Nổi bật</a></li>
-                                    <li class="menu-item"><a href="#popular-books" class="nav-link">Phổ biến</a></li>
-                                    <li class="menu-item"><a href="#special-offer" class="nav-link">Ưu đãi</a></li>
-                                    <li class="menu-item"><a href="#latest-blog" class="nav-link">Bài viết</a></li>
-                                    <li class="menu-item"><a href="#download-app" class="nav-link">Tải App</a></li>
-                                </ul>
-                                <div class="hamburger d-lg-none">
-                                    <span class="bar"></span>
-                                    <span class="bar"></span>
-                                    <span class="bar"></span>
-                                </div>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </header>
-    </div>
+		<!-- Navigation -->
+		<header id="header" class="bg-white border-bottom">
+			<div class="container-fluid">
+				<div class="row align-items-center">
+					<div class="col-md-2">
+						<div class="main-logo py-2">
+							<a asp-controller="Home" asp-action="Index">
+								<img src="~/images/main-logo.png" alt="logo" class="img-fluid" />
+							</a>
+						</div>
+					</div>
 
-    <!-- 🔽 Main content -->
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+					<div class="col-md-10">
+						<nav id="navbar" class="navbar justify-content-end">
+							<div class="main-menu d-flex justify-content-end align-items-center w-100">
+								<ul class="menu-list d-flex gap-4 list-unstyled mb-0">
+									<li class="menu-item"><a asp-controller="Home" asp-action="Index"
+											class="nav-link">Trang Chủ</a></li>
+									<li class="menu-item"><a href="#featured-books" class="nav-link">Nổi bật</a></li>
+									<li class="menu-item"><a href="#popular-books" class="nav-link">Phổ biến</a></li>
+									<li class="menu-item"><a href="#special-offer" class="nav-link">Ưu đãi</a></li>
+									<li class="menu-item"><a href="#latest-blog" class="nav-link">Bài viết</a></li>
+									<li class="menu-item"><a href="#download-app" class="nav-link">Tải App</a></li>
+								</ul>
+								<div class="hamburger d-lg-none ms-3">
+									<span class="bar"></span>
+									<span class="bar"></span>
+									<span class="bar"></span>
+								</div>
+							</div>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</header>
+		@RenderSection("Billboard", required: false)
+	</div>
+	
 
-    <!-- 🔚 Footer -->
-    <footer id="footer">
+	<!-- 🔽 Main content -->
+	<div class="container">
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
+	</div>
+
+	<!-- 🔚 Footer -->
+	<footer id="footer">
 		<div class="container">
 			<div class="row">
 
@@ -117,9 +123,7 @@
 					<div class="footer-item">
 						<div class="company-brand">
 							<img src="~/images/main-logo.png" alt="logo" class="footer-logo">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis sed ptibus liberolectus
-								nonet psryroin. Amet sed lorem posuere sit iaculis amet, ac urna. Adipiscing fames
-								semper erat ac in suspendisse iaculis.</p>
+							<p>BookSaw.com nhận đặt hàng trực tuyến và giao hàng tận nơi. KHÔNG hỗ trợ đặt mua và nhận hàng trực tiếp tại văn phòng cũng như tất cả Hệ Thống BookSawBookSaw trên toàn quốc.</p>
 						</div>
 					</div>
 
@@ -128,22 +132,19 @@
 				<div class="col-md-2">
 
 					<div class="footer-menu">
-						<h5>About Us</h5>
+						<h5>Giới thiệu</h5>
 						<ul class="menu-list">
 							<li class="menu-item">
-								<a href="#">vision</a>
+								<a href="#">Tầm nhìn</a>
 							</li>
 							<li class="menu-item">
-								<a href="#">articles </a>
+								<a href="#">Bài viết</a>
 							</li>
 							<li class="menu-item">
-								<a href="#">careers</a>
+								<a href="#">Sự nghiệp</a>
 							</li>
 							<li class="menu-item">
-								<a href="#">service terms</a>
-							</li>
-							<li class="menu-item">
-								<a href="#">donate</a>
+								<a href="#">Hệ thống dịch vụ</a>
 							</li>
 						</ul>
 					</div>
@@ -152,22 +153,19 @@
 				<div class="col-md-2">
 
 					<div class="footer-menu">
-						<h5>Discover</h5>
+						<h5>Khám phá</h5>
 						<ul class="menu-list">
 							<li class="menu-item">
-								<a href="#">Home</a>
+								<a href="#">Trang chủ</a>
 							</li>
 							<li class="menu-item">
-								<a href="#">Books</a>
+								<a href="#">Sản phẩm</a>
 							</li>
 							<li class="menu-item">
-								<a href="#">Authors</a>
+								<a href="#">Tác giả</a>
 							</li>
 							<li class="menu-item">
-								<a href="#">Subjects</a>
-							</li>
-							<li class="menu-item">
-								<a href="#">Advanced Search</a>
+								<a href="#">Thể loại</a>
 							</li>
 						</ul>
 					</div>
@@ -176,19 +174,19 @@
 				<div class="col-md-2">
 
 					<div class="footer-menu">
-						<h5>My account</h5>
+						<h5>Tài khoản</h5>
 						<ul class="menu-list">
 							<li class="menu-item">
-								<a href="#">Sign In</a>
+								<a href="#">Đăng nhập/Đăng ký</a>
 							</li>
 							<li class="menu-item">
-								<a href="#">View Cart</a>
+								<a href="#">Chi tiết tài khoản</a>
 							</li>
 							<li class="menu-item">
-								<a href="#">My Wishtlist</a>
+								<a href="#">Lịch sử mua hàng</a>
 							</li>
 							<li class="menu-item">
-								<a href="#">Track My Order</a>
+								<a href="#">Theo dõi đơn hàng</a>
 							</li>
 						</ul>
 					</div>
@@ -197,19 +195,19 @@
 				<div class="col-md-2">
 
 					<div class="footer-menu">
-						<h5>Help</h5>
+						<h5>Hỗ trợ</h5>
 						<ul class="menu-list">
 							<li class="menu-item">
-								<a href="#">Help center</a>
+								<a href="#">Trung tâm hỗ trợ</a>
 							</li>
 							<li class="menu-item">
-								<a href="#">Report a problem</a>
+								<a href="#">Báo cáo vấn đề</a>
 							</li>
 							<li class="menu-item">
-								<a href="#">Suggesting edits</a>
+								<a href="#">Đề xuất chỉnh sửa</a>
 							</li>
 							<li class="menu-item">
-								<a href="#">Contact us</a>
+								<a href="#">Liên hệ chúng tôi</a>
 							</li>
 						</ul>
 					</div>
@@ -260,19 +258,19 @@
 			</div>
 		</div>
 	</div>
-    <!-- ✅ Scripts -->
+	<!-- ✅ Scripts -->
 
-    <!-- Bootstrap 5.3.1 Bundle (JS + Popper) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Bootstrap 5.3.1 Bundle (JS + Popper) -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 
 
-    <!-- Your custom JS -->
-    <script src="~/js/plugins.js" asp-append-version="true"></script>
-    <script src="~/js/script.js" asp-append-version="true"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+	<!-- Your custom JS -->
+	<script src="~/js/plugins.js" asp-append-version="true"></script>
+	<script src="~/js/script.js" asp-append-version="true"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
 
-    @await RenderSectionAsync("Scripts", required: false)
+	@await RenderSectionAsync("Scripts", required: false)
 </body>
 
 </html>
