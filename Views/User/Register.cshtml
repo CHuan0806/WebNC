@@ -1,37 +1,41 @@
 @model QLNhaSach1.Models.User
+<div class="col-md-7">
+            <h2 class="text-center mb-4">Đăng ký tài khoản</h2>
+            <form asp-action="Register" method="post">
+                <div class="mb-3">
+                    <label class="form-label">Tên người dùng:</label>
+                    <input asp-for="UserName" class="form-control" />
+                    <span class="text-danger" asp-validation-for="UserName"></span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email:</label>
+                    <input asp-for="Email" class="form-control" />
+                    <span class="text-danger" asp-validation-for="Email"></span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Mật khẩu:</label>
+                    <input asp-for="PasswordHash" type="password" class="form-control" />
+                    <span class="text-danger" asp-validation-for="PasswordHash"></span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Số điện thoại:</label>
+                    <input asp-for="Phone" class="form-control" />
+                    <span class="text-danger" asp-validation-for="Phone"></span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Địa chỉ:</label>
+                    <input asp-for="Address" class="form-control" />
+                    <span class="text-danger" asp-validation-for="Address"></span>
+                </div>
+                <button type="submit" class="btn btn-success w-100">Đăng ký</button>
+            </form>
 
-<h2>Đăng ký tài khoản</h2>
-
-<form asp-action="Register" method="post">
-    <div>
-        <label>Tên người dùng:</label>
-        <input asp-for="UserName" />
-        <span asp-validation-for="UserName"></span>
+            <div class="text-center mt-3">
+                <a asp-action="Login">Đã có tài khoản? Đăng nhập</a>
+            </div>
+        </div>
     </div>
-    <div>
-        <label>Email:</label>
-        <input asp-for="Email" />
-        <span asp-validation-for="Email"></span>
-    </div>
-    <div>
-        <label>Mật khẩu:</label>
-        <input asp-for="PasswordHash" type="password" />
-        <span asp-validation-for="PasswordHash"></span>
-    </div>
-    <div>
-        <label>Số điện thoại:</label>
-        <input asp-for="Phone" />
-        <span asp-validation-for="Phone"></span>
-    </div>
-    <div>
-        <label>Địa chỉ:</label>
-        <input asp-for="Address" />
-        <span asp-validation-for="Address"></span>
-    </div>
-    <button type="submit">Đăng ký</button>
-</form>
-
-<a asp-action="Login">Đã có tài khoản? Đăng nhập</a>
+</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
