@@ -40,7 +40,7 @@ namespace QLNhaSach1.Models
 
         [Required]
         [Range(0, int.MaxValue, ErrorMessage = "Số lượng phải >= 0")]
-        public int quantity { get; set; }
+        public int quantity { get; set; } 
 
 
 
