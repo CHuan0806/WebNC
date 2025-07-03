@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Fjzo7lOcmx4X7Gh7KltE62IwH2kR7ejeWAlL/8ZOF48=",
+  "Hash": "0zKjBp2SRbMEYrcxgjqlviYrJk9JaduOzPBsrr1rG3c=",
   "Source": "QLNhaSach1",
   "BasePath": "_content/QLNhaSach1",
   "Mode": "Default",
@@ -549,6 +549,25 @@
       "OriginalItemSpec": "wwwroot\\images\\dacnhantam86.jpg"
     },
     {
+      "Identity": "D:\\DoAn\\QLNhaSach1\\wwwroot\\images\\de-men-50k_1.JPG",
+      "SourceId": "QLNhaSach1",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\wwwroot\\",
+      "BasePath": "_content/QLNhaSach1",
+      "RelativePath": "images/de-men-50k_1.JPG",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\de-men-50k_1.JPG"
+    },
+    {
       "Identity": "D:\\DoAn\\QLNhaSach1\\wwwroot\\images\\default.png",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
@@ -832,6 +851,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\pattern2.png"
+    },
+    {
+      "Identity": "D:\\DoAn\\QLNhaSach1\\wwwroot\\images\\phat-trien-ky-nang-lanh-dao_outline.JPG",
+      "SourceId": "QLNhaSach1",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\wwwroot\\",
+      "BasePath": "_content/QLNhaSach1",
+      "RelativePath": "images/phat-trien-ky-nang-lanh-dao_outline.JPG",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\phat-trien-ky-nang-lanh-dao_outline.JPG"
     },
     {
       "Identity": "D:\\DoAn\\QLNhaSach1\\wwwroot\\images\\post-img1.jpg",

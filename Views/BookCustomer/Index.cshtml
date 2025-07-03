@@ -1,0 +1,138 @@
+@model QLNhaSach1.ViewModels.BookListViewModel
+
+@{
+    ViewData["Title"] = "Sản phẩm";
+}
+
+<section id="book-list" class="bookshelf py-5 my-5">
+    <div class="container">
+        <div class="row">
+
+            <!-- Sidebar -->
+            <div class="col-md-3">
+                <aside class="filter-sidebar">
+                    <h2 class="mb-3">Lọc Sản Phẩm</h2>
+
+                    <!-- Danh mục -->
+                    <div class="filter-group mb-4">
+                        <h3>Danh mục</h3>
+                        <ul class="list-unstyled">
+                            @foreach (var category in Model.AllCategories)
+                            {
+                                <li>
+                                    <a asp-action="Index" asp-route-categoryId="@category.CategoryId">
+                                        @category.categoryName
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+
+                    <!-- Tác giả -->
+                    <div class="filter-group">
+                        <h3>Tác giả</h3>
+                        <ul class="list-unstyled">
+                            @foreach (var author in Model.AllAuthors)
+                            {
+                                <li>
+                                    <a asp-action="Index" asp-route-author="@author">
+                                        @author
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+
+                    <!-- Khoảng giá -->
+                    <div class="filter-group mt-4">
+                        <h3>Giá</h3>
+                        <form asp-action="Index" method="get">
+                            <input type="hidden" name="categoryId" value="@Model.SelectedCategoryId" />
+                            <input type="hidden" name="author" value="@Model.SelectedAuthor" />
+
+                            <div class="mb-2">
+                                <input type="number" name="minPrice" class="form-control" placeholder="Giá từ..."
+                                    value="@Context.Request.Query["minPrice"]" />
+                            </div>
+                            <div class="mb-2">
+                                <input type="number" name="maxPrice" class="form-control" placeholder="Giá đến..."
+                                    value="@Context.Request.Query["maxPrice"]" />
+                            </div>
+                            <button type="submit" class="btn btn-outline-primary btn-sm">Lọc giá</button>
+                        </form>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- Main content -->
+            <div class="col-md-9">
+
+                <!-- Sắp xếp + Tổng số -->
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h4 class="mb-0">Tìm thấy @Model.Books.Count() kết quả</h4>
+                    </div>
+                    <div>
+                        <form asp-action="Index" method="get" class="d-flex align-items-center gap-2">
+                            <label for="sortBy" class="form-label mb-0 me-2">Sắp xếp theo:</label>
+                            <select name="sortBy" id="sortBy" class="form-select" onchange="this.form.submit()">
+                                <option value="">-- Chọn --</option>
+                                <option value="name_asc" selected="@(Context.Request.Query["sortBy"] == "name_asc")">Tên
+                                    (A-Z)</option>
+                                <option value="name_desc" selected="@(Context.Request.Query["sortBy"] == "name_desc")">
+                                    Tên (Z-A)</option>
+                                <option value="price_asc" selected="@(Context.Request.Query["sortBy"] == "price_asc")">
+                                    Giá tăng dần</option>
+                                <option value="price_desc"
+                                    selected="@(Context.Request.Query["sortBy"] == "price_desc")">Giá giảm dần</option>
+                            </select>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Danh sách sách -->
+                <div class="grid product-grid">
+                    @foreach (var book in Model.Books)
+                    {
+                        <div class="product-item">
+                            <figure class="product-style">
+                                <img src="@Url.Content(book.ImageUrl)" alt="@book.bookName" class="product-item" />
+                                <form asp-controller="Cart" asp-action="Add" method="post">
+                                    <input type="hidden" name="bookId" value="@book.bookId" />
+                                    <button type="submit" class="add-to-cart" data-product-tile="add-to-cart">Thêm vào
+                                        giỏ</button>
+                                </form>
+                            </figure>
+                            <figcaption>
+                                <h3>@book.bookName</h3>
+                                <span>Tác giả: @book.author</span>
+                                <div class="item-price">@book.price.ToString("n0")₫</div>
+                            </figcaption>
+                        </div>
+                    }
+                </div>
+
+                <!-- Phân trang -->
+                <div class="mt-4 d-flex justify-content-center">
+                    <nav>
+                        <ul class="pagination">
+                            @for (int i = 1; i <= Model.TotalPages; i++)
+                            {
+                                <li class="page-item @(Model.CurrentPage == i ? "active" : "")">
+                                    <a class="page-link" asp-action="Index" asp-route-categoryId="@Model.SelectedCategoryId"
+                                        asp-route-author="@Model.SelectedAuthor"
+                                        asp-route-minPrice="@Context.Request.Query["minPrice"]"
+                                        asp-route-maxPrice="@Context.Request.Query["maxPrice"]"
+                                        asp-route-sortBy="@Context.Request.Query["sortBy"]" asp-route-page="@i">
+                                        @i
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </nav>
+                </div>
+
+            </div><!-- End col-md-9 -->
+
+        </div><!-- End row -->
+</section>

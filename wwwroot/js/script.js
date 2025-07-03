@@ -40,15 +40,24 @@
       navMenu.classList.remove("responsive");
   }
 
-  var initScrollNav = function() {
-    var scroll = $(window).scrollTop();
+  var initScrollNav = function () {
+  var scroll = $(window).scrollTop();
+  var header = $('#header');
 
-    if (scroll >= 200) {
-      $('#header').addClass("fixed-top");
-    }else{
-      $('#header').removeClass("fixed-top");
+  if (scroll >= 100) {
+    if (!header.hasClass('fixed-top')) {
+      header.addClass("fixed-top");
+
+      // Thêm spacer để giữ chỗ, tránh layout bị giật
+      if ($('#header-spacer').length === 0) {
+        $('<div id="header-spacer" style="height:' + header.outerHeight() + 'px;"></div>').insertAfter(header);
+      }
     }
+  } else {
+    header.removeClass("fixed-top");
+    $('#header-spacer').remove(); // Xóa spacer khi scroll lên
   }
+}
 
   $(window).scroll(function() {    
     initScrollNav();

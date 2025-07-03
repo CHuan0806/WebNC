@@ -1,5 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Trang chủ";
 }
-<div>Hello</div>
+@await Html.PartialAsync("~/Views/Shared/Components/_FeaturedProducts.cshtml")
+@await Html.PartialAsync("~/Views/Shared/Components/_BestSellerPartial.cshtml")
+@await Html.PartialAsync("~/Views/Shared/Components/_PopularProductsPartial.cshtml")
+@await Html.PartialAsync("~/Views/Shared/Components/_OfferProductsPartial.cshtml")
+
 

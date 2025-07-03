@@ -90,7 +90,7 @@ public class CategoryController : Controller
         var books = category.Books;
 
         // Truyền tên category vào ViewData hoặc ViewBag để hiển thị tiêu đề
-        ViewBag.CategoryName = category.categoryName;
+        ViewBag.categoryName = category.categoryName;
 
         return View(books);
     }
