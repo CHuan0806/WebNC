@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0zKjBp2SRbMEYrcxgjqlviYrJk9JaduOzPBsrr1rG3c=",
+  "Hash": "ueazl2pOb6mTy+/wy28oDm7l4hyGBQLloajzaX6ZPq4=",
   "Source": "QLNhaSach1",
   "BasePath": "_content/QLNhaSach1",
   "Mode": "Default",
@@ -300,6 +300,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\app-store.jpg"
+    },
+    {
+      "Identity": "D:\\DoAn\\QLNhaSach1\\wwwroot\\images\\chien-binh-cau-vong.jpg",
+      "SourceId": "QLNhaSach1",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\wwwroot\\",
+      "BasePath": "_content/QLNhaSach1",
+      "RelativePath": "images/chien-binh-cau-vong.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\chien-binh-cau-vong.jpg"
     },
     {
       "Identity": "D:\\DoAn\\QLNhaSach1\\wwwroot\\images\\chocolat\\close.png",
@@ -1250,6 +1269,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\tab-item8.jpg"
+    },
+    {
+      "Identity": "D:\\DoAn\\QLNhaSach1\\wwwroot\\images\\tuoi-tre-dang-gia-bao-nhieu.jpg",
+      "SourceId": "QLNhaSach1",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\wwwroot\\",
+      "BasePath": "_content/QLNhaSach1",
+      "RelativePath": "images/tuoi-tre-dang-gia-bao-nhieu.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\tuoi-tre-dang-gia-bao-nhieu.jpg"
     },
     {
       "Identity": "D:\\DoAn\\QLNhaSach1\\wwwroot\\js\\jquery-1.11.0.min.js",

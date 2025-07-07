@@ -21,9 +21,8 @@ public class UserController : Controller
 
         if (role == Role.Admin.ToString())
         {
-            // Admin: xem danh sách user
             var users = await _context.Users.ToListAsync();
-            return View(users); // View danh sách
+            return View(users);
         }
         else
         {
@@ -41,7 +40,7 @@ public class UserController : Controller
 
         if (_context.Users.Any(u => u.Email == user.Email))
         {
-            ModelState.AddModelError("Email", "Email đã được đăng ký. ");
+            ModelState.AddModelError("Email", "Email đã được đăng ký.");
             return View(user);
         }
 
@@ -55,11 +54,14 @@ public class UserController : Controller
     }
 
     [HttpGet]
-    public IActionResult Login() => View();
-
+    public IActionResult Login(string? returnUrl)
+    {
+        ViewBag.ReturnUrl = returnUrl;
+        return View();
+    }
 
     [HttpPost]
-    public IActionResult Login(string email, string password)
+    public IActionResult Login(string email, string password, string? returnUrl)
     {
         var user = _context.Users.FirstOrDefault(u => u.Email == email);
         if (user == null || string.IsNullOrEmpty(user.PasswordHash) || !user.PasswordHash.StartsWith("$2"))
@@ -78,14 +80,12 @@ public class UserController : Controller
         HttpContext.Session.SetString("UserName", user.UserName);
         HttpContext.Session.SetString("Role", user.Role.ToString());
 
-        if (user.Role == Role.Admin)
+        if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
         {
-            return RedirectToAction("Index", "User");
+            return Redirect(returnUrl);
         }
-        else
-        {
-            return RedirectToAction("Index", "User");
-        }
+
+        return RedirectToAction("Index", "User");
     }
 
     [HttpPost]
@@ -145,12 +145,11 @@ public class UserController : Controller
 
         if (_context.Users.Any(u => u.Email == user.Email))
         {
-            ModelState.AddModelError("Email", "Email đã được đăng ký. ");
+            ModelState.AddModelError("Email", "Email đã được đăng ký.");
             return View(user);
         }
 
         user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(user.PasswordHash);
-
         _context.Users.Add(user);
         _context.SaveChanges();
         return RedirectToAction("Index");
@@ -176,7 +175,6 @@ public class UserController : Controller
         _context.SaveChanges();
         return RedirectToAction("Index");
     }
-
 
     [HttpGet]
     public IActionResult Update(int id)
@@ -207,5 +205,4 @@ public class UserController : Controller
         _context.SaveChanges();
         return RedirectToAction("Index");
     }
-
 }

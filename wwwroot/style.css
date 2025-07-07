@@ -133,15 +133,17 @@ a {
 
 /* Dropdown */
 .dropdown-menu {
-  --bs-dropdown-border-radius: 0;
-  --bs-dropdown-border-width: 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0;
+  min-width: 180px;
 }
 
 .dropdown-item {
-  --bs-dropdown-item-padding-y: 0.25rem;
-  --bs-dropdown-item-padding-x: 1rem;
-  --bs-dropdown-link-color: var(--bs-black);
-  --bs-dropdown-item-border-radius: 0;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.95rem;
+  color: #333;
+  transition: background-color 0.2s;
 }
 
 .dropdown-item.active,
@@ -250,6 +252,41 @@ a {
   border-color: #ccc;
   box-shadow: 0 0 0 0.25rem rgba(200, 200, 200, .25);
 }
+.quantity-form {
+    display: flex;
+    gap: 5px; /* Giảm khoảng cách giữa input và nút */
+    align-items: center;
+    justify-content: center;
+}
+
+.quantity-input {
+    width: 50px !important; /* Cố định chiều rộng */
+    height: 30px; /* Đồng nhất chiều cao với nút */
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+/* Nút cập nhật (✔) */
+.btn-update {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+/* Nút xóa (🗑) */
+.btn-delete {
+    width: 30px;          /* Cùng kích thước với nút cập nhật */
+    height: 30px;
+    padding: 0;           /* Loại bỏ padding thừa */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;   /* Bo góc nhẹ */
+}
 
 /* dark theme */
 [data-bs-theme=dark] {
@@ -281,7 +318,13 @@ a {
 
 /* end of Bootstrap Color Theme */
 
-.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+.container,
+.container-fluid,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl {
   --bs-gutter-x: 3rem;
 }
 
@@ -2200,8 +2243,7 @@ span.prev-price {
 
 /*----- Latest Blog Section
 --------------------------------------------------------------*/
-#latest-blog {
-}
+#latest-blog {}
 
 #latest-blog article.column {
   margin-bottom: 60px;
@@ -2410,6 +2452,7 @@ footer#footer {
   color: #74642F;
   margin: 0;
 }
+
 .product-item figcaption>p {
   margin: 0;
 }

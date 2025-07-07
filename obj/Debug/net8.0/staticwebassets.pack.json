@@ -57,6 +57,10 @@
       "PackagePath": "staticwebassets\\images\\app-store.jpg"
     },
     {
+      "Id": "D:\\DoAn\\QLNhaSach1\\wwwroot\\images\\chien-binh-cau-vong.jpg",
+      "PackagePath": "staticwebassets\\images\\chien-binh-cau-vong.jpg"
+    },
+    {
       "Id": "D:\\DoAn\\QLNhaSach1\\wwwroot\\images\\chocolat\\close.png",
       "PackagePath": "staticwebassets\\images\\chocolat\\close.png"
     },
@@ -255,6 +259,10 @@
     {
       "Id": "D:\\DoAn\\QLNhaSach1\\wwwroot\\images\\tab-item8.jpg",
       "PackagePath": "staticwebassets\\images\\tab-item8.jpg"
+    },
+    {
+      "Id": "D:\\DoAn\\QLNhaSach1\\wwwroot\\images\\tuoi-tre-dang-gia-bao-nhieu.jpg",
+      "PackagePath": "staticwebassets\\images\\tuoi-tre-dang-gia-bao-nhieu.jpg"
     },
     {
       "Id": "D:\\DoAn\\QLNhaSach1\\wwwroot\\js\\jquery-1.11.0.min.js",

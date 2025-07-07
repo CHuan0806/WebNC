@@ -1,83 +1,113 @@
 <!-- 🔰 Header -->
-	<div id="header-wrap">
-		<!-- Top Bar -->
-		<div class="top-content py-2 bg-light border-bottom">
-			<div class="container-fluid">
-				<div class="row align-items-center">
-					<!-- Social -->
-					<div class="col-md-6">
-						<div class="social-links">
-							<ul class="list-inline mb-0">
-								<li class="list-inline-item"><a href="#"><i class="icon icon-facebook"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="icon icon-twitter"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="icon icon-youtube-play"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i class="icon icon-behance-square"></i></a>
-								</li>
-							</ul>
-						</div>
+<div id="header-wrap">
+	<!-- Top Bar -->
+	<div class="top-content py-2 bg-light border-bottom">
+		<div class="container-fluid">
+			<div class="row align-items-center">
+				<!-- Social -->
+				<div class="col-md-6">
+					<div class="social-links">
+						<ul class="list-inline mb-0">
+							<li class="list-inline-item"><a href="#"><i class="icon icon-facebook"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="icon icon-twitter"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="icon icon-youtube-play"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="icon icon-behance-square"></i></a>
+							</li>
+						</ul>
 					</div>
+				</div>
 
-					<!-- Account + Cart + Search -->
-					<div class="col-md-6 d-flex justify-content-end">
-						<div class="right-element d-flex align-items-center gap-3">
-							<a asp-controller="User" asp-action="Index" class="user-account text-decoration-none">
+				<!-- Account + Cart + Search -->
+				<div class="col-md-6 d-flex justify-content-end">
+					<div class="right-element d-flex align-items-center gap-3">
+						@if (Context.Session.GetString("UserName") != null)
+						{
+							<!-- Hiển thị tên người dùng và dropdown -->
+							<div class="dropdown">
+								<a class="user-account text-decoration-none dropdown-toggle" href="#" role="button"
+									data-bs-toggle="dropdown" aria-expanded="false">
+									<i class="icon icon-user"></i>
+									<span class="ms-1">@Context.Session.GetString("UserName")</span>
+								</a>
+								<ul class="dropdown-menu dropdown-menu-end">
+									<li>
+										<a class="dropdown-item" asp-controller="User" asp-action="EditProfile">Thông tin cá
+											nhân</a>
+									</li>
+									<li>
+										<a href="javascript:void(0);" class="dropdown-item"
+											onclick="document.getElementById('logout-form').submit();">Đăng xuất</a>
+										<form id="logout-form" asp-controller="User" asp-action="Logout" method="post"
+											style="display:none;"></form>
+									</li>
+								</ul>
+							</div>
+						}
+						else
+						{
+							<!-- Nếu chưa đăng nhập -->
+							<a asp-controller="User" asp-action="Login" class="user-account text-decoration-none">
 								<i class="icon icon-user"></i><span class="ms-1">Tài khoản</span>
 							</a>
-							<a asp-controller="Cart" asp-action="Index" class="cart text-decoration-none">
-								<i class="icon icon-clipboard"></i>
-								<span>Giỏ hàng (<span id="cart-count">0</span> đ)</span>
-							</a>
-							<div class="action-menu">
+						}
+						<a asp-controller="Cart" asp-action="Index" class="cart text-decoration-none">
+							<i class="icon icon-clipboard"></i>
+							<span>Giỏ hàng (
+								<span id="cart-count">@await Component.InvokeAsync("CartCount")</span> )
+							</span>
+						</a>
 
-								<div class="search-bar">
-									<a href="#" class="search-button search-toggle" data-selector="#header-wrap">
-										<i class="icon icon-search"></i>
-									</a>
-									<form role="search" method="get" class="search-box">
-										<input class="search-field text search-input" placeholder="Search"
-											type="search">
-									</form>
-								</div>
+						<div class="action-menu">
+
+							<div class="search-bar">
+								<a href="#" class="search-button search-toggle" data-selector="#header-wrap">
+									<i class="icon icon-search"></i>
+								</a>
+								<form role="search" method="get" class="search-box">
+									<input class="search-field text search-input" placeholder="Search" type="search">
+								</form>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-<!-- Navigation -->
-		<header id="header" class="bg-white border-bottom">
-			<div class="container-fluid">
-				<div class="row align-items-center">
-					<div class="col-md-2">
-						<div class="main-logo py-2">
-							<a asp-controller="Home" asp-action="Index">
-								<img src="~/images/main-logo.png" alt="logo" class="img-fluid" />
-							</a>
-						</div>
-					</div>
-
-					<div class="col-md-10">
-						<nav id="navbar" class="navbar justify-content-end">
-							<div class="main-menu d-flex justify-content-end align-items-center w-100">
-								<ul class="menu-list d-flex gap-4 list-unstyled mb-0">
-									<li class="menu-item"><a asp-controller="Home" asp-action="Index"
-											class="nav-link">Trang Chủ</a></li>
-                                    <li class="menu-item"><a asp-controller="BookCustomer" asp-action="Index" class="nav-link">Sản phẩm</a></li>
-									<li class="menu-item"><a href="#featured-books" class="nav-link">Nổi bật</a></li>
-									<li class="menu-item"><a href="#popular-books" class="nav-link">Phổ biến</a></li>
-									<li class="menu-item"><a href="#special-offer" class="nav-link">Ưu đãi</a></li>
-									<li class="menu-item"><a href="#latest-blog" class="nav-link">Bài viết</a></li>
-									
-								</ul>
-								<div class="hamburger d-lg-none ms-3">
-									<span class="bar"></span>
-									<span class="bar"></span>
-									<span class="bar"></span>
-								</div>
-							</div>
-						</nav>
+	</div>
+	<!-- Navigation -->
+	<header id="header" class="bg-white border-bottom">
+		<div class="container-fluid">
+			<div class="row align-items-center">
+				<div class="col-md-2">
+					<div class="main-logo py-2">
+						<a asp-controller="Home" asp-action="Index">
+							<img src="~/images/main-logo.png" alt="logo" class="img-fluid" />
+						</a>
 					</div>
 				</div>
+
+				<div class="col-md-10">
+					<nav id="navbar" class="navbar justify-content-end">
+						<div class="main-menu d-flex justify-content-end align-items-center w-100">
+							<ul class="menu-list d-flex gap-4 list-unstyled mb-0">
+								<li class="menu-item"><a asp-controller="Home" asp-action="Index" class="nav-link">Trang
+										Chủ</a></li>
+								<li class="menu-item"><a asp-controller="BookCustomer" asp-action="Index"
+										class="nav-link">Sản phẩm</a></li>
+								<li class="menu-item"><a href="#featured-books" class="nav-link">Nổi bật</a></li>
+								<li class="menu-item"><a href="#popular-books" class="nav-link">Phổ biến</a></li>
+								<li class="menu-item"><a href="#special-offer" class="nav-link">Ưu đãi</a></li>
+								<li class="menu-item"><a href="#latest-blog" class="nav-link">Bài viết</a></li>
+
+							</ul>
+							<div class="hamburger d-lg-none ms-3">
+								<span class="bar"></span>
+								<span class="bar"></span>
+								<span class="bar"></span>
+							</div>
+						</div>
+					</nav>
+				</div>
 			</div>
-		</header>
-	</div>
+		</div>
+	</header>
+</div>

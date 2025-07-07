@@ -97,8 +97,9 @@
                         <div class="product-item">
                             <figure class="product-style">
                                 <img src="@Url.Content(book.ImageUrl)" alt="@book.bookName" class="product-item" />
-                                <form asp-controller="Cart" asp-action="Add" method="post">
+                                <form asp-controller="Cart" asp-action="AddToCart" method="post">
                                     <input type="hidden" name="bookId" value="@book.bookId" />
+                                    <input type="hidden" name="quantity" value="1" />
                                     <button type="submit" class="add-to-cart" data-product-tile="add-to-cart">Thêm vào
                                         giỏ</button>
                                 </form>

@@ -32,14 +32,14 @@ namespace QLNhaSach1.Data
                     {
                         new Book
                         {
-                            bookName = "Dế Mèn Phiêu Lưu Ký",
-                            description = "Cuốn truyện thiếu nhi kinh điển của Tô Hoài.",
-                            author = "Tô Hoài",
+                            bookName = "Chiến Binh Cầu Vồng",
+                            description = "Chiến binh Cầu vồng đó có đủ sức chinh phục quãng đường ngày ngày đạp xe bốn mươi cây số,",
+                            author = "Andrea Hirata",
                             bookStatus = true,
                             quantity = 20,
-                            price = 50000,
+                            price = 109000,
                             CategoryId = vanHoc.CategoryId,
-                            ImageUrl = "~/images/dacnhantam86.jpg"
+                            ImageUrl = "~/images/chien-binh-cau-vong.jpg"
                         },
                         new Book
                         {
@@ -50,7 +50,7 @@ namespace QLNhaSach1.Data
                             quantity = 30,
                             price = 70000,
                             CategoryId = vanHoc.CategoryId,
-                            ImageUrl = "~/images/dacnhantam86.jpg"
+                            ImageUrl = "~/images/tuoi-tre-dang-gia-bao-nhieu.jpg"
                         }
                     };
 

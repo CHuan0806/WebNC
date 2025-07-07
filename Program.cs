@@ -13,7 +13,24 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddScoped<DatabaseInitializer>();
 
 // Thêm session
-builder.Services.AddSession();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromDays(1);     // Giữ session trong 7 ngày không hoạt động
+    options.Cookie.HttpOnly = true;                 // Bảo mật: cookie không đọc được bằng JavaScript
+    options.Cookie.IsEssential = true;              // Cho phép hoạt động kể cả khi người dùng không chấp nhận cookie
+    options.Cookie.Name = "MySession";              // Tên cookie session
+});
+
+// ✅ Thêm Authentication với Cookie
+builder.Services.AddAuthentication("MyCookieAuth")
+    .AddCookie("MyCookieAuth", options =>
+    {
+        options.LoginPath = "/User/Login";              // Nếu chưa đăng nhập
+        options.AccessDeniedPath = "/User/AccessDenied";
+        options.Cookie.Name = "MyAuthCookie";
+        options.ReturnUrlParameter = "returnUrl";       // Hỗ trợ redirect quay lại
+
+    });
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.
@@ -28,6 +45,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 app.UseSession();
 
