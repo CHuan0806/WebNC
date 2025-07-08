@@ -1,0 +1,13 @@
+@model QLNhaSach1.Models.Discount
+
+<h2>Chi tiết mã giảm giá</h2>
+<table class="table">
+    <tr><th>Mã</th><td>@Model.DiscountCode</td></tr>
+    <tr><th>Phần trăm</th><td>@Model.DiscountPercentage %</td></tr>
+    <tr><th>Tối đa</th><td>@Model.MaxDiscountAmount</td></tr>
+    <tr><th>Ngày bắt đầu</th><td>@Model.StartDate.ToShortDateString()</td></tr>
+    <tr><th>Ngày kết thúc</th><td>@Model.EndDate.ToShortDateString()</td></tr>
+    <tr><th>Còn lại</th><td>@Model.RemainingCount</td></tr>
+    <tr><th>Trạng thái</th><td>@(Model.IsActive ? "Kích hoạt" : "Khóa")</td></tr>
+</table>
+<a asp-action="Index" class="btn btn-secondary">Quay lại</a>

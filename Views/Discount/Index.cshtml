@@ -1,0 +1,37 @@
+@model IEnumerable<QLNhaSach1.Models.Discount>
+
+<h2>Danh sách mã giảm giá</h2>
+<a asp-action="Create" class="btn btn-primary">Thêm mới</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Mã</th>
+            <th>Phần trăm</th>
+            <th>Tối đa</th>
+            <th>Ngày bắt đầu</th>
+            <th>Ngày kết thúc</th>
+            <th>Còn lại</th>
+            <th>Trạng thái</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.DiscountCode</td>
+            <td>@item.DiscountPercentage %</td>
+            <td>@item.MaxDiscountAmount</td>
+            <td>@item.StartDate.ToShortDateString()</td>
+            <td>@item.EndDate.ToShortDateString()</td>
+            <td>@item.RemainingCount</td>
+            <td>@(item.IsActive ? "Kích hoạt" : "Khóa")</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.DiscountId">Sửa</a> |
+                <a asp-action="Details" asp-route-id="@item.DiscountId">Chi tiết</a> |
+                <a asp-action="Delete" asp-route-id="@item.DiscountId">Xóa</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
