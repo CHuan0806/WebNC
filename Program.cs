@@ -12,6 +12,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Đăng ký DatabaseInitializer
 builder.Services.AddScoped<DatabaseInitializer>();
 
+// Đăng ký HttpClient và PaypalService
+builder.Services.AddHttpClient();
+builder.Services.AddTransient<PaypalService>();
+
 // Thêm session
 builder.Services.AddSession(options =>
 {
