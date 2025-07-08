@@ -6,15 +6,18 @@ using QLNhaSach1.Models;
 public class CartController : Controller
 {
     private readonly AppDbContext _context;
+    private readonly ILogger<CartController> _logger;
 
-    public CartController(AppDbContext context)
+    public CartController(AppDbContext context, ILogger<CartController> logger)
     {
+        _logger = logger;
         _context = context;
     }
 
     public IActionResult Index()
     {
         var userIdStr = HttpContext.Session.GetString("UserID");
+        _logger.LogInformation("UserID from session: {UserID}", userIdStr);
         if (string.IsNullOrEmpty(userIdStr))
         {
             // Nếu chưa đăng nhập → chuyển về trang đăng nhập
@@ -35,6 +38,7 @@ public class CartController : Controller
     public IActionResult AddToCart(int bookId, int quantity)
     {
         var userIdStr = HttpContext.Session.GetString("UserID");
+        Console.WriteLine("UserID from session: " + userIdStr);
         if (string.IsNullOrEmpty(userIdStr))
         {
             // Nếu chưa đăng nhập → chuyển về trang đăng nhập

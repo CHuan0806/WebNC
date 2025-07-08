@@ -44,10 +44,10 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseSession();
+
 
 // Khởi tạo tài khoản admin
 using (var scope = app.Services.CreateScope())
