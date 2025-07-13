@@ -1,0 +1,180 @@
+:root {
+    --primary: #4e73df;
+    --primary-dark: #2e59d9;
+    --secondary: #858796;
+    --light: #f8f9fc;
+    --dark: #5a5c69;
+}
+
+body {
+    font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--light);
+}
+
+#wrapper {
+    display: flex;
+}
+
+#content-wrapper {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* ==================== SIDEBAR STYLES ==================== */
+.sidebar {
+    width: 14rem !important;
+    background-color: var(--primary);
+    min-height: 100vh;
+    transition: all 0.3s;
+    color: white;
+}
+
+/* Sidebar Brand */
+.sidebar-brand {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 1rem;
+    transition: all 0.3s;
+}
+
+.sidebar-brand:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-brand-icon {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.sidebar-brand-text {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-left: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Sidebar Items */
+.sidebar-divider {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    margin: 0 1rem 1rem;
+}
+
+.sidebar-heading {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 0 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    margin-top: 1rem;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    border-left: 3px solid transparent;
+    transition: all 0.3s;
+}
+
+.nav-link i {
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+    width: 20px;
+    text-align: center;
+}
+
+.nav-link:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-item.active .nav-link {
+    color: white;
+    background: rgba(255, 255, 255, 0.15);
+    border-left-color: white;
+}
+
+/* Dropdown Menu */
+.collapse {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.collapse-inner {
+    padding: 0.5rem 0;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.collapse-item {
+    padding: 0.5rem 1.5rem;
+    margin: 0 0.5rem;
+    color: rgb(37, 36, 36);
+    font-weight: 500;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.collapse-item i {
+    font-size: 0.7rem;
+    margin-right: 0.5rem;
+    width: 20px;
+    text-align: center;
+}
+
+.collapse-item:hover {
+    color: rgb(186, 183, 183);
+    background: rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+}
+
+.collapse-header {
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 0.5rem 1.5rem;
+    color: rgba(19, 19, 19, 0.6);
+    text-transform: uppercase;
+}
+
+/* ==================== TOPBAR STYLES (GIỮ NGUYÊN) ==================== */
+.topbar {
+    height: 4.375rem;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+}
+
+.navbar-search {
+    width: 25rem;
+}
+
+.navbar-search input {
+    font-size: 0.85rem;
+    height: auto;
+}
+
+/* ==================== RESPONSIVE STYLES ==================== */
+.sidebar.toggled {
+    margin-left: -14rem;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        margin-left: -14rem;
+    }
+    .sidebar.toggled {
+        margin-left: 0;
+    }
+}

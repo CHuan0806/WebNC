@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "VEwlhTMpUwFv4Z0JL/qFxiwF5dLz0bB9yVnLrgc1qaM=",
+  "Hash": "Vu70uD5h5lN8kBuXAGStFJjMylVuQalx7i4OTK0hqKA=",
   "Source": "QLNhaSach1",
   "BasePath": "_content/QLNhaSach1",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "QLNhaSach1\\wwwroot",
       "Source": "QLNhaSach1",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\obj\\Debug\\net8.0\\scopedcss\\bundle\\QLNhaSach1.styles.css",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\obj\\Debug\\net8.0\\scopedcss\\bundle\\QLNhaSach1.styles.css",
       "SourceId": "QLNhaSach1",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "QLNhaSach1.styles.css",
       "AssetKind": "All",
@@ -33,13 +33,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\obj\\Debug\\net8.0\\scopedcss\\bundle\\QLNhaSach1.styles.css"
+      "OriginalItemSpec": "D:\\DoAn\\QLNhaSach1\\WebNC\\obj\\Debug\\net8.0\\scopedcss\\bundle\\QLNhaSach1.styles.css"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\QLNhaSach1.bundle.scp.css",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\QLNhaSach1.bundle.scp.css",
       "SourceId": "QLNhaSach1",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "QLNhaSach1.bundle.scp.css",
       "AssetKind": "All",
@@ -52,13 +52,32 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\QLNhaSach1.bundle.scp.css"
+      "OriginalItemSpec": "D:\\DoAn\\QLNhaSach1\\WebNC\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\QLNhaSach1.bundle.scp.css"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\css\\ajax-loader.gif",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\css\\admin.css",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
+      "BasePath": "_content/QLNhaSach1",
+      "RelativePath": "css/admin.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\admin.css"
+    },
+    {
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\css\\ajax-loader.gif",
+      "SourceId": "QLNhaSach1",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "css/ajax-loader.gif",
       "AssetKind": "All",
@@ -74,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\css\\ajax-loader.gif"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\css\\normalize.css",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\css\\normalize.css",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "css/normalize.css",
       "AssetKind": "All",
@@ -93,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\css\\normalize.css"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\css\\site.css",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\css\\site.css",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -112,10 +131,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\css\\vendor.css",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\css\\vendor.css",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "css/vendor.css",
       "AssetKind": "All",
@@ -131,10 +150,10 @@
       "OriginalItemSpec": "wwwroot\\css\\vendor.css"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\favicon.ico",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\favicon.ico",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -150,10 +169,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\icomoon\\fonts\\icomoon.eot",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\icomoon\\fonts\\icomoon.eot",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "icomoon/fonts/icomoon.eot",
       "AssetKind": "All",
@@ -169,10 +188,10 @@
       "OriginalItemSpec": "wwwroot\\icomoon\\fonts\\icomoon.eot"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\icomoon\\fonts\\icomoon.svg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\icomoon\\fonts\\icomoon.svg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "icomoon/fonts/icomoon.svg",
       "AssetKind": "All",
@@ -188,10 +207,10 @@
       "OriginalItemSpec": "wwwroot\\icomoon\\fonts\\icomoon.svg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\icomoon\\fonts\\icomoon.ttf",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\icomoon\\fonts\\icomoon.ttf",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "icomoon/fonts/icomoon.ttf",
       "AssetKind": "All",
@@ -207,10 +226,10 @@
       "OriginalItemSpec": "wwwroot\\icomoon\\fonts\\icomoon.ttf"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\icomoon\\fonts\\icomoon.woff",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\icomoon\\fonts\\icomoon.woff",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "icomoon/fonts/icomoon.woff",
       "AssetKind": "All",
@@ -226,10 +245,10 @@
       "OriginalItemSpec": "wwwroot\\icomoon\\fonts\\icomoon.woff"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\icomoon\\icomoon.css",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\icomoon\\icomoon.css",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "icomoon/icomoon.css",
       "AssetKind": "All",
@@ -245,10 +264,10 @@
       "OriginalItemSpec": "wwwroot\\icomoon\\icomoon.css"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\icomoon\\Read Me.txt",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\icomoon\\Read Me.txt",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "icomoon/Read Me.txt",
       "AssetKind": "All",
@@ -264,10 +283,10 @@
       "OriginalItemSpec": "wwwroot\\icomoon\\Read Me.txt"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\icomoon\\selection.json",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\icomoon\\selection.json",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "icomoon/selection.json",
       "AssetKind": "All",
@@ -283,10 +302,10 @@
       "OriginalItemSpec": "wwwroot\\icomoon\\selection.json"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\app-store.jpg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\app-store.jpg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/app-store.jpg",
       "AssetKind": "All",
@@ -302,10 +321,10 @@
       "OriginalItemSpec": "wwwroot\\images\\app-store.jpg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\chien-binh-cau-vong.jpg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\chien-binh-cau-vong.jpg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/chien-binh-cau-vong.jpg",
       "AssetKind": "All",
@@ -321,10 +340,10 @@
       "OriginalItemSpec": "wwwroot\\images\\chien-binh-cau-vong.jpg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\chocolat\\close.png",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\chocolat\\close.png",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/chocolat/close.png",
       "AssetKind": "All",
@@ -340,10 +359,10 @@
       "OriginalItemSpec": "wwwroot\\images\\chocolat\\close.png"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\chocolat\\fullscreen-black.png",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\chocolat\\fullscreen-black.png",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/chocolat/fullscreen-black.png",
       "AssetKind": "All",
@@ -359,10 +378,10 @@
       "OriginalItemSpec": "wwwroot\\images\\chocolat\\fullscreen-black.png"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\chocolat\\fullscreen.png",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\chocolat\\fullscreen.png",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/chocolat/fullscreen.png",
       "AssetKind": "All",
@@ -378,10 +397,10 @@
       "OriginalItemSpec": "wwwroot\\images\\chocolat\\fullscreen.png"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\chocolat\\left.png",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\chocolat\\left.png",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/chocolat/left.png",
       "AssetKind": "All",
@@ -397,10 +416,10 @@
       "OriginalItemSpec": "wwwroot\\images\\chocolat\\left.png"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\chocolat\\loader.gif",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\chocolat\\loader.gif",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/chocolat/loader.gif",
       "AssetKind": "All",
@@ -416,10 +435,10 @@
       "OriginalItemSpec": "wwwroot\\images\\chocolat\\loader.gif"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\chocolat\\right.png",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\chocolat\\right.png",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/chocolat/right.png",
       "AssetKind": "All",
@@ -435,10 +454,10 @@
       "OriginalItemSpec": "wwwroot\\images\\chocolat\\right.png"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\client-image1.png",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\client-image1.png",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/client-image1.png",
       "AssetKind": "All",
@@ -454,10 +473,10 @@
       "OriginalItemSpec": "wwwroot\\images\\client-image1.png"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\client-image2.png",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\client-image2.png",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/client-image2.png",
       "AssetKind": "All",
@@ -473,10 +492,10 @@
       "OriginalItemSpec": "wwwroot\\images\\client-image2.png"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\client-image3.png",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\client-image3.png",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/client-image3.png",
       "AssetKind": "All",
@@ -492,10 +511,10 @@
       "OriginalItemSpec": "wwwroot\\images\\client-image3.png"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\client-image4.png",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\client-image4.png",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/client-image4.png",
       "AssetKind": "All",
@@ -511,10 +530,10 @@
       "OriginalItemSpec": "wwwroot\\images\\client-image4.png"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\client-image5.png",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\client-image5.png",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/client-image5.png",
       "AssetKind": "All",
@@ -530,10 +549,10 @@
       "OriginalItemSpec": "wwwroot\\images\\client-image5.png"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\curly-divider.svg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\curly-divider.svg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/curly-divider.svg",
       "AssetKind": "All",
@@ -549,10 +568,10 @@
       "OriginalItemSpec": "wwwroot\\images\\curly-divider.svg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\dacnhantam86.jpg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\dacnhantam86.jpg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/dacnhantam86.jpg",
       "AssetKind": "All",
@@ -568,10 +587,10 @@
       "OriginalItemSpec": "wwwroot\\images\\dacnhantam86.jpg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\de-men-50k_1.JPG",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\de-men-50k_1.JPG",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/de-men-50k_1.JPG",
       "AssetKind": "All",
@@ -587,10 +606,10 @@
       "OriginalItemSpec": "wwwroot\\images\\de-men-50k_1.JPG"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\default.png",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\default.png",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/default.png",
       "AssetKind": "All",
@@ -606,10 +625,10 @@
       "OriginalItemSpec": "wwwroot\\images\\default.png"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\device.png",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\device.png",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/device.png",
       "AssetKind": "All",
@@ -625,10 +644,10 @@
       "OriginalItemSpec": "wwwroot\\images\\device.png"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\google-play.jpg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\google-play.jpg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/google-play.jpg",
       "AssetKind": "All",
@@ -644,10 +663,10 @@
       "OriginalItemSpec": "wwwroot\\images\\google-play.jpg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\item.png",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\item.png",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/item.png",
       "AssetKind": "All",
@@ -663,10 +682,10 @@
       "OriginalItemSpec": "wwwroot\\images\\item.png"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\item1.png",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\item1.png",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/item1.png",
       "AssetKind": "All",
@@ -682,10 +701,10 @@
       "OriginalItemSpec": "wwwroot\\images\\item1.png"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\item3.png",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\item3.png",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/item3.png",
       "AssetKind": "All",
@@ -701,10 +720,10 @@
       "OriginalItemSpec": "wwwroot\\images\\item3.png"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\item4.png",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\item4.png",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/item4.png",
       "AssetKind": "All",
@@ -720,10 +739,10 @@
       "OriginalItemSpec": "wwwroot\\images\\item4.png"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\item5.png",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\item5.png",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/item5.png",
       "AssetKind": "All",
@@ -739,10 +758,10 @@
       "OriginalItemSpec": "wwwroot\\images\\item5.png"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\leaf.png",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\leaf.png",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/leaf.png",
       "AssetKind": "All",
@@ -758,10 +777,10 @@
       "OriginalItemSpec": "wwwroot\\images\\leaf.png"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\main-banner1.jpg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\main-banner1.jpg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/main-banner1.jpg",
       "AssetKind": "All",
@@ -777,10 +796,10 @@
       "OriginalItemSpec": "wwwroot\\images\\main-banner1.jpg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\main-banner2.jpg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\main-banner2.jpg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/main-banner2.jpg",
       "AssetKind": "All",
@@ -796,10 +815,10 @@
       "OriginalItemSpec": "wwwroot\\images\\main-banner2.jpg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\main-logo.png",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\main-logo.png",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/main-logo.png",
       "AssetKind": "All",
@@ -815,10 +834,10 @@
       "OriginalItemSpec": "wwwroot\\images\\main-logo.png"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\ns-arrow-right.svg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\ns-arrow-right.svg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/ns-arrow-right.svg",
       "AssetKind": "All",
@@ -834,10 +853,10 @@
       "OriginalItemSpec": "wwwroot\\images\\ns-arrow-right.svg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\pattern1.png",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\pattern1.png",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/pattern1.png",
       "AssetKind": "All",
@@ -853,10 +872,10 @@
       "OriginalItemSpec": "wwwroot\\images\\pattern1.png"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\pattern2.png",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\pattern2.png",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/pattern2.png",
       "AssetKind": "All",
@@ -872,10 +891,10 @@
       "OriginalItemSpec": "wwwroot\\images\\pattern2.png"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\phat-trien-ky-nang-lanh-dao_outline.JPG",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\phat-trien-ky-nang-lanh-dao_outline.JPG",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/phat-trien-ky-nang-lanh-dao_outline.JPG",
       "AssetKind": "All",
@@ -891,10 +910,10 @@
       "OriginalItemSpec": "wwwroot\\images\\phat-trien-ky-nang-lanh-dao_outline.JPG"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\post-img1.jpg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\post-img1.jpg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/post-img1.jpg",
       "AssetKind": "All",
@@ -910,10 +929,10 @@
       "OriginalItemSpec": "wwwroot\\images\\post-img1.jpg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\post-img2.jpg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\post-img2.jpg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/post-img2.jpg",
       "AssetKind": "All",
@@ -929,10 +948,10 @@
       "OriginalItemSpec": "wwwroot\\images\\post-img2.jpg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\post-img3.jpg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\post-img3.jpg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/post-img3.jpg",
       "AssetKind": "All",
@@ -948,10 +967,10 @@
       "OriginalItemSpec": "wwwroot\\images\\post-img3.jpg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\product-item1.jpg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\product-item1.jpg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/product-item1.jpg",
       "AssetKind": "All",
@@ -967,10 +986,10 @@
       "OriginalItemSpec": "wwwroot\\images\\product-item1.jpg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\product-item2.jpg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\product-item2.jpg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/product-item2.jpg",
       "AssetKind": "All",
@@ -986,10 +1005,10 @@
       "OriginalItemSpec": "wwwroot\\images\\product-item2.jpg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\product-item3.jpg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\product-item3.jpg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/product-item3.jpg",
       "AssetKind": "All",
@@ -1005,10 +1024,10 @@
       "OriginalItemSpec": "wwwroot\\images\\product-item3.jpg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\product-item4.jpg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\product-item4.jpg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/product-item4.jpg",
       "AssetKind": "All",
@@ -1024,10 +1043,10 @@
       "OriginalItemSpec": "wwwroot\\images\\product-item4.jpg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\product-item5.jpg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\product-item5.jpg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/product-item5.jpg",
       "AssetKind": "All",
@@ -1043,10 +1062,10 @@
       "OriginalItemSpec": "wwwroot\\images\\product-item5.jpg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\product-item6.jpg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\product-item6.jpg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/product-item6.jpg",
       "AssetKind": "All",
@@ -1062,10 +1081,10 @@
       "OriginalItemSpec": "wwwroot\\images\\product-item6.jpg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\product-item7.jpg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\product-item7.jpg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/product-item7.jpg",
       "AssetKind": "All",
@@ -1081,10 +1100,10 @@
       "OriginalItemSpec": "wwwroot\\images\\product-item7.jpg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\product-item8.jpg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\product-item8.jpg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/product-item8.jpg",
       "AssetKind": "All",
@@ -1100,10 +1119,10 @@
       "OriginalItemSpec": "wwwroot\\images\\product-item8.jpg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\single-image.jpg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\single-image.jpg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/single-image.jpg",
       "AssetKind": "All",
@@ -1119,10 +1138,10 @@
       "OriginalItemSpec": "wwwroot\\images\\single-image.jpg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\tab-item1.jpg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\tab-item1.jpg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/tab-item1.jpg",
       "AssetKind": "All",
@@ -1138,10 +1157,10 @@
       "OriginalItemSpec": "wwwroot\\images\\tab-item1.jpg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\tab-item2.jpg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\tab-item2.jpg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/tab-item2.jpg",
       "AssetKind": "All",
@@ -1157,10 +1176,10 @@
       "OriginalItemSpec": "wwwroot\\images\\tab-item2.jpg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\tab-item3.jpg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\tab-item3.jpg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/tab-item3.jpg",
       "AssetKind": "All",
@@ -1176,10 +1195,10 @@
       "OriginalItemSpec": "wwwroot\\images\\tab-item3.jpg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\tab-item4.jpg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\tab-item4.jpg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/tab-item4.jpg",
       "AssetKind": "All",
@@ -1195,10 +1214,10 @@
       "OriginalItemSpec": "wwwroot\\images\\tab-item4.jpg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\tab-item5.jpg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\tab-item5.jpg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/tab-item5.jpg",
       "AssetKind": "All",
@@ -1214,10 +1233,10 @@
       "OriginalItemSpec": "wwwroot\\images\\tab-item5.jpg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\tab-item6.jpg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\tab-item6.jpg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/tab-item6.jpg",
       "AssetKind": "All",
@@ -1233,10 +1252,10 @@
       "OriginalItemSpec": "wwwroot\\images\\tab-item6.jpg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\tab-item7.jpg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\tab-item7.jpg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/tab-item7.jpg",
       "AssetKind": "All",
@@ -1252,10 +1271,10 @@
       "OriginalItemSpec": "wwwroot\\images\\tab-item7.jpg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\tab-item8.jpg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\tab-item8.jpg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/tab-item8.jpg",
       "AssetKind": "All",
@@ -1271,10 +1290,10 @@
       "OriginalItemSpec": "wwwroot\\images\\tab-item8.jpg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\images\\tuoi-tre-dang-gia-bao-nhieu.jpg",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\images\\tuoi-tre-dang-gia-bao-nhieu.jpg",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "images/tuoi-tre-dang-gia-bao-nhieu.jpg",
       "AssetKind": "All",
@@ -1290,10 +1309,29 @@
       "OriginalItemSpec": "wwwroot\\images\\tuoi-tre-dang-gia-bao-nhieu.jpg"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\js\\jquery-1.11.0.min.js",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\js\\admin.js",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
+      "BasePath": "_content/QLNhaSach1",
+      "RelativePath": "js/admin.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\admin.js"
+    },
+    {
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\js\\jquery-1.11.0.min.js",
+      "SourceId": "QLNhaSach1",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "js/jquery-1.11.0.min.js",
       "AssetKind": "All",
@@ -1309,10 +1347,10 @@
       "OriginalItemSpec": "wwwroot\\js\\jquery-1.11.0.min.js"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\js\\modernizr.js",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\js\\modernizr.js",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "js/modernizr.js",
       "AssetKind": "All",
@@ -1328,10 +1366,10 @@
       "OriginalItemSpec": "wwwroot\\js\\modernizr.js"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\js\\plugins.js",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\js\\plugins.js",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "js/plugins.js",
       "AssetKind": "All",
@@ -1347,10 +1385,10 @@
       "OriginalItemSpec": "wwwroot\\js\\plugins.js"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\js\\script.js",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\js\\script.js",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "js/script.js",
       "AssetKind": "All",
@@ -1366,10 +1404,10 @@
       "OriginalItemSpec": "wwwroot\\js\\script.js"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\js\\site.js",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\js\\site.js",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "js/site.js",
       "AssetKind": "All",
@@ -1385,10 +1423,10 @@
       "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\js\\slideNav.js",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\js\\slideNav.js",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "js/slideNav.js",
       "AssetKind": "All",
@@ -1404,10 +1442,10 @@
       "OriginalItemSpec": "wwwroot\\js\\slideNav.js"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\js\\slideNav.min.js",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\js\\slideNav.min.js",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "js/slideNav.min.js",
       "AssetKind": "All",
@@ -1423,10 +1461,10 @@
       "OriginalItemSpec": "wwwroot\\js\\slideNav.min.js"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css",
       "AssetKind": "All",
@@ -1442,10 +1480,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css.map",
       "AssetKind": "All",
@@ -1461,10 +1499,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css",
       "AssetKind": "All",
@@ -1480,10 +1518,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
       "AssetKind": "All",
@@ -1499,10 +1537,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
       "AssetKind": "All",
@@ -1518,10 +1556,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
       "AssetKind": "All",
@@ -1537,10 +1575,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
       "AssetKind": "All",
@@ -1556,10 +1594,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
       "AssetKind": "All",
@@ -1575,10 +1613,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css",
       "AssetKind": "All",
@@ -1594,10 +1632,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css.map",
       "AssetKind": "All",
@@ -1613,10 +1651,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css",
       "AssetKind": "All",
@@ -1632,10 +1670,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
       "AssetKind": "All",
@@ -1651,10 +1689,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
       "AssetKind": "All",
@@ -1670,10 +1708,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
       "AssetKind": "All",
@@ -1689,10 +1727,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
       "AssetKind": "All",
@@ -1708,10 +1746,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
       "AssetKind": "All",
@@ -1727,10 +1765,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css",
       "AssetKind": "All",
@@ -1746,10 +1784,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css.map",
       "AssetKind": "All",
@@ -1765,10 +1803,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css",
       "AssetKind": "All",
@@ -1784,10 +1822,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
       "AssetKind": "All",
@@ -1803,10 +1841,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
       "AssetKind": "All",
@@ -1822,10 +1860,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
       "AssetKind": "All",
@@ -1841,10 +1879,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
       "AssetKind": "All",
@@ -1860,10 +1898,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
       "AssetKind": "All",
@@ -1879,10 +1917,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css",
       "AssetKind": "All",
@@ -1898,10 +1936,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css.map",
       "AssetKind": "All",
@@ -1917,10 +1955,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css",
       "AssetKind": "All",
@@ -1936,10 +1974,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -1955,10 +1993,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css",
       "AssetKind": "All",
@@ -1974,10 +2012,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css.map",
       "AssetKind": "All",
@@ -1993,10 +2031,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css",
       "AssetKind": "All",
@@ -2012,10 +2050,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
       "AssetKind": "All",
@@ -2031,10 +2069,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js",
       "AssetKind": "All",
@@ -2050,10 +2088,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js.map",
       "AssetKind": "All",
@@ -2069,10 +2107,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js",
       "AssetKind": "All",
@@ -2088,10 +2126,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
       "AssetKind": "All",
@@ -2107,10 +2145,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js",
       "AssetKind": "All",
@@ -2126,10 +2164,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js.map",
       "AssetKind": "All",
@@ -2145,10 +2183,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js",
       "AssetKind": "All",
@@ -2164,10 +2202,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
       "AssetKind": "All",
@@ -2183,10 +2221,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js",
       "AssetKind": "All",
@@ -2202,10 +2240,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js.map",
       "AssetKind": "All",
@@ -2221,10 +2259,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js",
       "AssetKind": "All",
@@ -2240,10 +2278,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js.map",
       "AssetKind": "All",
@@ -2259,10 +2297,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\bootstrap\\LICENSE",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/bootstrap/LICENSE",
       "AssetKind": "All",
@@ -2278,10 +2316,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\LICENSE"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "AssetKind": "All",
@@ -2297,10 +2335,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "AssetKind": "All",
@@ -2316,10 +2354,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE.txt",
       "AssetKind": "All",
@@ -2335,10 +2373,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.js",
       "AssetKind": "All",
@@ -2354,10 +2392,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.min.js",
       "AssetKind": "All",
@@ -2373,10 +2411,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.js",
       "AssetKind": "All",
@@ -2392,10 +2430,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.min.js",
       "AssetKind": "All",
@@ -2411,10 +2449,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/jquery-validation/LICENSE.md",
       "AssetKind": "All",
@@ -2430,10 +2468,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/jquery/dist/jquery.js",
       "AssetKind": "All",
@@ -2449,10 +2487,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/jquery/dist/jquery.min.js",
       "AssetKind": "All",
@@ -2468,10 +2506,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/jquery/dist/jquery.min.map",
       "AssetKind": "All",
@@ -2487,10 +2525,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "lib/jquery/LICENSE.txt",
       "AssetKind": "All",
@@ -2506,10 +2544,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Identity": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\style.css",
+      "Identity": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\style.css",
       "SourceId": "QLNhaSach1",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\University\\nam 3\\ky3\\ltwnc\\lt\\WebNC\\WebNC\\wwwroot\\",
+      "ContentRoot": "D:\\DoAn\\QLNhaSach1\\WebNC\\wwwroot\\",
       "BasePath": "_content/QLNhaSach1",
       "RelativePath": "style.css",
       "AssetKind": "All",

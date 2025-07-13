@@ -1,0 +1,125 @@
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" asp-controller="Admin" asp-action="Index">
+        <div class="sidebar-brand-text mx-3">Admin BookSaw </div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" asp-controller="Admin" asp-action="Index">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+        </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading Quản lý sản phẩm -->
+    <div class="sidebar-heading">
+        QUẢN LÝ SẢN PHẨM
+    </div>
+
+    <!-- Nav Item - Product Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProducts" 
+           aria-expanded="true" aria-controls="collapseProducts">
+            <i class="fas fa-fw fa-boxes"></i>
+            <span>Sản phẩm</span>
+            <i class="fas fa-fw fa-angle-down collapse-arrow"></i>
+        </a>
+        <div id="collapseProducts" class="collapse" aria-labelledby="headingProducts" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Quản lý sản phẩm:</h6>
+                <a class="collapse-item" asp-controller="Category" asp-action="Index">
+                    <i class="fas fa-fw fa-list me-2"></i>Danh mục
+                </a>
+                <a class="collapse-item" asp-controller="Book" asp-action="Index">
+                    <i class="fas fa-fw fa-box me-2"></i>Sản phẩm
+                </a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading Quản lý tài khoản -->
+    <div class="sidebar-heading">
+        QUẢN LÝ TÀI KHOẢN
+    </div>
+
+    <!-- Nav Item - Account Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseAccounts" 
+           aria-expanded="true" aria-controls="collapseAccounts">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Tài khoản</span>
+            <i class="fas fa-fw fa-angle-down collapse-arrow"></i>
+        </a>
+        <div id="collapseAccounts" class="collapse" aria-labelledby="headingAccounts" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Quản lý tài khoản:</h6>
+                <a class="collapse-item" asp-controller="User" asp-action="Index">
+                    <i class="fas fa-fw fa-user me-2"></i>Khách hàng
+                </a>
+                <a class="collapse-item" href="/admin/roles">
+                    <i class="fas fa-fw fa-key me-2"></i>Phân quyền
+                </a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading Quản lý đơn hàng -->
+    <div class="sidebar-heading">
+        QUẢN LÝ ĐƠN HÀNG
+    </div>
+
+    <!-- Nav Item - Order Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseOrders" 
+           aria-expanded="true" aria-controls="collapseOrders">
+            <i class="fas fa-fw fa-shopping-cart"></i>
+            <span>Đơn hàng</span>
+            <i class="fas fa-fw fa-angle-down collapse-arrow"></i>
+        </a>
+        <div id="collapseOrders" class="collapse" aria-labelledby="headingOrders" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Quản lý đơn hàng:</h6>
+                <a class="collapse-item" href="/admin/orders">
+                    <i class="fas fa-fw fa-list-ol me-2"></i>Tất cả đơn hàng
+                </a>
+                <a class="collapse-item" href="/admin/orders/pending">
+                    <i class="fas fa-fw fa-clock me-2"></i>Đơn chờ xử lý
+                </a>
+                <a class="collapse-item" href="/admin/orders/shipping">
+                    <i class="fas fa-fw fa-truck me-2"></i>Đơn đang giao
+                </a>
+                <a class="collapse-item" href="/admin/orders/cancelled">
+                    <i class="fas fa-fw fa-times-circle me-2"></i>Đơn đã hủy
+                </a>
+                <a class="collapse-item" href="/admin/orders/returns">
+                    <i class="fas fa-fw fa-exchange-alt me-2"></i>Đơn trả hàng
+                </a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+</ul>
+<!-- End of Sidebar -->

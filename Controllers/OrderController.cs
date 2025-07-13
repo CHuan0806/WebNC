@@ -106,7 +106,7 @@ public class OrderController : Controller
             TempData["Order_Email"] = email;
             TempData["Order_Phone"] = phone;
             TempData["Order_Address"] = address;
-            TempData["Order_Total"] = total;
+            TempData["Order_Total"] = total.ToString(); // ✅ Lưu dạng chuỗi
             TempData["Order_DiscountId"] = discount?.DiscountId;
             TempData.Keep();
 
@@ -156,7 +156,8 @@ public class OrderController : Controller
 
     public IActionResult PayWithPaypal()
     {
-        var total = TempData["Order_Total"];
+        decimal.TryParse(TempData["Order_Total"]?.ToString(), out decimal total);
+
         TempData.Keep(); // giữ lại TempData sau redirect
 
         string baseUrl = $"{Request.Scheme}://{Request.Host}";

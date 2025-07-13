@@ -1,5 +1,7 @@
 @model IEnumerable<QLNhaSach1.Models.Book>
-
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
 <h2>Sách trong danh mục: @ViewBag.CategoryName</h2>
 
 @if (!Model.Any())
