@@ -42,6 +42,12 @@ namespace QLNhaSach1.Models
         [Range(0, int.MaxValue, ErrorMessage = "Số lượng phải >= 0")]
         public int quantity { get; set; } 
 
+        // Thêm thuộc tính đánh giá
+        [Range(0, 5)]
+        public float Rating { get; set; } = 0;
+        [Range(0, int.MaxValue)]
+        public int RatingCount { get; set; } = 0;
+
 
 
     }

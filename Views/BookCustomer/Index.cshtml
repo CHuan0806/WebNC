@@ -2,65 +2,68 @@
 
 @{
     ViewData["Title"] = "Sản phẩm";
+    var sortBy = Context.Request.Query["sortBy"].ToString();
+    var selectedAuthor = Model.SelectedAuthor ?? "";
+    var selectedCategories = Context.Request.Query["categoryIds"].ToList();
+    var minPrice = Context.Request.Query["minPrice"].ToString();
+    var maxPrice = Context.Request.Query["maxPrice"].ToString();
 }
-
 <section id="book-list" class="bookshelf py-5 my-5">
     <div class="container">
         <div class="row">
 
-            <!-- Sidebar -->
-            <div class="col-md-3">
+            <!-- Sidebar Bộ lọc -->
+            <div class="col-md-3 mb-4">
                 <aside class="filter-sidebar">
-                    <h2 class="mb-3">Lọc Sản Phẩm</h2>
-
-                    <!-- Danh mục -->
-                    <div class="filter-group mb-4">
-                        <h3>Danh mục</h3>
-                        <ul class="list-unstyled">
-                            @foreach (var category in Model.AllCategories)
-                            {
-                                <li>
-                                    <a asp-action="Index" asp-route-categoryId="@category.CategoryId">
-                                        @category.categoryName
-                                    </a>
-                                </li>
-                            }
-                        </ul>
-                    </div>
-
-                    <!-- Tác giả -->
-                    <div class="filter-group">
-                        <h3>Tác giả</h3>
-                        <ul class="list-unstyled">
-                            @foreach (var author in Model.AllAuthors)
-                            {
-                                <li>
-                                    <a asp-action="Index" asp-route-author="@author">
-                                        @author
-                                    </a>
-                                </li>
-                            }
-                        </ul>
-                    </div>
-
-                    <!-- Khoảng giá -->
-                    <div class="filter-group mt-4">
-                        <h3>Giá</h3>
-                        <form asp-action="Index" method="get">
-                            <input type="hidden" name="categoryId" value="@Model.SelectedCategoryId" />
-                            <input type="hidden" name="author" value="@Model.SelectedAuthor" />
-
-                            <div class="mb-2">
-                                <input type="number" name="minPrice" class="form-control" placeholder="Giá từ..."
-                                    value="@Context.Request.Query["minPrice"]" />
+                    <form asp-action="Index" method="get" id="filterForm" class="bg-white p-3 rounded shadow-sm">
+                        <!-- Danh mục -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold mb-2"><i class="fa fa-list me-1"></i> Danh mục</label>
+                            <div class="category-checkbox-list">
+                                @foreach (var category in Model.AllCategories)
+                                {
+                                    <div class="form-check mb-1">
+                                        <input class="form-check-input" type="checkbox" name="categoryIds" value="@category.CategoryId" id="cat_@category.CategoryId"
+                                            @(selectedCategories.Contains(category.CategoryId.ToString()) ? "checked" : "") onchange="document.getElementById('filterForm').submit();">
+                                        <label class="form-check-label" for="cat_@category.CategoryId">
+                                            <i class="fa fa-book me-1 text-secondary"></i>@category.categoryName
+                                        </label>
+                                    </div>
+                                }
                             </div>
-                            <div class="mb-2">
-                                <input type="number" name="maxPrice" class="form-control" placeholder="Giá đến..."
-                                    value="@Context.Request.Query["maxPrice"]" />
+                        </div>
+                        <!-- Tác giả -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold mb-2"><i class="fa fa-user me-1"></i> Tác giả</label>
+                            <select class="form-select" name="author" onchange="document.getElementById('filterForm').submit();">
+                                <option value="">Tất cả tác giả</option>
+                                @foreach (var author in Model.AllAuthors)
+                                {
+                                    if (selectedAuthor == author)
+                                    {
+                                        <option value="@author" selected>@author</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@author">@author</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <!-- Khoảng giá -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold mb-2"><i class="fa fa-money-bill me-1"></i> Giá</label>
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <input type="number" name="minPrice" class="form-control" placeholder="Từ..." value="@minPrice" />
+                                </div>
+                                <div class="col-6">
+                                    <input type="number" name="maxPrice" class="form-control" placeholder="Đến..." value="@maxPrice" />
+                                </div>
                             </div>
-                            <button type="submit" class="btn btn-outline-primary btn-sm">Lọc giá</button>
-                        </form>
-                    </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 mt-2"><i class="fa fa-search me-1"></i> Lọc</button>
+                    </form>
                 </aside>
             </div>
 

@@ -17,5 +17,7 @@ namespace QLNhaSach1.Models
         public decimal TotalPrice { get; set; }
 
         public DateTime OrderDate { get; set; }
+
+        public string Status { get; set; } = "Pending"; 
     }
 }
