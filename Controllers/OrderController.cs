@@ -127,7 +127,8 @@ public class OrderController : Controller
             OrderItems = cart.CartItems.Select(ci => new OrderItem
             {
                 BookId = ci.BookId,
-                Quantity = ci.Quantity
+                Quantity = ci.Quantity,
+                Price = ci.Book.price
             }).ToList()
         };
 
@@ -195,7 +196,8 @@ public class OrderController : Controller
             OrderItems = cart.CartItems.Select(ci => new OrderItem
             {
                 BookId = ci.BookId,
-                Quantity = ci.Quantity
+                Quantity = ci.Quantity,
+                Price = ci.Book.price
             }).ToList()
         };
 
