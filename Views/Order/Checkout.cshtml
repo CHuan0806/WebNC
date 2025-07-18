@@ -2,9 +2,14 @@
     ViewData["Title"] = "Thanh toán";
     var user = ViewBag.User as QLNhaSach1.Models.User;
     var cart = ViewBag.Cart as QLNhaSach1.Models.Cart;
+    var discountCode = ViewBag.DiscountCode as string;
+    decimal discountAmount = ViewBag.DiscountAmount != null ? (decimal)ViewBag.DiscountAmount : 0;
+    decimal totalBeforeDiscount = cart?.CartItems.Sum(ci => ci.Book.price * ci.Quantity) ?? 0;
+    decimal totalAfterDiscount = totalBeforeDiscount - discountAmount;
 }
 
 <h2>Thông tin thanh toán</h2>
+
 <!-- Form đặt hàng -->
 <form method="post" asp-action="Checkout">
     <div class="mb-3">
@@ -25,25 +30,48 @@
             value="@(user?.Address != null && user.Address.Any() ? user.Address.First() : "")" />
     </div>
 
+    @if (discountAmount > 0 && !string.IsNullOrEmpty(discountCode))
+    {
+        <input type="hidden" name="discountCode" value="@discountCode" />
+    }
+
     <h4>Đơn hàng của bạn:</h4>
-    @if (ViewBag.DiscountAmount != null && (decimal)ViewBag.DiscountAmount > 0)
-    {
-        <li class="list-group-item d-flex justify-content-between text-danger">
-            <span>Giảm giá</span>
-            <span>-@(((decimal)ViewBag.DiscountAmount).ToString("N0")) VNĐ</span>
+    <ul class="list-group mb-3">
+        @foreach (var item in cart?.CartItems)
+        {
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+                <div>
+                    <h6 class="my-0">@item.Book.bookName</h6>
+                    <small class="text-muted">Số lượng: @item.Quantity</small>
+                </div>
+                <span class="text-muted">@((item.Book.price * item.Quantity).ToString("N0")) VNĐ</span>
+            </li>
+        }
+
+        <li class="list-group-item d-flex justify-content-between">
+            <span>Tạm tính</span>
+            <strong>@totalBeforeDiscount.ToString("N0") VNĐ</strong>
         </li>
-        <li class="list-group-item d-flex justify-content-between fw-bold">
-            <span>Tổng sau giảm</span>
-            <span>@(((decimal)ViewBag.TotalAfterDiscount).ToString("N0")) VNĐ</span>
-        </li>
-    }
-    else
-    {
-        <li class="list-group-item d-flex justify-content-between fw-bold">
-            <span>Tổng cộng</span>
-            <span>@cart.TotalPrice.ToString("N0") VNĐ</span>
-        </li>
-    }
+
+        @if (discountAmount > 0)
+        {
+            <li class="list-group-item d-flex justify-content-between text-danger">
+                <span>Giảm giá</span>
+                <span>-@discountAmount.ToString("N0") VNĐ</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between fw-bold">
+                <span>Thành tiền</span>
+                <span>@totalAfterDiscount.ToString("N0") VNĐ</span>
+            </li>
+        }
+        else
+        {
+            <li class="list-group-item d-flex justify-content-between fw-bold">
+                <span>Thành tiền</span>
+                <span>@totalBeforeDiscount.ToString("N0") VNĐ</span>
+            </li>
+        }
+    </ul>
 
     <div class="mb-3">
         <label class="form-label">Phương thức thanh toán:</label>
@@ -56,11 +84,16 @@
     <button type="submit" class="btn btn-primary">Đặt hàng</button>
 </form>
 
-
-<form method="post" asp-action="ApplyDiscount" class="mb-4">
+<!-- Form áp dụng mã giảm giá -->
+<form method="post" asp-action="ApplyDiscount" class="mt-4">
     <div class="mb-3">
         <label class="form-label">Mã giảm giá (nếu có):</label>
-        <input name="discountCode" class="form-control" placeholder="Nhập mã..." value="@ViewBag.DiscountCode" />
+        <input name="discountCode" class="form-control" placeholder="Nhập mã..." value="@discountCode" />
     </div>
     <button type="submit" class="btn btn-outline-primary">Áp dụng</button>
 </form>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-info mt-3">@TempData["Message"]</div>
+}

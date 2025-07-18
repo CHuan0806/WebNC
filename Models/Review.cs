@@ -1,5 +1,6 @@
 
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace QLNhaSach1.Models
 {
@@ -8,9 +9,11 @@ namespace QLNhaSach1.Models
         public int ReviewId { get; set; }
 
         public int UserId { get; set; }
+        [JsonIgnore]
         public User user { get; set; }
 
         public int BookId { get; set; }
+        [JsonIgnore]
         public Book book { get; set; }
 
         [Required]

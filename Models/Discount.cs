@@ -3,9 +3,9 @@ namespace QLNhaSach1.Models
 {
     public class Discount
     {
-        public int DiscountId { get; set; }
+        public int? DiscountId { get; set; }
 
-        public String DiscountCode { get; set; }
+        public string DiscountCode { get; set; }
 
         public decimal DiscountPercentage { get; set; }
 

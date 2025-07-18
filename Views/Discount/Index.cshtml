@@ -1,9 +1,15 @@
 @model IEnumerable<QLNhaSach1.Models.Discount>
 
-<h2>Danh sách mã giảm giá</h2>
-<a asp-action="Create" class="btn btn-primary">Thêm mới</a>
-<table class="table">
-    <thead>
+@{
+    ViewData["Title"] = "Danh sách mã giảm giá";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<a asp-action="Create" class="btn btn-primary mb-3">Thêm mới</a>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
         <tr>
             <th>Mã</th>
             <th>Phần trăm</th>
@@ -12,26 +18,50 @@
             <th>Ngày kết thúc</th>
             <th>Còn lại</th>
             <th>Trạng thái</th>
-            <th></th>
+            <th>Thao tác</th>
         </tr>
     </thead>
     <tbody>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.DiscountCode</td>
-            <td>@item.DiscountPercentage %</td>
-            <td>@item.MaxDiscountAmount</td>
-            <td>@item.StartDate.ToShortDateString()</td>
-            <td>@item.EndDate.ToShortDateString()</td>
-            <td>@item.RemainingCount</td>
-            <td>@(item.IsActive ? "Kích hoạt" : "Khóa")</td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.DiscountId">Sửa</a> |
-                <a asp-action="Details" asp-route-id="@item.DiscountId">Chi tiết</a> |
-                <a asp-action="Delete" asp-route-id="@item.DiscountId">Xóa</a>
-            </td>
-        </tr>
-    }
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.DiscountCode</td>
+                    <td>@item.DiscountPercentage %</td>
+                    <td>@item.MaxDiscountAmount.ToString("N0")</td>
+                    <td>@item.StartDate.ToString("dd/MM/yyyy")</td>
+                    <td>@item.EndDate.ToString("dd/MM/yyyy")</td>
+                    <td>@item.RemainingCount</td>
+                    <td>
+                        <span class="badge @(item.IsActive ? "bg-success" : "bg-secondary")">
+                            @(item.IsActive ? "Kích hoạt" : "Khóa")
+                        </span>
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.DiscountId" class="btn btn-sm btn-warning">Sửa</a>
+                        <a asp-action="Details" asp-route-id="@item.DiscountId" class="btn btn-sm btn-info">Chi tiết</a>
+                        <a asp-action="Delete" asp-route-id="@item.DiscountId" class="btn btn-sm btn-danger">Xóa</a>
+
+                        @if (item.IsActive)
+                        {
+                            <form asp-action="Deactivate" asp-route-id="@item.DiscountId" method="post" class="d-inline">
+                                <button type="submit" class="btn btn-sm btn-secondary"
+                                    onclick="return confirm('Bạn có chắc chắn muốn vô hiệu hóa mã này?');">
+                                    Vô hiệu hóa
+                                </button>
+                            </form>
+                        }
+                    </td>
+
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="8" class="text-center text-muted">Không có mã giảm giá nào.</td>
+            </tr>
+        }
     </tbody>
 </table>

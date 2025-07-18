@@ -6,17 +6,34 @@ public class DiscountController : Controller
 {
     private readonly AppDbContext _context;
 
-    public DiscountController(AppDbContext context)
+    private readonly CacheService _cacheService;
+
+    public DiscountController(AppDbContext context, CacheService cacheService)
     {
         _context = context;
+        _cacheService = cacheService;
     }
 
     // GET: /Discount
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        var discounts = _context.Discount.ToList();
-        return View(discounts);
+        string cacheKey = "discount:list";
+
+        var cachedData = await _cacheService.GetAsync(cacheKey);
+        if (!string.IsNullOrEmpty(cachedData))
+        {
+            var discounts = System.Text.Json.JsonSerializer.Deserialize<List<Discount>>(cachedData);
+            return View(discounts);
+        }
+
+        var discountsFromDb = await _context.Discount.ToListAsync();
+
+        var serializedData = System.Text.Json.JsonSerializer.Serialize(discountsFromDb);
+        await _cacheService.SetAsync(cacheKey, serializedData, TimeSpan.FromMinutes(10));
+
+        return View(discountsFromDb);
     }
+
 
     // GET: /Discount/Create
     public IActionResult Create()
@@ -27,7 +44,7 @@ public class DiscountController : Controller
     // POST: /Discount/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Create(Discount discount)
+    public async Task<IActionResult> Create(Discount discount)
     {
         if (ModelState.IsValid)
         {
@@ -37,6 +54,7 @@ public class DiscountController : Controller
 
             _context.Discount.Add(discount);
             _context.SaveChanges();
+            await _cacheService.RemoveAsync("discount:list");
             return RedirectToAction(nameof(Index));
         }
         return View(discount);
@@ -56,7 +74,7 @@ public class DiscountController : Controller
     // POST: /Discount/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Edit(int id, Discount discount)
+    public async Task<IActionResult> Edit(int id, Discount discount)
     {
         if (id != discount.DiscountId)
         {
@@ -70,6 +88,7 @@ public class DiscountController : Controller
 
             _context.Entry(discount).State = EntityState.Modified;
             _context.SaveChanges();
+            await _cacheService.RemoveAsync("discount:list");
             return RedirectToAction(nameof(Index));
         }
         return View(discount);
@@ -89,13 +108,14 @@ public class DiscountController : Controller
     // POST: /Discount/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
-    public IActionResult DeleteConfirmed(int id)
+    public async Task<IActionResult> DeleteConfirmed(int id)
     {
         var discount = _context.Discount.Find(id);
         if (discount != null)
         {
             _context.Discount.Remove(discount);
             _context.SaveChanges();
+            await _cacheService.RemoveAsync("discount:list");
         }
         return RedirectToAction(nameof(Index));
     }
@@ -110,4 +130,25 @@ public class DiscountController : Controller
         }
         return View(discount);
     }
+
+    // POST: /Discount/Deactivate/5
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Deactivate(int id)
+    {
+        var discount = _context.Discount.Find(id);
+        if (discount == null)
+        {
+            return NotFound();
+        }
+
+        discount.IsActive = false;
+        _context.Update(discount);
+        await _context.SaveChangesAsync();
+
+        await _cacheService.RemoveAsync("discount:list");
+
+        return RedirectToAction(nameof(Index));
+    }
+
 }

@@ -3,7 +3,7 @@
 <h2>Xóa mã giảm giá</h2>
 <div>
     <h4>Bạn có chắc muốn xóa mã: @Model.DiscountCode?</h4>
-    <form asp-action="DeleteConfirmed" method="post">
+    <form asp-action="Delete" method="post">
         <input type="hidden" asp-for="DiscountId" />
         <button type="submit" class="btn btn-danger">Xóa</button>
         <a asp-action="Index" class="btn btn-secondary">Hủy</a>

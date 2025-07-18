@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using QLNhaSach1;
-using QLNhaSach1.Data; // thêm nếu cần
+using QLNhaSach1.Data;
+using StackExchange.Redis; // thêm nếu cần
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,7 +37,15 @@ builder.Services.AddAuthentication("MyCookieAuth")
 
     });
 
-    
+builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
+{
+    var config = builder.Configuration.GetSection("Redis")["ConnectionString"];
+    var options = ConfigurationOptions.Parse(config, true);
+    options.AbortOnConnectFail = false;
+    return ConnectionMultiplexer.Connect(options);
+});
+
+builder.Services.AddSingleton<CacheService>();
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.

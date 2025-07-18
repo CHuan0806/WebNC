@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QLNhaSach1.Models;
@@ -5,10 +6,12 @@ using QLNhaSach1.Models;
 public class UserController : Controller
 {
     private readonly AppDbContext _context;
+    private readonly CacheService _cacheService;
 
-    public UserController(AppDbContext context)
+    public UserController(AppDbContext context, CacheService cacheService)
     {
         _context = context;
+        _cacheService = cacheService;
     }
 
     public async Task<IActionResult> Index()
@@ -21,13 +24,25 @@ public class UserController : Controller
 
         if (role == Role.Admin.ToString())
         {
-            var users = await _context.Users.ToListAsync();
+            string cacheKey = "user_list";
+            string cachedUsers = await _cacheService.GetAsync(cacheKey);
+
+            List<User> users;
+            if (!string.IsNullOrEmpty(cachedUsers))
+            {
+                users = JsonSerializer.Deserialize<List<User>>(cachedUsers);
+            }
+            else
+            {
+                users = await _context.Users.ToListAsync();
+                string serialized = JsonSerializer.Serialize(users);
+                await _cacheService.SetAsync(cacheKey, serialized, TimeSpan.FromMinutes(10));
+            }
+
             return View(users);
         }
-        else
-        {
-            return RedirectToAction("Index", "Home");
-        }
+
+        return RedirectToAction("Index", "Home");
     }
 
     [HttpGet]
@@ -106,7 +121,7 @@ public class UserController : Controller
     }
 
     [HttpPost]
-    public IActionResult EditProfile(User user)
+    public async Task<IActionResult> EditProfile(User user)
     {
         if (!ModelState.IsValid) return View(user);
 
@@ -123,6 +138,7 @@ public class UserController : Controller
         }
 
         _context.SaveChanges();
+        await _cacheService.RemoveAsync("discount:list");
         return RedirectToAction("Index", "Home");
     }
 
@@ -139,7 +155,7 @@ public class UserController : Controller
     public IActionResult Create() => View();
 
     [HttpPost]
-    public IActionResult Create(User user)
+    public async Task<IActionResult> Create(User user)
     {
         if (!ModelState.IsValid) return View(user);
 
@@ -152,8 +168,12 @@ public class UserController : Controller
         user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(user.PasswordHash);
         _context.Users.Add(user);
         _context.SaveChanges();
+
+        await _cacheService.RemoveAsync("discount:list"); // Clear cache
+
         return RedirectToAction("Index");
     }
+
 
     [HttpGet]
     public async Task<IActionResult> Delete(int id)
@@ -166,13 +186,14 @@ public class UserController : Controller
 
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
-    public IActionResult DeleteConfirmed(int id)
+    public async Task<IActionResult> DeleteConfirmed(int id)
     {
         var user = _context.Users.FirstOrDefault(u => u.UserId == id);
         if (user == null) return NotFound();
 
         _context.Users.Remove(user);
         _context.SaveChanges();
+        await _cacheService.RemoveAsync("discount:list");
         return RedirectToAction("Index");
     }
 
@@ -185,7 +206,7 @@ public class UserController : Controller
     }
 
     [HttpPost]
-    public IActionResult Update(User user)
+    public async Task<IActionResult> Update(User user)
     {
         if (!ModelState.IsValid) return View(user);
 
@@ -203,6 +224,7 @@ public class UserController : Controller
         }
 
         _context.SaveChanges();
+        await _cacheService.RemoveAsync("discount:list");
         return RedirectToAction("Index");
     }
 }

@@ -8,15 +8,26 @@ namespace QLNhaSach1.Controllers
     public class BookCustomerController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly CacheService _cacheService;
 
-        public BookCustomerController(AppDbContext context)
+        public BookCustomerController(AppDbContext context, CacheService cacheService)
         {
             _context = context;
+            _cacheService = cacheService;
         }
 
-        public IActionResult Index(int? categoryId, string? author, string? sortBy, int? minPrice, int? maxPrice, int page = 1)
+        public async Task<IActionResult> Index(int? categoryId, string? author, string? sortBy, int? minPrice, int? maxPrice, int page = 1)
         {
             int pageSize = 4; // ✅ Hiển thị 4 sản phẩm mỗi trang
+            string cacheKey = $"book_list_{categoryId}_{author}_{sortBy}_{minPrice}_{maxPrice}_{page}";
+
+            var cachedData = await _cacheService.GetAsync(cacheKey);
+            if (!string.IsNullOrEmpty(cachedData))
+            {
+                var cachedViewModel = System.Text.Json.JsonSerializer.Deserialize<BookListViewModel>(cachedData);
+                return View(cachedViewModel);
+            }
+
 
             var query = _context.Books
                 .Include(b => b.Category)
@@ -77,6 +88,9 @@ namespace QLNhaSach1.Controllers
                 SelectedCategoryId = categoryId,
                 SelectedAuthor = author
             };
+
+            var serializedData = System.Text.Json.JsonSerializer.Serialize(viewModel);
+            await _cacheService.SetAsync(cacheKey, serializedData, TimeSpan.FromMinutes(5));
 
             return View(viewModel);
         }

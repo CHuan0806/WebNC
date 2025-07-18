@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace QLNhaSach1.Models
 {
@@ -12,6 +13,7 @@ namespace QLNhaSach1.Models
         public string categoryName { get; set; }
 
         // Navigation property
+        [JsonIgnore]
         public List<Book> Books { get; set; } = new List<Book>();
     }
 }

@@ -8,9 +8,12 @@ using System.Collections.Generic;
 public class AdminController : Controller
 {
     private readonly AppDbContext _context;
-    public AdminController(AppDbContext context)
+    private readonly CacheService _cacheService;
+
+    public AdminController(AppDbContext context, CacheService cacheService)
     {
         _context = context;
+        _cacheService = cacheService;
     }
 
     public IActionResult Index()
