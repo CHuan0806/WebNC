@@ -17,215 +17,215 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = QLNhaSach1
 build_property.RootNamespace = QLNhaSach1
-build_property.ProjectDir = D:\University\nam 3\ky3\ltwnc\lt\WebNC\WebNC\
+build_property.ProjectDir = C:\Users\asus\OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT\Desktop\New folder\WebNC\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\University\nam 3\ky3\ltwnc\lt\WebNC\WebNC
+build_property.MSBuildProjectDirectory = C:\Users\asus\OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT\Desktop\New folder\WebNC
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Admin/Index.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Admin/_Navbar.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Admin/_Navbar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cX05hdmJhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Admin/_Sidebar.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Admin/_Sidebar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cX1NpZGViYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Admin/_ViewStart.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Admin/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/BookCustomer/Index.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/BookCustomer/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va0N1c3RvbWVyXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Book/Create.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Book/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Book/Delete.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Book/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Book/Details.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Book/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Book/Edit.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Book/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Book/Index.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Book/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Cart/Index.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Cart/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Category/BooksByCategory.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Category/BooksByCategory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcQm9va3NCeUNhdGVnb3J5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Category/Create.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Category/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Category/Delete.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Category/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Category/Edit.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Category/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Category/Index.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Category/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Chat/Index.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Chat/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Discount/Create.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Discount/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzY291bnRcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Discount/Delete.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Discount/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzY291bnRcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Discount/Details.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Discount/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzY291bnRcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Discount/Edit.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Discount/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzY291bnRcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Discount/Index.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Discount/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzY291bnRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Home/Chat.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Home/Chat.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDaGF0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Home/Index.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Home/Privacy.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Order/Checkout.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Order/Checkout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcQ2hlY2tvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Shared/Components/CartCount/Default.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Shared/Components/CartCount/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQ2FydENvdW50XERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Shared/Components/ChatWidget/Default.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Shared/Components/ChatWidget/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQ2hhdFdpZGdldFxEZWZhdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Shared/Components/_BestSellerPartial.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Shared/Components/_BestSellerPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0Jlc3RTZWxsZXJQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Shared/Components/_BillBoard.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Shared/Components/_BillBoard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0JpbGxCb2FyZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Shared/Components/_FeaturedProducts.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Shared/Components/_FeaturedProducts.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0ZlYXR1cmVkUHJvZHVjdHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Shared/Components/_FooterViewPartial.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Shared/Components/_FooterViewPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0Zvb3RlclZpZXdQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Shared/Components/_HeaderViewPartial.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Shared/Components/_HeaderViewPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0hlYWRlclZpZXdQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Shared/Components/_LatestArticles.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Shared/Components/_LatestArticles.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0xhdGVzdEFydGljbGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Shared/Components/_OfferProductsPartial.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Shared/Components/_OfferProductsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX09mZmVyUHJvZHVjdHNQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Shared/Components/_PopularProductsPartial.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Shared/Components/_PopularProductsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX1BvcHVsYXJQcm9kdWN0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Shared/Components/_SubscribePartial.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Shared/Components/_SubscribePartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX1N1YnNjcmliZVBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Shared/Error.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Shared/_LayoutAdmin.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Shared/_LayoutAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/User/Create.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/User/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/User/Delete.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/User/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/User/Detail.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/User/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/User/EditProfile.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/User/EditProfile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxFZGl0UHJvZmlsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/User/Index.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/User/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/User/Login.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/User/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/User/Register.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/User/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/User/Update.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/User/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVcGRhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/_ViewImports.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/_ViewStart.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/nam 3/ky3/ltwnc/lt/WebNC/WebNC/Views/Shared/_Layout.cshtml]
+[C:/Users/asus/OneDrive - Ho Chi Minh City University of Foreign Languages and Information Technology - HUFLIT/Desktop/New folder/WebNC/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-a5n1cxe2k5

@@ -17,6 +17,7 @@
                 <th>Email</th>
                 <th>Điện thoại</th>
                 <th>Địa chỉ</th>
+                <th>Quyền</th>
                 <th>Hành động</th>
             </tr>
         </thead>
@@ -29,6 +30,8 @@
                     <td>@user.Email</td>
                     <td>@user.Phone</td>
                     <td>@user.Address</td>
+                    <td>@user.Role</td>
+                    
                     <td>
                         <a asp-action="Detail" asp-route-id="@user.UserId" class="btn btn-info btn-sm">🔍 Xem</a>
                         <a asp-action="Update" asp-route-id="@user.UserId" class="btn btn-warning btn-sm">✏️ Sửa</a>
@@ -36,6 +39,5 @@
                     </td>
                 </tr>
             }
-        </tbody>
     </table>
 </div>

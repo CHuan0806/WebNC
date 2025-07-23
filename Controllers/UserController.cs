@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using QLNhaSach1.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using QLNhaSach1.Service;
+using QLNhaSach1.ViewModels;
 
 public class UserController : Controller
 {
@@ -28,7 +29,7 @@ public class UserController : Controller
 
         if (role == Role.Admin.ToString())
         {
-            string cacheKey = "user_list";
+            string cacheKey = "user:list";
             string cachedUsers = await _cacheService.GetAsync(cacheKey);
 
             List<User> users;
@@ -147,7 +148,7 @@ public class UserController : Controller
         }
 
         _context.SaveChanges();
-        await _cacheService.RemoveAsync("discount:list");
+        await _cacheService.RemoveAsync("user:list");
         return RedirectToAction("Index", "Home");
     }
 
@@ -178,7 +179,7 @@ public class UserController : Controller
         _context.Users.Add(user);
         _context.SaveChanges();
 
-        await _cacheService.RemoveAsync("discount:list"); // Clear cache
+        await _cacheService.RemoveAsync("user:list"); // Clear cache
 
         return RedirectToAction("Index");
     }
@@ -202,20 +203,33 @@ public class UserController : Controller
 
         _context.Users.Remove(user);
         _context.SaveChanges();
-        await _cacheService.RemoveAsync("discount:list");
+        await _cacheService.RemoveAsync("user:list");
         return RedirectToAction("Index");
     }
 
     [HttpGet]
-    public IActionResult Update(int id)
+public IActionResult Update(int id)
+{
+    var user = _context.Users.FirstOrDefault(u => u.UserId == id);
+    if (user == null) return NotFound();
+
+    var viewModel = new UserUpdateViewModel
     {
-        var user = _context.Users.FirstOrDefault(u => u.UserId == id);
-        if (user == null) return NotFound();
-        return View(user);
-    }
+        UserId = user.UserId,
+        UserName = user.UserName,
+        Email = user.Email,
+        Phone = user.Phone,
+        Address = user.Address,
+        Role = user.Role,
+        // Không gán PasswordHash để tránh lộ mật khẩu
+    };
+
+    return View(viewModel);
+}
+
 
     [HttpPost]
-    public async Task<IActionResult> Update(User user)
+    public async Task<IActionResult> Update(UserUpdateViewModel user)
     {
         if (!ModelState.IsValid) return View(user);
 
@@ -226,6 +240,7 @@ public class UserController : Controller
         existingUser.Email = user.Email;
         existingUser.Phone = user.Phone;
         existingUser.Address = user.Address;
+        existingUser.Role = user.Role;
 
         if (!string.IsNullOrEmpty(user.PasswordHash))
         {
@@ -233,7 +248,7 @@ public class UserController : Controller
         }
 
         _context.SaveChanges();
-        await _cacheService.RemoveAsync("discount:list");
+        await _cacheService.RemoveAsync("user:list");
         return RedirectToAction("Index");
     }
 }
