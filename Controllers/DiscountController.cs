@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using QLNhaSach1.Models;
 using Microsoft.EntityFrameworkCore;
+using QLNhaSach1.Service;
 
 public class DiscountController : Controller
 {

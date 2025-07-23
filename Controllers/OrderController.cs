@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QLNhaSach1.Data;
 using QLNhaSach1.Models;
+using QLNhaSach1.Service;
 
 public class OrderController : Controller
 {

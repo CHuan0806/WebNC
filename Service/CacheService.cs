@@ -1,33 +1,36 @@
 using StackExchange.Redis;
 
-public class CacheService
+namespace QLNhaSach1.Service
 {
-    private readonly IDatabase _redisDb;
-
-    public CacheService(IConnectionMultiplexer redis)
+    public class CacheService
     {
-        _redisDb = redis.GetDatabase();
-    }
+        private readonly IDatabase _redisDb;
 
-    public async Task SetAsync(string key, string value, TimeSpan? expiry = null)
-    {
-        if (expiry.HasValue && expiry.Value == TimeSpan.Zero)
+        public CacheService(IConnectionMultiplexer redis)
         {
-            Console.WriteLine($"⚠️ Lỗi: SetAsync được gọi với TimeSpan.Zero cho key: {key}");
-            // throw nếu muốn phát hiện rõ tại đây
-            throw new Exception($"Invalid expiry time (0s) for key: {key}");
+            _redisDb = redis.GetDatabase();
         }
 
-        await _redisDb.StringSetAsync(key, value, expiry ?? TimeSpan.FromMinutes(10));
-    }
+        public async Task SetAsync(string key, string value, TimeSpan? expiry = null)
+        {
+            if (expiry.HasValue && expiry.Value == TimeSpan.Zero)
+            {
+                Console.WriteLine($"⚠️ Lỗi: SetAsync được gọi với TimeSpan.Zero cho key: {key}");
+                // throw nếu muốn phát hiện rõ tại đây
+                throw new Exception($"Invalid expiry time (0s) for key: {key}");
+            }
+
+            await _redisDb.StringSetAsync(key, value, expiry ?? TimeSpan.FromMinutes(10));
+        }
 
 
-    public async Task<string> GetAsync(string key)
-    {
-        return await _redisDb.StringGetAsync(key);
-    }
-    public async Task RemoveAsync(string key)
-    {
-        await _redisDb.KeyDeleteAsync(key);
+        public async Task<string> GetAsync(string key)
+        {
+            return await _redisDb.StringGetAsync(key);
+        }
+        public async Task RemoveAsync(string key)
+        {
+            await _redisDb.KeyDeleteAsync(key);
+        }
     }
 }

@@ -1,0 +1,286 @@
+@if (Context.Session.GetString("UserName") != null)
+{
+    <!-- Chat Toggle Button -->
+    <div id="chatToggle" class="chat-toggle" onclick="toggleChat()">
+        <i class="bi bi-chat-dots"></i>
+        <span id="chatBadge" class="chat-badge d-none">0</span>
+    </div>
+
+    <!-- Chat Widget -->
+    <div id="chatWidget" class="chat-widget d-none">
+        <div class="chat-header">
+            <h6 class="mb-0">Chat với Admin</h6>
+            <button class="btn-close" onclick="toggleChat()"></button>
+        </div>
+        <div id="chatMessages" class="chat-messages">
+            <!-- Messages will be loaded here -->
+        </div>
+        <div class="chat-input">
+            <div class="input-group">
+                <input type="text" id="messageInput" class="form-control" placeholder="Nhập tin nhắn...">
+                <button class="btn btn-primary" onclick="sendMessage()">
+                    <i class="bi bi-send"></i>
+                </button>
+            </div>
+        </div>
+        <div id="errorMessage" class="alert alert-danger d-none" style="margin: 10px;"></div>
+    </div>
+}
+
+<style>
+    .chat-toggle {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background: #007bff;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        font-size: 24px;
+        transition: all 0.3s ease;
+    }
+
+    .chat-toggle:hover {
+        transform: scale(1.1);
+        background: #0056b3;
+    }
+
+    .chat-badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: #dc3545;
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .chat-widget {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        width: 350px;
+        height: 400px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        z-index: 999;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .chat-header {
+        background: #007bff;
+        color: white;
+        padding: 15px;
+        border-radius: 10px 10px 0 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .chat-messages {
+        flex: 1;
+        padding: 10px;
+        overflow-y: auto;
+        border-bottom: 1px solid #eee;
+    }
+
+    .chat-input {
+        padding: 10px;
+    }
+
+    .message {
+        margin-bottom: 10px;
+        padding: 8px 12px;
+        border-radius: 10px;
+        max-width: 80%;
+        word-wrap: break-word;
+    }
+
+    .message.sent {
+        background: #007bff;
+        color: white;
+        margin-left: auto;
+        text-align: right;
+    }
+
+    .message.received {
+        background: #f1f1f1;
+        color: #333;
+    }
+
+    .message-time {
+        font-size: 11px;
+        opacity: 0.7;
+        margin-top: 4px;
+    }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.0/signalr.min.js"></script>
+<script>
+    let chatConnection;
+    let unreadCount = 0;
+    let currentUserId = '@(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0")';
+
+    console.log('Current User ID:', currentUserId); // Debug log
+
+    document.addEventListener("DOMContentLoaded", function () {
+        initializeChat();
+    });
+
+    function initializeChat() {
+        console.log('Initializing chat...'); // Debug log
+
+        // Initialize SignalR connection
+        chatConnection = new signalR.HubConnectionBuilder()
+            .withUrl("/chathub")
+            .configureLogging(signalR.LogLevel.Information) // Add detailed logging
+            .build();
+
+        chatConnection.on("ReceiveMessage", (senderName, message, role, senderId) => {
+            addMessageToChat(senderName, message, role, senderId);
+
+            // Cập nhật danh sách hội thoại nếu là admin
+            if (document.getElementById('userRole').value === "Admin") {
+                loadConversationList();
+            }
+        });
+
+        chatConnection.on("NewMessageNotification", (senderId, senderName) => {
+            // Nếu không phải cuộc trò chuyện đang mở thì tăng badge
+            if (parseInt(document.getElementById('receiverId').value) !== senderId) {
+                const badge = document.querySelector(`li[data-user-id="${senderId}"] .badge`);
+                if (badge) {
+                    badge.textContent = parseInt(badge.textContent || 0) + 1;
+                    badge.classList.remove('d-none');
+                }
+            }
+        });
+
+        chatConnection.start().then(() => {
+            // Chỉ tải danh sách nếu là admin
+            if (document.getElementById('userRole').value === "Admin") {
+                loadConversationList();
+            }
+            loadChatHistory();
+        });
+    }
+
+    function toggleChat() {
+        const widget = document.getElementById('chatWidget');
+        const badge = document.getElementById('chatBadge');
+
+        if (widget.classList.contains('d-none')) {
+            widget.classList.remove('d-none');
+            // Clear badge when opening chat
+            unreadCount = 0;
+            updateChatBadge(0);
+            hideError();
+        } else {
+            widget.classList.add('d-none');
+        }
+    }
+
+    function sendMessage() {
+        const input = document.getElementById('messageInput');
+        const message = input.value.trim();
+        const receiverId = 1; // Mặc định gửi cho admin (ID=1)
+
+        if (!message) return;
+
+        // Gọi đúng hàm với receiverId
+        chatConnection.invoke("SendMessage", message, receiverId)
+            .then(() => {
+                input.value = "";
+                hideError();
+            })
+            .catch(err => {
+                console.error('Error sending message:', err.toString());
+                showError('Lỗi gửi tin nhắn: ' + err.message);
+            });
+    }
+
+    function addMessageToChat(senderName, message, role, senderId) {
+        const chatMessages = document.getElementById('chatMessages');
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${senderId == currentUserId ? 'sent' : 'received'}`;
+
+        messageDiv.innerHTML = `
+        <div><strong>${senderName}</strong></div>
+        <div>${message}</div>
+        <div class="message-time">${new Date().toLocaleTimeString()}</div>
+    `;
+
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function updateChatBadge(count) {
+        const badge = document.getElementById('chatBadge');
+        if (count > 0) {
+            badge.textContent = count;
+            badge.classList.remove('d-none');
+        } else {
+            badge.classList.add('d-none');
+        }
+    }
+
+    function showError(message) {
+        const errorDiv = document.getElementById('errorMessage');
+        errorDiv.textContent = message;
+        errorDiv.classList.remove('d-none');
+    }
+
+    function hideError() {
+        const errorDiv = document.getElementById('errorMessage');
+        errorDiv.classList.add('d-none');
+    }
+
+    function loadChatHistory() {
+        console.log('Loading chat history...'); // Debug log
+
+        // Load previous messages via AJAX
+        fetch('/Chat/GetHistory')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(messages => {
+                console.log('Chat history loaded:', messages); // Debug log
+                const chatMessages = document.getElementById('chatMessages');
+                chatMessages.innerHTML = '';
+
+                messages.forEach(msg => {
+                    addMessageToChat(msg.senderName, msg.content, msg.senderRole, msg.senderId);
+                });
+                hideError();
+            })
+            .catch(err => {
+                console.error('Error loading chat history:', err);
+                showError('Không thể tải lịch sử chat.');
+            });
+    }
+
+    // Send message on Enter key
+    document.addEventListener('keypress', function (e) {
+        if (e.target.id === 'messageInput' && e.key === 'Enter') {
+            e.preventDefault();
+            sendMessage();
+        }
+    });
+</script>

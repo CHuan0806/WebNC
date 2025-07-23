@@ -1,6 +1,7 @@
 
 using Microsoft.AspNetCore.Mvc;
 using QLNhaSach1.Models;
+using QLNhaSach1.Service;
 using System.Linq;
 using System;
 using System.Collections.Generic;

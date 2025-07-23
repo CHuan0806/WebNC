@@ -1,7 +1,11 @@
+using System.Security.Claims;
 using System.Text.Json;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QLNhaSach1.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using QLNhaSach1.Service;
 
 public class UserController : Controller
 {
@@ -76,32 +80,37 @@ public class UserController : Controller
     }
 
     [HttpPost]
-    public IActionResult Login(string email, string password, string? returnUrl)
+    public async Task<IActionResult> Login(string email, string password, string? returnUrl)
     {
         var user = _context.Users.FirstOrDefault(u => u.Email == email);
-        if (user == null || string.IsNullOrEmpty(user.PasswordHash) || !user.PasswordHash.StartsWith("$2"))
+        if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
         {
             ModelState.AddModelError("", "Email hoặc mật khẩu không đúng.");
             return View();
         }
 
-        if (!BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
-        {
-            ModelState.AddModelError("", "Email hoặc mật khẩu không đúng.");
-            return View();
-        }
+        var claims = new List<Claim>
+    {
+        new Claim(ClaimTypes.Name, user.UserName),
+        new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+        new Claim(ClaimTypes.Role, user.Role.ToString())
+    };
+
+        var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+        var principal = new ClaimsPrincipal(identity);
+
+        await HttpContext.SignInAsync("MyCookieAuth", principal);
 
         HttpContext.Session.SetString("UserID", user.UserId.ToString());
         HttpContext.Session.SetString("UserName", user.UserName);
         HttpContext.Session.SetString("Role", user.Role.ToString());
 
         if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
-        {
             return Redirect(returnUrl);
-        }
 
         return RedirectToAction("Index", "User");
     }
+
 
     [HttpPost]
     public IActionResult Logout()

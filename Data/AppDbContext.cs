@@ -14,8 +14,8 @@ public class AppDbContext : DbContext
     public DbSet<OrderItem> OrderItems { get; set; }
     public DbSet<Discount> Discount { get; set; }
     public DbSet<UserDiscountUsage> UserDiscountUsages { get; set; }
-
-
+    public DbSet<ChatMessage> ChatMessages { get; set; }
+    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -45,6 +45,22 @@ public class AppDbContext : DbContext
             .HasOne(ci => ci.Book)
             .WithMany()
             .HasForeignKey(ci => ci.BookId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // Cấu hình ChatMessage relationships
+        modelBuilder.Entity<ChatMessage>()
+            .HasKey(cm => cm.Id);
+
+        modelBuilder.Entity<ChatMessage>()
+            .HasOne(cm => cm.Sender)
+            .WithMany()
+            .HasForeignKey(cm => cm.SenderId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<ChatMessage>()
+            .HasOne(cm => cm.Receiver)
+            .WithMany()
+            .HasForeignKey(cm => cm.ReceiverId)
             .OnDelete(DeleteBehavior.Restrict);
     }
 }

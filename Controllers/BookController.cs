@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using QLNhaSach1.Models;
 using QLNhaSach1.Models.ViewModels;
+using QLNhaSach1.Service;
 
 public class BookController : Controller
 {

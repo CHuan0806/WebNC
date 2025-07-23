@@ -1,7 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using QLNhaSach1;
 using QLNhaSach1.Data;
-using StackExchange.Redis; // thêm nếu cần
+using QLNhaSach1.Hubs;
+using QLNhaSach1.Service;
+using StackExchange.Redis;
+using Microsoft.AspNetCore.SignalR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,23 +23,23 @@ builder.Services.AddTransient<PaypalService>();
 // Thêm session
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromDays(1);     // Giữ session trong 7 ngày không hoạt động
-    options.Cookie.HttpOnly = true;                 // Bảo mật: cookie không đọc được bằng JavaScript
-    options.Cookie.IsEssential = true;              // Cho phép hoạt động kể cả khi người dùng không chấp nhận cookie
-    options.Cookie.Name = "MySession";              // Tên cookie session
+    options.IdleTimeout = TimeSpan.FromDays(1);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+    options.Cookie.Name = "MySession";
 });
 
-// ✅ Thêm Authentication với Cookie
+// Thêm Authentication với Cookie
 builder.Services.AddAuthentication("MyCookieAuth")
     .AddCookie("MyCookieAuth", options =>
     {
-        options.LoginPath = "/User/Login";              // Nếu chưa đăng nhập
+        options.LoginPath = "/User/Login";
         options.AccessDeniedPath = "/User/AccessDenied";
         options.Cookie.Name = "MyAuthCookie";
-        options.ReturnUrlParameter = "returnUrl";       // Hỗ trợ redirect quay lại
-
+        options.ReturnUrlParameter = "returnUrl";
     });
 
+// Đăng ký Redis
 builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
 {
     var config = builder.Configuration.GetSection("Redis")["ConnectionString"];
@@ -47,7 +50,17 @@ builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
 
 builder.Services.AddSingleton<CacheService>();
 
+// Đăng ký CustomUserIdProvider cho SignalR
+builder.Services.AddSingleton<IUserIdProvider, CustomUserIdProvider>();
+
+// Cấu hình SignalR với CustomUserIdProvider
+builder.Services.AddSignalR(options =>
+{
+    options.EnableDetailedErrors = true;
+});
+
 var app = builder.Build();
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -63,6 +76,14 @@ app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapHub<ChatHub>("/chathub");
+
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+});
 
 // Khởi tạo tài khoản admin
 using (var scope = app.Services.CreateScope())
@@ -71,11 +92,7 @@ using (var scope = app.Services.CreateScope())
     await initializer.SeedAdminUserAsync();
 }
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-// Gọi seed data tại đây
+// Gọi seed data
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
