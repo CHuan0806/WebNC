@@ -9,7 +9,7 @@
     <!-- Chat Widget -->
     <div id="chatWidget" class="chat-widget d-none">
         <div class="chat-header">
-            <h6 class="mb-0">Chat với Admin</h6>
+            <h6 class="mb-0" id="chatTitle">Đang tải...</h6>
             <button class="btn-close" onclick="toggleChat()"></button>
         </div>
         <div id="chatMessages" class="chat-messages">
@@ -134,54 +134,71 @@
     let chatConnection;
     let unreadCount = 0;
     let currentUserId = '@(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0")';
+    let currentUserRole = '@(User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value ?? "User")';
+    let targetUserId = null;
 
-    console.log('Current User ID:', currentUserId); // Debug log
+    console.log('Current User ID:', currentUserId);
+    console.log('Current User Role:', currentUserRole);
 
     document.addEventListener("DOMContentLoaded", function () {
         initializeChat();
     });
 
     function initializeChat() {
-        console.log('Initializing chat...'); // Debug log
+        console.log('Initializing chat...');
 
         // Initialize SignalR connection
         chatConnection = new signalR.HubConnectionBuilder()
             .withUrl("/chathub")
-            .configureLogging(signalR.LogLevel.Information) // Add detailed logging
+            .configureLogging(signalR.LogLevel.Information)
             .build();
 
         chatConnection.on("ReceiveMessage", (senderName, message, role, senderId) => {
             addMessageToChat(senderName, message, role, senderId);
-
-            // Cập nhật danh sách hội thoại nếu là admin
-            if (document.getElementById('userRole').value === "Admin") {
-                loadConversationList();
+            
+            // Update unread count if chat is closed
+            if (document.getElementById('chatWidget').classList.contains('d-none')) {
+                unreadCount++;
+                updateChatBadge(unreadCount);
             }
         });
 
         chatConnection.on("NewMessageNotification", (senderId, senderName) => {
-            // Nếu không phải cuộc trò chuyện đang mở thì tăng badge
-            if (parseInt(document.getElementById('receiverId').value) !== senderId) {
-                const badge = document.querySelector(`li[data-user-id="${senderId}"] .badge`);
-                if (badge) {
-                    badge.textContent = parseInt(badge.textContent || 0) + 1;
-                    badge.classList.remove('d-none');
-                }
-            }
+            console.log('New message notification from:', senderName);
         });
 
         chatConnection.start().then(() => {
-            // Chỉ tải danh sách nếu là admin
-            if (document.getElementById('userRole').value === "Admin") {
-                loadConversationList();
-            }
-            loadChatHistory();
+            console.log('SignalR connected successfully');
+            initializeChatTarget();
+        }).catch(err => {
+            console.error('SignalR connection failed:', err);
+            showError('Không thể kết nối đến server chat');
         });
+    }
+
+    function initializeChatTarget() {
+        // Sử dụng API mới để lấy thông tin chat target
+        fetch('/Chat/GetChatTarget')
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    targetUserId = data.targetUserId;
+                    document.getElementById('chatTitle').textContent = data.chatTitle;
+                    loadChatHistory();
+                } else {
+                    document.getElementById('chatTitle').textContent = data.message;
+                    showError(data.message);
+                }
+            })
+            .catch(err => {
+                console.error('Error getting chat target:', err);
+                document.getElementById('chatTitle').textContent = 'Lỗi kết nối';
+                showError('Không thể khởi tạo chat');
+            });
     }
 
     function toggleChat() {
         const widget = document.getElementById('chatWidget');
-        const badge = document.getElementById('chatBadge');
 
         if (widget.classList.contains('d-none')) {
             widget.classList.remove('d-none');
@@ -189,6 +206,11 @@
             unreadCount = 0;
             updateChatBadge(0);
             hideError();
+            
+            // Load latest messages when opening
+            if (targetUserId) {
+                loadChatHistory();
+            }
         } else {
             widget.classList.add('d-none');
         }
@@ -197,12 +219,19 @@
     function sendMessage() {
         const input = document.getElementById('messageInput');
         const message = input.value.trim();
-        const receiverId = 1; // Mặc định gửi cho admin (ID=1)
 
-        if (!message) return;
+        if (!message) {
+            showError('Vui lòng nhập tin nhắn!');
+            return;
+        }
 
-        // Gọi đúng hàm với receiverId
-        chatConnection.invoke("SendMessage", message, receiverId)
+        if (!targetUserId) {
+            showError('Không có người nhận hợp lệ!');
+            return;
+        }
+
+        // Gọi SignalR với receiverId
+        chatConnection.invoke("SendMessage", message, targetUserId)
             .then(() => {
                 input.value = "";
                 hideError();
@@ -216,13 +245,16 @@
     function addMessageToChat(senderName, message, role, senderId) {
         const chatMessages = document.getElementById('chatMessages');
         const messageDiv = document.createElement('div');
-        messageDiv.className = `message ${senderId == currentUserId ? 'sent' : 'received'}`;
+        const isSender = senderId == currentUserId;
+        messageDiv.className = `message ${isSender ? 'sent' : 'received'}`;
+
+        const displayName = isSender ? 'Bạn' : senderName;
 
         messageDiv.innerHTML = `
-        <div><strong>${senderName}</strong></div>
-        <div>${message}</div>
-        <div class="message-time">${new Date().toLocaleTimeString()}</div>
-    `;
+            <div><strong>${displayName}</strong></div>
+            <div>${message}</div>
+            <div class="message-time">${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+        `;
 
         chatMessages.appendChild(messageDiv);
         chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -242,6 +274,11 @@
         const errorDiv = document.getElementById('errorMessage');
         errorDiv.textContent = message;
         errorDiv.classList.remove('d-none');
+        
+        // Auto hide after 5 seconds
+        setTimeout(() => {
+            hideError();
+        }, 5000);
     }
 
     function hideError() {
@@ -250,10 +287,15 @@
     }
 
     function loadChatHistory() {
-        console.log('Loading chat history...'); // Debug log
+        if (!targetUserId) {
+            console.log('No target user ID, skipping chat history load');
+            return;
+        }
 
-        // Load previous messages via AJAX
-        fetch('/Chat/GetHistory')
+        console.log('Loading chat history with user:', targetUserId);
+
+        // Load previous messages với otherUserId
+        fetch(`/Chat/GetHistory?otherUserId=${targetUserId}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -261,7 +303,7 @@
                 return response.json();
             })
             .then(messages => {
-                console.log('Chat history loaded:', messages); // Debug log
+                console.log('Chat history loaded:', messages);
                 const chatMessages = document.getElementById('chatMessages');
                 chatMessages.innerHTML = '';
 
@@ -272,7 +314,7 @@
             })
             .catch(err => {
                 console.error('Error loading chat history:', err);
-                showError('Không thể tải lịch sử chat.');
+                showError('Không thể tải lịch sử chat: ' + err.message);
             });
     }
 

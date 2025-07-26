@@ -201,5 +201,95 @@ namespace QLNhaSach1.Controllers
             }
             return Json(new { role = user.Role.ToString() });
         }
+        // Thêm những method này vào ChatController.cs
+
+        [HttpGet]
+        public IActionResult GetChatTarget()
+        {
+            var userIdStr = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdStr) || !int.TryParse(userIdStr, out int currentUserId))
+                return Unauthorized();
+
+            var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+
+            if (userRole == "Admin")
+            {
+                // Admin lấy user đầu tiên để chat
+                var firstUser = _context.Users.FirstOrDefault(u => u.Role == Role.User);
+                if (firstUser == null)
+                {
+                    return Json(new { success = false, message = "Không có khách hàng nào" });
+                }
+
+                return Json(new
+                {
+                    success = true,
+                    targetUserId = firstUser.UserId,
+                    targetUserName = firstUser.UserName,
+                    chatTitle = $"Chat với {firstUser.UserName}"
+                });
+            }
+            else
+            {
+                // User chat với admin
+                var admin = _context.Users.FirstOrDefault(u => u.Role == Role.Admin);
+                if (admin == null)
+                {
+                    return Json(new { success = false, message = "Không tìm thấy admin" });
+                }
+
+                return Json(new
+                {
+                    success = true,
+                    targetUserId = admin.UserId,
+                    targetUserName = admin.UserName,
+                    chatTitle = "Chat với Admin"
+                });
+            }
+        }
+
+        [HttpGet]
+        public IActionResult GetHistoryForLayout()
+        {
+            var userIdStr = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdStr) || !int.TryParse(userIdStr, out int currentUserId))
+                return Unauthorized();
+
+            var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+            int otherUserId;
+
+            if (userRole == "Admin")
+            {
+                // Admin lấy user đầu tiên
+                var firstUser = _context.Users.FirstOrDefault(u => u.Role == Role.User);
+                if (firstUser == null) return Json(new List<object>());
+                otherUserId = firstUser.UserId;
+            }
+            else
+            {
+                // User lấy admin
+                var admin = _context.Users.FirstOrDefault(u => u.Role == Role.Admin);
+                if (admin == null) return Json(new List<object>());
+                otherUserId = admin.UserId;
+            }
+
+            var messages = _context.ChatMessages
+                .Include(m => m.Sender)
+                .Include(m => m.Receiver)
+                .Where(m => (m.SenderId == currentUserId && m.ReceiverId == otherUserId)
+                         || (m.SenderId == otherUserId && m.ReceiverId == currentUserId))
+                .OrderBy(m => m.SentAt)
+                .Select(m => new
+                {
+                    senderId = m.SenderId,
+                    senderName = m.Sender.UserName,
+                    senderRole = m.Sender.Role.ToString(),
+                    content = m.Content,
+                    sentAt = m.SentAt
+                })
+                .ToList();
+
+            return Json(messages);
+        }
     }
 }
