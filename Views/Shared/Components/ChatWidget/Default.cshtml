@@ -9,7 +9,10 @@
     <!-- Chat Widget -->
     <div id="chatWidget" class="chat-widget d-none">
         <div class="chat-header">
-            <h6 class="mb-0" id="chatTitle">Đang tải...</h6>
+            <div>
+                <h5 id="chatTitle"><i class="bi bi-chat-dots me-2"></i>Đang tải...</h5>
+                <small id="chatSubTitle"></small>
+            </div>
             <button class="btn-close" onclick="toggleChat()"></button>
         </div>
         <div id="chatMessages" class="chat-messages">
@@ -19,7 +22,7 @@
             <div class="input-group">
                 <input type="text" id="messageInput" class="form-control" placeholder="Nhập tin nhắn...">
                 <button class="btn btn-primary" onclick="sendMessage()">
-                    <i class="bi bi-send"></i>
+                    <i class="bi bi-send me-1"></i>Gửi
                 </button>
             </div>
         </div>
@@ -82,13 +85,30 @@
     }
 
     .chat-header {
-        background: #007bff;
+        background: linear-gradient(135deg, #007bff, #0056b3);
         color: white;
-        padding: 15px;
-        border-radius: 10px 10px 0 0;
+        padding: 12px 20px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        border-radius: 10px 10px 0 0;
+        min-height: 50px;
+    }
+
+    .chat-header h5 {
+        margin: 0;
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: #fff !important;
+        line-height: 1;
+    }
+
+    .chat-header small {
+        opacity: 0.9;
+        font-size: 0.85em;
+        display: block;
+        margin-top: 2px;
+        color: #fff;
     }
 
     .chat-messages {
@@ -103,29 +123,121 @@
     }
 
     .message {
-        margin-bottom: 10px;
-        padding: 8px 12px;
-        border-radius: 10px;
-        max-width: 80%;
-        word-wrap: break-word;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: flex-end;
+        animation: fadeInUp 0.3s ease;
     }
 
     .message.sent {
-        background: #007bff;
-        color: white;
-        margin-left: auto;
-        text-align: right;
+        justify-content: flex-end;
     }
 
     .message.received {
-        background: #f1f1f1;
+        justify-content: flex-start;
+    }
+
+    .message-bubble {
+        max-width: 70%;
+        padding: 15px 20px;
+        border-radius: 20px;
+        position: relative;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        word-wrap: break-word;
+    }
+
+    .message.sent .message-bubble {
+        background: linear-gradient(135deg, #007bff, #0056b3);
+        color: white;
+        border-bottom-right-radius: 8px;
+    }
+
+    .message.received .message-bubble {
+        background: white;
         color: #333;
+        border: 1px solid #e9ecef;
+        border-bottom-left-radius: 8px;
+    }
+
+    .message-sender {
+        font-weight: 600;
+        font-size: 0.85em;
+        margin-bottom: 5px;
+        opacity: 0.8;
+    }
+
+    .message.sent .message-sender {
+        color: #b3d7ff;
+        text-align: right;
+    }
+
+    .message.received .message-sender {
+        color: #007bff;
+    }
+
+    .message-content {
+        line-height: 1.5;
+        word-wrap: break-word;
     }
 
     .message-time {
-        font-size: 11px;
+        font-size: 0.75em;
         opacity: 0.7;
-        margin-top: 4px;
+        margin-top: 8px;
+        text-align: right;
+        display: block;
+    }
+
+    .message.sent .message-time {
+        color: #b3d7ff;
+    }
+
+    .message.received .message-time {
+        color: #6c757d;
+    }
+
+    .chat-header i {
+        font-size: 1.3em;
+        margin-right: 8px;
+        color: #fff;
+    }
+
+    .input-group {
+        display: flex;
+        align-items: center;
+    }
+
+    .input-group .form-control {
+        border: 2px solid #e9ecef;
+        border-radius: 25px 0 0 25px;
+        padding: 12px 20px;
+        font-size: 0.95em;
+        height: 48px;
+        margin: 0;
+        flex: 1;
+    }
+
+    .input-group .form-control:focus {
+        border-color: #007bff;
+        box-shadow: none;
+    }
+
+    .input-group .btn {
+        border-radius: 0 25px 25px 0;
+        padding: 12px 25px;
+        font-weight: 600;
+        background: linear-gradient(135deg, #007bff, #0056b3);
+        border: none;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .input-group .btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
     }
 </style>
 
@@ -155,7 +267,7 @@
 
         chatConnection.on("ReceiveMessage", (senderName, message, role, senderId) => {
             addMessageToChat(senderName, message, role, senderId);
-            
+
             // Update unread count if chat is closed
             if (document.getElementById('chatWidget').classList.contains('d-none')) {
                 unreadCount++;
@@ -183,7 +295,7 @@
             .then(data => {
                 if (data.success) {
                     targetUserId = data.targetUserId;
-                    document.getElementById('chatTitle').textContent = data.chatTitle;
+                    document.getElementById('chatTitle').innerHTML = `<i class="bi bi-chat-dots me-2"></i>${data.chatTitle}`;
                     loadChatHistory();
                 } else {
                     document.getElementById('chatTitle').textContent = data.message;
@@ -206,7 +318,7 @@
             unreadCount = 0;
             updateChatBadge(0);
             hideError();
-            
+
             // Load latest messages when opening
             if (targetUserId) {
                 loadChatHistory();
@@ -249,12 +361,15 @@
         messageDiv.className = `message ${isSender ? 'sent' : 'received'}`;
 
         const displayName = isSender ? 'Bạn' : senderName;
+        const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
         messageDiv.innerHTML = `
-            <div><strong>${displayName}</strong></div>
-            <div>${message}</div>
-            <div class="message-time">${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
-        `;
+        <div class="message-bubble">
+            <div class="message-sender">${displayName}</div>
+            <div class="message-content">${message}</div>
+            <div class="message-time">${currentTime}</div>
+        </div>
+    `;
 
         chatMessages.appendChild(messageDiv);
         chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -274,7 +389,7 @@
         const errorDiv = document.getElementById('errorMessage');
         errorDiv.textContent = message;
         errorDiv.classList.remove('d-none');
-        
+
         // Auto hide after 5 seconds
         setTimeout(() => {
             hideError();

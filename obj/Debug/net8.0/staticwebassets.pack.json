@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets/css/ajax-loader.gif"
     },
     {
+      "Id": "/Users/phanthanhtoan/Downloads/Project/WebNC/WebNC/wwwroot/css/chat.css",
+      "PackagePath": "staticwebassets/css/chat.css"
+    },
+    {
       "Id": "/Users/phanthanhtoan/Downloads/Project/WebNC/WebNC/wwwroot/css/normalize.css",
       "PackagePath": "staticwebassets/css/normalize.css"
     },

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "PPaGoV2XYEc+0Ld/r2FNIwp0rdInCeRuQILzPYsn4n4=",
+  "Hash": "CqBn+KiMue2RpHnfw3MFWSDYk2H7s8Izs4Z8kFvcqW4=",
   "Source": "QLNhaSach1",
   "BasePath": "_content/QLNhaSach1",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/css/ajax-loader.gif"
+    },
+    {
+      "Identity": "/Users/phanthanhtoan/Downloads/Project/WebNC/WebNC/wwwroot/css/chat.css",
+      "SourceId": "QLNhaSach1",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/phanthanhtoan/Downloads/Project/WebNC/WebNC/wwwroot/",
+      "BasePath": "_content/QLNhaSach1",
+      "RelativePath": "css/chat.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/chat.css"
     },
     {
       "Identity": "/Users/phanthanhtoan/Downloads/Project/WebNC/WebNC/wwwroot/css/normalize.css",
