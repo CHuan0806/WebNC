@@ -262,12 +262,12 @@
                         const item = document.createElement('li');
                         item.className = 'list-group-item list-group-item-action';
                         item.innerHTML = `
-                                                        <div class="d-flex justify-content-between">
-                                                            <strong>${conv.userName}</strong>
-                                                            <small>${formatTime(conv.lastTime)}</small>
-                                                        </div>
-                                                        <p class="mb-0 text-truncate">${conv.lastMsg}</p>
-                                                    `;
+                                                                                <div class="d-flex justify-content-between">
+                                                                                    <strong>${conv.userName}</strong>
+                                                                                    <small>${formatTime(conv.lastTime)}</small>
+                                                                                </div>
+                                                                                <p class="mb-0 text-truncate">${conv.lastMsg}</p>
+                                                                            `;
 
                         item.addEventListener('click', () => {
                             /* --- CẬP NHẬT BIẾN TOÀN CỤC --- */
@@ -312,14 +312,27 @@
         });
 
         /* ---------------- GỬI TIN NHẮN --------------------------------- */
+        /* ---------------- GỬI TIN NHẮN --------------------------------- */
         function sendMessage() {
             const input = document.getElementById('messageInput');
             const message = input.value.trim();
-            const receiverId = parseInt(document.getElementById('receiverId').value);
+            let receiverId = parseInt(document.getElementById('receiverId').value);
+            const userRole = document.getElementById('userRole').value;
 
-            if (!message || !receiverId || receiverId == currentUserId) {
-                showError('Vui lòng chọn khách hàng để gửi tin nhắn!');
+            if (!message) {
+                showError('Vui lòng nhập tin nhắn!');
                 return;
+            }
+
+            // Nếu là admin và không có receiverId hợp lệ
+            if (userRole === 'Admin' && (!receiverId || isNaN(receiverId))) {
+                showError('Vui lòng chọn một khách hàng để chat!');
+                return;
+            }
+
+            // Nếu là user thì receiverId có thể null (sẽ tự động gửi cho admin)
+            if (userRole !== 'Admin') {
+                receiverId = null; // Để server tự động tìm admin
             }
 
             connection.invoke("SendMessage", message, receiverId)
@@ -333,13 +346,119 @@
                 });
         }
 
-        /* ---------------- LỊCH SỬ CUỘC TRÒ CHUYỆN ---------------------- */
+        /* ---------------- THÊM CÁC HÀM XỬ LÝ LỖI ------------------------ */
+        function showError(message) {
+            // Tạo hoặc cập nhật thông báo lỗi
+            let errorDiv = document.getElementById('errorMessage');
+            if (!errorDiv) {
+                errorDiv = document.createElement('div');
+                errorDiv.id = 'errorMessage';
+                errorDiv.className = 'alert alert-danger mt-2';
+                errorDiv.style.display = 'none';
+                document.querySelector('.card-footer').appendChild(errorDiv);
+            }
+
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+
+            // Tự động ẩn sau 5 giây
+            setTimeout(() => {
+                hideError();
+            }, 5000);
+        }
+
+        function hideError() {
+            const errorDiv = document.getElementById('errorMessage');
+            if (errorDiv) {
+                errorDiv.style.display = 'none';
+            }
+        }
+
+        /* ---------------- CẬP NHẬT LOAD CONVERSATION LIST --------------- */
+        function loadConversationList() {
+            fetch('/Chat/GetConversations')
+                .then(response => response.json())
+                .then(conversations => {
+                    const list = document.getElementById('conversationList');
+                    list.innerHTML = '';
+
+                    conversations.forEach(conv => {
+                        const item = document.createElement('li');
+                        item.className = 'list-group-item list-group-item-action';
+
+                        // Kiểm tra xem có phải cuộc trò chuyện hiện tại không
+                        const currentReceiverId = parseInt(document.getElementById('receiverId').value);
+                        if (conv.userId === currentReceiverId) {
+                            item.classList.add('active-chat');
+                        }
+
+                        item.innerHTML = `
+                        <div class="d-flex justify-content-between">
+                            <strong>${conv.userName}</strong>
+                            <small>${formatTime(conv.lastTime)}</small>
+                        </div>
+                        <p class="mb-0 text-truncate">${conv.lastMsg}</p>
+                    `;
+
+                        item.addEventListener('click', () => {
+                            // Xóa active class từ tất cả items
+                            document.querySelectorAll('#conversationList .active-chat')
+                                .forEach(el => el.classList.remove('active-chat'));
+
+                            // Thêm active class cho item được chọn
+                            item.classList.add('active-chat');
+
+                            // Cập nhật biến toàn cục
+                            receiverId = conv.userId;
+                            document.getElementById('receiverId').value = conv.userId;
+                            document.getElementById('targetUserName').value = conv.userName;
+
+                            // Đổi tiêu đề khung chat
+                            const chatHeader = document.querySelector('.card-header h5');
+                            if (chatHeader) {
+                                chatHeader.innerHTML = `<i class="bi bi-chat-dots me-2"></i>Chat với ${conv.userName}`;
+                            }
+
+                            // Nạp lịch sử
+                            loadChatHistory();
+                        });
+
+                        list.appendChild(item);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading conversations:', error);
+                    showError('Không thể tải danh sách cuộc trò chuyện');
+                });
+        }
+
+        /* ---------------- CẬP NHẬT LOAD CHAT HISTORY ------------------- */
         function loadChatHistory() {
+            const receiverId = document.getElementById('receiverId').value;
+
+            if (!receiverId) {
+                console.log('No receiverId set, skipping chat history load');
+                return;
+            }
+
             fetch(`/Chat/GetHistory?otherUserId=${receiverId}`)
-                .then(r => r.json())
-                .then(list => {
-                    const box = document.getElementById('messagesList'); box.innerHTML = '';
-                    list.forEach(m => addMessageToChat(m.senderName, m.content, m.senderRole, m.senderId));
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(messages => {
+                    const box = document.getElementById('messagesList');
+                    box.innerHTML = '';
+
+                    messages.forEach(m => {
+                        addMessageToChat(m.senderName, m.content, m.senderRole, m.senderId);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading chat history:', error);
+                    showError('Không thể tải lịch sử chat');
                 });
         }
 
@@ -357,12 +476,12 @@
 
             // Tạo cấu trúc tin nhắn
             messageDiv.innerHTML = `
-                            <div class="message-sender">${displayName}</div>
-                            <div class="message-bubble">
-                                <div class="message-content">${message}</div>
-                                <div class="message-time">${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
-                            </div>
-                        `;
+                                                    <div class="message-sender">${displayName}</div>
+                                                    <div class="message-bubble">
+                                                        <div class="message-content">${message}</div>
+                                                        <div class="message-time">${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+                                                    </div>
+                                                `;
 
             chatMessages.appendChild(messageDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;

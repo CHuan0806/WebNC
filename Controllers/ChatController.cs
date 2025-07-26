@@ -31,34 +31,49 @@ namespace QLNhaSach1.Controllers
 
             if (User.IsInRole("Admin"))
             {
-                // Admin truyền userId để chat với người dùng cụ thể
                 Models.User targetUser = null;
 
                 if (userId.HasValue)
                 {
-                    targetUser = _context.Users.FirstOrDefault(u => u.UserId == userId.Value);
-                    Console.WriteLine($"Admin chat with specific user: {userId.Value}, Found: {targetUser?.UserName}");
+                    targetUser = _context.Users.FirstOrDefault(u => u.UserId == userId.Value && u.Role != Role.Admin);
+                    Console.WriteLine($"Quản trị viên trò chuyện với người dùng cụ thể: {userId.Value}, Tìm thấy: {targetUser?.UserName}");
                 }
 
-                // Nếu không có userId hoặc không tìm thấy user, lấy user đầu tiên (không phải admin)
+                // Nếu không có userId hoặc không tìm thấy người dùng, chọn một người dùng không phải quản trị viên mặc định
                 if (targetUser == null)
                 {
-                    targetUser = _context.Users.FirstOrDefault(u => u.Role != Role.Admin);
-                    Console.WriteLine($"Auto-selected user: {targetUser?.UserName}");
+                    targetUser = _context.Users.FirstOrDefault(u => u.Role == Role.User); // Rõ ràng sử dụng Role.User
+                    if (targetUser == null)
+                    {
+                        // Xử lý trường hợp không có người dùng không phải quản trị viên
+                        ViewBag.TargetUserName = "Không có khách hàng nào để trò chuyện";
+                        ViewBag.TargetUserId = null;
+                        Console.WriteLine("Không tìm thấy người dùng không phải quản trị viên trong cơ sở dữ liệu.");
+                        return View(); // Trả về view mà không đặt receiverId
+                    }
+                    Console.WriteLine($"Tự động chọn người dùng: {targetUser.UserName}");
                 }
 
-                ViewBag.TargetUserName = targetUser?.UserName ?? "Khách hàng";
-                ViewBag.TargetUserId = targetUser?.UserId ?? 2;
+                ViewBag.TargetUserName = targetUser.UserName;
+                ViewBag.TargetUserId = targetUser.UserId;
 
                 Console.WriteLine($"ViewBag.TargetUserName: {ViewBag.TargetUserName}");
                 Console.WriteLine($"ViewBag.TargetUserId: {ViewBag.TargetUserId}");
             }
             else
             {
-                // Người dùng chỉ chat với Admin
+                // Người dùng không phải quản trị viên trò chuyện với quản trị viên
                 var adminUser = _context.Users.FirstOrDefault(u => u.Role == Role.Admin);
+                if (adminUser == null)
+                {
+                    ViewBag.TargetUserName = "Không có quản trị viên để trò chuyện";
+                    ViewBag.TargetUserId = null;
+                    Console.WriteLine("Không tìm thấy người dùng quản trị viên trong cơ sở dữ liệu.");
+                    return View();
+                }
+
                 ViewBag.TargetUserName = "Admin";
-                ViewBag.TargetUserId = adminUser?.UserId ?? 1;
+                ViewBag.TargetUserId = adminUser.UserId;
             }
 
             return View();
@@ -84,7 +99,9 @@ namespace QLNhaSach1.Controllers
             var conversations = _context.ChatMessages
                 .Include(m => m.Sender)
                 .Include(m => m.Receiver)
-                .Where(m => m.SenderId == adminId || m.ReceiverId == adminId)
+                .Where(m => (m.SenderId == adminId || m.ReceiverId == adminId) &&
+                            ((m.SenderId == adminId && m.Receiver.Role == Role.User) ||
+                             (m.ReceiverId == adminId && m.Sender.Role == Role.User)))
                 .AsEnumerable()
                 .GroupBy(m => m.SenderId == adminId ? m.ReceiverId : m.SenderId)
                 .Select(g => new
@@ -96,7 +113,7 @@ namespace QLNhaSach1.Controllers
                     lastMsg = g.OrderByDescending(x => x.SentAt).First().Content,
                     lastTime = g.Max(x => x.SentAt)
                 })
-                .OrderByDescending(x => x.lastTime) // Sắp xếp theo thời gian gần nhất
+                .OrderByDescending(x => x.lastTime)
                 .ToList();
 
             return Json(conversations);
@@ -163,6 +180,26 @@ namespace QLNhaSach1.Controllers
                 return StatusCode(500, $"Lỗi cơ sở dữ liệu: {dbEx.InnerException?.Message ?? dbEx.Message}");
             }
         }
-
+        [HttpGet]
+        public IActionResult GetAdminUserId()
+        {
+            var adminUser = _context.Users.FirstOrDefault(u => u.Role == Role.Admin);
+            if (adminUser == null)
+            {
+                return NotFound("Không tìm thấy admin.");
+            }
+            return Json(new { adminUserId = adminUser.UserId });
+        }
+        [HttpGet]
+        [Authorize]
+        public IActionResult GetUserRole(int userId)
+        {
+            var user = _context.Users.FirstOrDefault(u => u.UserId == userId);
+            if (user == null)
+            {
+                return NotFound("Người dùng không tồn tại.");
+            }
+            return Json(new { role = user.Role.ToString() });
+        }
     }
 }
