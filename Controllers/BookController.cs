@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using QLNhaSach1.Models;
 using QLNhaSach1.Models.ViewModels;
 using QLNhaSach1.Service;
@@ -17,17 +18,20 @@ public class BookController : Controller
     }
     public async Task<IActionResult> Index()
     {
-        string cacheKey = "book:list:";
-
-        var cachedBooks = await _cacheService.GetAsync(cacheKey);
-        if (!string.IsNullOrEmpty(cachedBooks))
-        {
-            var booksFromCache = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Book>>(cachedBooks);
-            return View(booksFromCache);
-        }
-
         var books = await _context.Books.Include(b => b.Category).ToListAsync();
-        await _cacheService.SetAsync(cacheKey, Newtonsoft.Json.JsonConvert.SerializeObject(books), TimeSpan.FromMinutes(10));
+        var cacheKey = "books:list:";
+
+        var settings = new JsonSerializerSettings
+        {
+            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+        };
+
+        await _cacheService.SetAsync(
+            cacheKey,
+            JsonConvert.SerializeObject(books, settings),
+            TimeSpan.FromMinutes(10)
+        );
+
         return View(books);
     }
 
