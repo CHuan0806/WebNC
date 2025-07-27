@@ -954,6 +954,19 @@
                             <button class="chat-send-btn" onclick="MultiChatApp.sendMessage(${userId})"><i class="bi bi-send"></i></button>
                             </div>
                     </div>`;
+                
+                // Thêm event listener để track input focus
+                setTimeout(() => {
+                    const inputField = document.getElementById(`input-${userId}`);
+                    if (inputField) {
+                        inputField.addEventListener('focus', () => {
+                            console.log(`Input focused for user ${userId}`);
+                            // Mark this as the active chat
+                            window.lastActiveUserId = userId;
+                        });
+                    }
+                }, 100);
+                
                 return windowDiv;
             }
 
@@ -1004,7 +1017,20 @@
             }
 
             function handleIncomingMessage(senderName, message, role, senderId) {
+                console.log(`📨 Handling message from ${senderName} (${senderId})`);
 
+                if (senderId == currentUser) {
+                    // Admin gửi tin nhắn - hiển thị trong tất cả windows đang mở
+                    activeWindows.forEach((windowData, userId) => {
+                        addMessageToWindow(userId, senderName, message, role, senderId);
+                    });
+                } else {
+                    // User gửi tin nhắn
+                    if (!activeWindows.has(senderId)) {
+                        openChatWindow(senderId, senderName);
+                    }
+                    addMessageToWindow(senderId, senderName, message, role, senderId);
+                }
             }
 
             function addMessageToWindow(windowUserId, senderName, message, role, senderId) {
