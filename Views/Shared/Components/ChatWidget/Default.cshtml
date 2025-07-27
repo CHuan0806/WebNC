@@ -1,7 +1,7 @@
 @if (Context.Session.GetString("UserName") != null)
 {
     <!-- Chat Toggle Button -->
-    <div id="chatToggle" class="chat-toggle" onclick="toggleChat()">
+    <div id="chatToggle" class="chat-toggle">
         <i class="bi bi-chat-dots"></i>
         <span id="chatBadge" class="chat-badge d-none">0</span>
     </div>
@@ -13,7 +13,7 @@
                 <h5 id="chatTitle"><i class="bi bi-chat-dots me-2"></i>Đang tải...</h5>
                 <small id="chatSubTitle"></small>
             </div>
-            <button class="btn-close" onclick="toggleChat()"></button>
+            <button class="btn-close"></button>
         </div>
         <div id="chatMessages" class="chat-messages">
             <!-- Messages will be loaded here -->
@@ -21,20 +21,20 @@
         <div class="chat-input">
             <div class="input-group">
                 <input type="text" id="messageInput" class="form-control" placeholder="Nhập tin nhắn...">
-                <button class="btn btn-primary" onclick="sendMessage()">
+                <button class="btn btn-primary" id="sendButton">
                     <i class="bi bi-send me-1"></i>Gửi
                 </button>
             </div>
         </div>
         <div id="errorMessage" class="alert alert-danger d-none" style="margin: 10px;"></div>
-    </div>
+    </div> 
 }
 
 <style>
-    .chat-toggle {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
+        .chat-toggle {
+        position: fixed !important;
+        bottom: 20px !important;
+        right: 20px !important;
         width: 60px;
         height: 60px;
         background: #007bff;
@@ -45,7 +45,7 @@
         justify-content: center;
         cursor: pointer;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        z-index: 1000;
+        z-index: 9999 !important; /* Cao hơn để tránh bị che */
         font-size: 24px;
         transition: all 0.3s ease;
     }
@@ -71,17 +71,18 @@
     }
 
     .chat-widget {
-        position: fixed;
-        bottom: 90px;
-        right: 20px;
+        position: fixed !important;
+        bottom: 90px !important;
+        right: 20px !important;
         width: 350px;
         height: 400px;
         background: white;
         border-radius: 10px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        z-index: 999;
+        z-index: 9998 !important; /* Cao nhưng thấp hơn toggle button */
         display: flex;
         flex-direction: column;
+        transform: none !important; /* Tránh transform từ admin layout */
     }
 
     .chat-header {
@@ -120,6 +121,99 @@
 
     .chat-input {
         padding: 10px;
+    } 
+
+    /* Conversation List Widget */
+    .conversation-list-widget {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        width: 350px;
+        max-height: 400px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        z-index: 999;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .conversation-list-header {
+        background: linear-gradient(135deg, #007bff, #0056b3);
+        color: white;
+        padding: 12px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .conversation-list-content {
+        max-height: 350px;
+        overflow-y: auto;
+        padding: 10px;
+    }
+
+    .conversation-item {
+        padding: 10px;
+        border-bottom: 1px solid #e9ecef;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .conversation-item:hover {
+        background: #f8f9fa;
+    }
+
+    .conversation-item.active {
+        background: #e7f3ff;
+    }
+
+    .conversation-name {
+        font-weight: 600;
+        color: #212529;
+    }
+
+    .conversation-preview {
+        font-size: 0.85em;
+        color: #6c757d;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .conversation-time {
+        font-size: 0.75em;
+        color: #adb5bd;
+    }
+
+    /* Nhiều khung chat */
+    .chat-widget {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        width: 350px;
+        height: 400px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        z-index: 998;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.3s ease;
+    }
+
+    .chat-widget.draggable {
+        cursor: move;
+    }
+
+    /* Căn chỉnh nhiều khung chat */
+    .chat-widget:nth-child(2) {
+        right: 380px;
+    }
+
+    .chat-widget:nth-child(3) {
+        right: 740px;
     }
 
     .message {
@@ -243,201 +337,286 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.0/signalr.min.js"></script>
 <script>
-    let chatConnection;
-    let unreadCount = 0;
-    let currentUserId = '@(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0")';
-    let currentUserRole = '@(User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value ?? "User")';
-    let targetUserId = null;
+(function() {
+    'use strict';
+    
+    console.log('🔄 ChatWidget script loading...');
 
-    console.log('Current User ID:', currentUserId);
-    console.log('Current User Role:', currentUserRole);
-
-    document.addEventListener("DOMContentLoaded", function () {
-        initializeChat();
-    });
-
-    function initializeChat() {
-        console.log('Initializing chat...');
-
-        // Initialize SignalR connection
-        chatConnection = new signalR.HubConnectionBuilder()
-            .withUrl("/chathub")
-            .configureLogging(signalR.LogLevel.Information)
-            .build();
-
-        chatConnection.on("ReceiveMessage", (senderName, message, role, senderId) => {
-            addMessageToChat(senderName, message, role, senderId);
-
-            // Update unread count if chat is closed
-            if (document.getElementById('chatWidget').classList.contains('d-none')) {
-                unreadCount++;
-                updateChatBadge(unreadCount);
-            }
-        });
-
-        chatConnection.on("NewMessageNotification", (senderId, senderName) => {
-            console.log('New message notification from:', senderName);
-        });
-
-        chatConnection.start().then(() => {
-            console.log('SignalR connected successfully');
-            initializeChatTarget();
-        }).catch(err => {
-            console.error('SignalR connection failed:', err);
-            showError('Không thể kết nối đến server chat');
-        });
+    // Conflict detection
+    const pageType = document.body.getAttribute('data-page');
+    if (pageType === 'admin-multichat' || typeof window.MultiChatApp !== 'undefined') {
+        console.log('🚫 ChatWidget disabled - conflict detected');
+        return;
     }
 
-    function initializeChatTarget() {
-        // Sử dụng API mới để lấy thông tin chat target
-        fetch('/Chat/GetChatTarget')
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    targetUserId = data.targetUserId;
-                    document.getElementById('chatTitle').innerHTML = `<i class="bi bi-chat-dots me-2"></i>${data.chatTitle}`;
-                    loadChatHistory();
-                } else {
-                    document.getElementById('chatTitle').textContent = data.message;
-                    showError(data.message);
-                }
-            })
-            .catch(err => {
-                console.error('Error getting chat target:', err);
-                document.getElementById('chatTitle').textContent = 'Lỗi kết nối';
-                showError('Không thể khởi tạo chat');
-            });
+    // Wait for DOM to be ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initChatWidget);
+    } else {
+        initChatWidget();
     }
 
-    function toggleChat() {
-        const widget = document.getElementById('chatWidget');
+    function initChatWidget() {
+        console.log('🚀 ChatWidget initializing...');
 
-        if (widget.classList.contains('d-none')) {
-            widget.classList.remove('d-none');
-            // Clear badge when opening chat
-            unreadCount = 0;
-            updateChatBadge(0);
-            hideError();
-
-            // Load latest messages when opening
-            if (targetUserId) {
-                loadChatHistory();
-            }
-        } else {
-            widget.classList.add('d-none');
-        }
-    }
-
-    function sendMessage() {
-        const input = document.getElementById('messageInput');
-        const message = input.value.trim();
-
-        if (!message) {
-            showError('Vui lòng nhập tin nhắn!');
-            return;
-        }
-
-        if (!targetUserId) {
-            showError('Không có người nhận hợp lệ!');
-            return;
-        }
-
-        // Gọi SignalR với receiverId
-        chatConnection.invoke("SendMessage", message, targetUserId)
-            .then(() => {
-                input.value = "";
-                hideError();
-            })
-            .catch(err => {
-                console.error('Error sending message:', err.toString());
-                showError('Lỗi gửi tin nhắn: ' + err.message);
-            });
-    }
-
-    function addMessageToChat(senderName, message, role, senderId) {
+        // Get DOM elements
+        const chatToggle = document.getElementById('chatToggle');
+        const chatWidget = document.getElementById('chatWidget');
         const chatMessages = document.getElementById('chatMessages');
-        const messageDiv = document.createElement('div');
-        const isSender = senderId == currentUserId;
-        messageDiv.className = `message ${isSender ? 'sent' : 'received'}`;
-
-        const displayName = isSender ? 'Bạn' : senderName;
-        const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
-        messageDiv.innerHTML = `
-        <div class="message-bubble">
-            <div class="message-sender">${displayName}</div>
-            <div class="message-content">${message}</div>
-            <div class="message-time">${currentTime}</div>
-        </div>
-    `;
-
-        chatMessages.appendChild(messageDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    function updateChatBadge(count) {
-        const badge = document.getElementById('chatBadge');
-        if (count > 0) {
-            badge.textContent = count;
-            badge.classList.remove('d-none');
-        } else {
-            badge.classList.add('d-none');
-        }
-    }
-
-    function showError(message) {
+        const messageInput = document.getElementById('messageInput');
+        const sendButton = document.getElementById('sendButton');
+        const closeButton = chatWidget?.querySelector('.btn-close');
+        const chatBadge = document.getElementById('chatBadge');
+        const chatTitle = document.getElementById('chatTitle');
         const errorDiv = document.getElementById('errorMessage');
-        errorDiv.textContent = message;
-        errorDiv.classList.remove('d-none');
 
-        // Auto hide after 5 seconds
-        setTimeout(() => {
-            hideError();
-        }, 5000);
-    }
-
-    function hideError() {
-        const errorDiv = document.getElementById('errorMessage');
-        errorDiv.classList.add('d-none');
-    }
-
-    function loadChatHistory() {
-        if (!targetUserId) {
-            console.log('No target user ID, skipping chat history load');
+        // Early exit if critical elements missing
+        if (!chatToggle || !chatWidget || !messageInput || !sendButton) {
+            console.log('❌ Critical ChatWidget elements missing');
             return;
         }
 
-        console.log('Loading chat history with user:', targetUserId);
+        // Variables
+        let chatConnection = null;
+        let unreadCount = 0;
+        let targetUserId = null;
+        const currentUserId = '@(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0")';
 
-        // Load previous messages với otherUserId
-        fetch(`/Chat/GetHistory?otherUserId=${targetUserId}`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+        console.log('👤 Current User ID:', currentUserId);
+
+        // Initialize SignalR
+        function initSignalR() {
+            console.log('🔗 Initializing SignalR connection...');
+            
+            chatConnection = new signalR.HubConnectionBuilder()
+                .withUrl("/chathub")
+                .withAutomaticReconnect()
+                .build();
+
+            // Store globally for debugging
+            window.chatConnection = chatConnection;
+
+            chatConnection.on("ReceiveMessage", (senderName, message, role, senderId) => {
+                console.log('📨 Message received:', { senderName, message, senderId });
+                addMessage(senderName, message, role, senderId);
+                
+                if (chatWidget.classList.contains('d-none')) {
+                    unreadCount++;
+                    updateBadge();
                 }
-                return response.json();
-            })
-            .then(messages => {
-                console.log('Chat history loaded:', messages);
-                const chatMessages = document.getElementById('chatMessages');
-                chatMessages.innerHTML = '';
-
-                messages.forEach(msg => {
-                    addMessageToChat(msg.senderName, msg.content, msg.senderRole, msg.senderId);
-                });
-                hideError();
-            })
-            .catch(err => {
-                console.error('Error loading chat history:', err);
-                showError('Không thể tải lịch sử chat: ' + err.message);
             });
+
+            chatConnection.onclose(() => {
+                console.log('❌ SignalR connection closed');
+                showError('Mất kết nối. Thử gửi tin nhắn để kết nối lại.');
+            });
+
+            return chatConnection.start()
+                .then(() => {
+                    console.log('✅ SignalR connected successfully');
+                    hideError();
+                    return fetchChatTarget();
+                })
+                .catch(err => {
+                    console.error('❌ SignalR connection failed:', err);
+                    showError('Không thể kết nối chat');
+                    throw err;
+                });
+        }
+
+        // Fetch chat target (admin)
+        function fetchChatTarget() {
+            return fetch('/Chat/GetChatTarget')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        targetUserId = data.targetUserId;
+                        if (chatTitle) {
+                            chatTitle.innerHTML = `<i class="bi bi-chat-dots me-2"></i>${data.chatTitle}`;
+                        }
+                        return loadHistory();
+                    } else {
+                        throw new Error(data.message || 'Không tìm thấy admin');
+                    }
+                })
+                .catch(err => {
+                    console.error('❌ Fetch chat target failed:', err);
+                    showError('Không tìm thấy admin hỗ trợ');
+                });
+        }
+
+        // Load chat history
+        function loadHistory() {
+            if (!targetUserId) return Promise.resolve();
+            
+            return fetch(`/Chat/GetHistory?otherUserId=${targetUserId}`)
+                .then(response => response.json())
+                .then(messages => {
+                    console.log(`📜 Loaded ${messages.length} messages`);
+                    if (chatMessages) chatMessages.innerHTML = '';
+                    messages.forEach(msg => {
+                        addMessage(msg.senderName, msg.content, msg.senderRole, msg.senderId);
+                    });
+                })
+                .catch(err => {
+                    console.error('❌ Load history failed:', err);
+                    showError('Không thể tải lịch sử chat');
+                });
+        }
+
+        // Add message to chat
+        function addMessage(senderName, content, role, senderId) {
+            if (!chatMessages) return;
+
+            const isSender = senderId.toString() === currentUserId;
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isSender ? 'sent' : 'received'}`;
+            
+            messageDiv.innerHTML = `
+                <div class="message-bubble">
+                    <div class="message-sender">${isSender ? 'Bạn' : (senderName || 'Admin')}</div>
+                    <div class="message-content">${content}</div>
+                    <div class="message-time">${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+                </div>
+            `;
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Send message
+        async function sendMessage() {
+            const message = messageInput.value.trim();
+            if (!message) {
+                console.log('⚠️ Empty message, ignoring');
+                return;
+            }
+
+            console.log('📤 Sending message:', message);
+
+            // Check connection
+            if (!chatConnection) {
+                console.log('❌ No connection, initializing...');
+                showError('Đang kết nối...');
+                try {
+                    await initSignalR();
+                } catch (err) {
+                    console.error('❌ Failed to initialize connection');
+                    return;
+                }
+            }
+
+            if (chatConnection.state !== signalR.HubConnectionState.Connected) {
+                console.log('❌ Connection not ready, reconnecting...');
+                showError('Đang kết nối lại...');
+                try {
+                    await chatConnection.start();
+                    hideError();
+                } catch (err) {
+                    console.error('❌ Reconnection failed:', err);
+                    showError('Không thể kết nối');
+                    return;
+                }
+            }
+
+            try {
+                await chatConnection.invoke("SendMessage", message, targetUserId);
+                messageInput.value = '';
+                console.log('✅ Message sent successfully');
+            } catch (err) {
+                console.error('❌ Send message failed:', err);
+                showError('Gửi tin nhắn thất bại');
+            }
+        }
+
+        // UI functions
+        function toggleChat() {
+            chatWidget.classList.toggle('d-none');
+            if (!chatWidget.classList.contains('d-none')) {
+                unreadCount = 0;
+                updateBadge();
+                messageInput.focus();
+                if (chatMessages) chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        }
+
+        function updateBadge() {
+            if (!chatBadge) return;
+            if (unreadCount > 0) {
+                chatBadge.textContent = unreadCount;
+                chatBadge.classList.remove('d-none');
+            } else {
+                chatBadge.classList.add('d-none');
+            }
+        }
+
+        function showError(message) {
+            if (errorDiv) {
+                errorDiv.textContent = message;
+                errorDiv.classList.remove('d-none');
+            }
+        }
+
+        function hideError() {
+            if (errorDiv) {
+                errorDiv.classList.add('d-none');
+            }
+        }
+
+        // Event listeners
+        chatToggle.addEventListener('click', toggleChat);
+        if (closeButton) closeButton.addEventListener('click', toggleChat);
+        sendButton.addEventListener('click', sendMessage);
+        
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // Start initialization
+        console.log('🚀 Starting ChatWidget initialization...');
+        initSignalR().catch(err => {
+            console.error('❌ ChatWidget initialization failed:', err);
+        });
     }
 
-    // Send message on Enter key
-    document.addEventListener('keypress', function (e) {
-        if (e.target.id === 'messageInput' && e.key === 'Enter') {
-            e.preventDefault();
-            sendMessage();
+})();
+</script>
+
+<script>
+    // Force positioning fix for admin layout
+    document.addEventListener('DOMContentLoaded', function() {
+        function fixChatPosition() {
+            const chatToggle = document.getElementById('chatToggle');
+            const chatWidget = document.getElementById('chatWidget');
+            
+            if (chatToggle) {
+                chatToggle.style.position = 'fixed';
+                chatToggle.style.bottom = '20px';
+                chatToggle.style.right = '20px';
+                chatToggle.style.zIndex = '9999';
+                chatToggle.style.transform = 'none';
+            }
+            
+            if (chatWidget) {
+                chatWidget.style.position = 'fixed';
+                chatWidget.style.bottom = '90px';
+                chatWidget.style.right = '20px';
+                chatWidget.style.zIndex = '9998';
+                chatWidget.style.transform = 'none';
+                chatWidget.style.left = 'auto';
+                chatWidget.style.top = 'auto';
+            }
         }
+        
+        // Fix immediately and on resize
+        fixChatPosition();
+        window.addEventListener('resize', fixChatPosition);
+        
+        // Fix after any layout changes
+        setTimeout(fixChatPosition, 100);
+        setTimeout(fixChatPosition, 500);
     });
 </script>

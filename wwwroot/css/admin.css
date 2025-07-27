@@ -178,3 +178,106 @@ body {
         margin-left: 0;
     }
 }
+
+/* =================================
+   MULTI CHAT ANIMATIONS
+================================= */
+@keyframes slideOutRight {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Chat notification styles */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 10000;
+    animation: slideInRight 0.3s ease;
+}
+
+.notification-error {
+    background: #dc3545;
+    color: white;
+}
+
+.notification-success {
+    background: #28a745;
+    color: white;
+}
+
+.notification-info {
+    background: #007bff;
+    color: white;
+}
+
+/* =================================
+   CHAT WIDGET FIX FOR ADMIN LAYOUT
+================================= */
+#wrapper .chat-toggle,
+#wrapper .chat-widget {
+    position: fixed !important;
+    z-index: 9999 !important;
+}
+
+/* Đảm bảo chat không bị ảnh hưởng bởi admin layout */
+body.admin-page .chat-toggle {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    z-index: 9999 !important;
+    transform: none !important;
+}
+
+body.admin-page .chat-widget {
+    position: fixed !important;
+    bottom: 90px !important;
+    right: 20px !important;
+    z-index: 9998 !important;
+    transform: none !important;
+    left: auto !important;
+    top: auto !important;
+}
+
+/* Override any admin layout interference */
+#content-wrapper .chat-toggle,
+#content-wrapper .chat-widget,
+.container-fluid .chat-toggle,
+.container-fluid .chat-widget {
+    position: fixed !important;
+    z-index: 9999 !important;
+}
+
+/* Responsive positioning for admin */
+@media (max-width: 768px) {
+    body.admin-page .chat-toggle {
+        bottom: 15px !important;
+        right: 15px !important;
+    }
+    
+    body.admin-page .chat-widget {
+        bottom: 85px !important;
+        right: 15px !important;
+        width: 320px;
+    }
+}

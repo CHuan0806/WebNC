@@ -1,0 +1,1333 @@
+@using System.Security.Claims
+@{
+    ViewData["Title"] = "Multi Chat - Admin";
+    Layout = "_LayoutAdmin";
+    var currentUserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+    var users = ViewBag.Users as IEnumerable<dynamic>;
+}
+
+<!-- DISABLE CHAT WIDGET FOR THIS PAGE -->
+<script>
+    // Set immediately để ngăn ChatWidget initialization
+    document.body.setAttribute('data-page', 'admin-multichat');
+    
+    // Backup flag
+    window.DISABLE_CHAT_WIDGET = true;
+    
+    // Force cleanup nếu ChatWidget đã load
+    setTimeout(() => {
+        const chatToggle = document.getElementById('chatToggle');
+        const chatWidget = document.getElementById('chatWidget');
+        if (chatToggle) chatToggle.remove();
+        if (chatWidget) chatWidget.remove();
+        
+        if (window.chatConnection) {
+            window.chatConnection.stop();
+            window.chatConnection = null;
+        }
+    }, 100);
+</script>
+
+<div class="admin-multichat-container">
+    <!-- Main Header -->
+    <div class="chat-main-header">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1><i class="bi bi-chat-dots me-3"></i>Multi Chat Support</h1>
+                    <p class="text-muted mb-0">Chọn khách hàng để bắt đầu chat hỗ trợ</p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <div class="connection-status">
+                        <span id="connectionIndicator" class="status-indicator offline">
+                            <i class="bi bi-circle-fill"></i> Đang kết nối...
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Area - Customer Grid -->
+    <div class="chat-main-content">
+        <div class="container-fluid">
+            <!-- Search and Controls -->
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <div class="search-box">
+                        <i class="bi bi-search"></i>
+                        <input type="text" class="form-control" id="userSearchInput"
+                            placeholder="Tìm kiếm khách hàng..." onkeyup="MultiChatApp.filterUsers()">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customer Grid -->
+            <div class="row" id="customerGrid">
+                @if (users != null && users.Any())
+                {
+                    @foreach (var user in users)
+                    {
+                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4 customer-card-wrapper" data-user-id="@user.UserId"
+                            data-user-name="@user.UserName" data-user-email="@user.Email">
+                            <div class="customer-card" onclick="MultiChatApp.openChatWindow(@user.UserId, '@user.UserName')">
+                                <div class="customer-avatar-section">
+                                    <div class="customer-avatar">
+                                        <i class="bi bi-person-circle"></i>
+                                    </div>
+                                    <div class="customer-status offline">
+                                        <i class="bi bi-circle-fill"></i>
+                                    </div>
+                                </div>
+                                <div class="customer-info">
+                                    <h5 class="customer-name">@user.UserName</h5>
+                                    <p class="customer-email">@user.Email</p>
+                                    <div class="customer-actions">
+                                        <span class="chat-status">Chưa có chat</span>
+                                    </div>
+                                </div>
+                                <div class="customer-chat-btn">
+                                    <i class="bi bi-chat-dots"></i>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="col-12">
+                        <div class="no-customers text-center py-5">
+                            <i class="bi bi-inbox display-4 text-muted"></i>
+                            <h3 class="mt-3 text-muted">Không có khách hàng nào</h3>
+                            <p class="text-muted">Chưa có khách hàng nào đăng ký trong hệ thống</p>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <!-- Active Chat Statistics -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="chat-statistics">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="stat-card">
+                                    <i class="bi bi-people"></i>
+                                    <div class="stat-info">
+                                        <h3 id="totalCustomers">@(users?.Count() ?? 0)</h3>
+                                        <p>Tổng khách hàng</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stat-card">
+                                    <i class="bi bi-chat-square-dots"></i>
+                                    <div class="stat-info">
+                                        <h3 id="activeChats">0</h3>
+                                        <p>Chat đang mở</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stat-card">
+                                    <i class="bi bi-person-check"></i>
+                                    <div class="stat-info">
+                                        <h3 id="onlineUsers">0</h3>
+                                        <p>Người dùng online</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stat-card">
+                                    <i class="bi bi-envelope"></i>
+                                    <div class="stat-info">
+                                        <h3 id="unreadMessages">0</h3>
+                                        <p>Tin nhắn chưa đọc</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Windows Container -->
+    <!-- Chat Windows Container -->
+    <div id="chatWindowsContainer" class="chat-windows-container">
+        <!-- Chat windows will be created here -->
+    </div>
+</div>
+
+<!-- Toast Notifications -->
+<div id="toastContainer" class="toast-container position-fixed top-0 end-0 p-3"></div>
+
+<!-- Hidden inputs -->
+<input type="hidden" id="currentUserId" value="@currentUserId" />
+
+<style>
+    /* =================================
+       RESET & BASE STYLES
+    ================================= */
+    .admin-multichat-container {
+        width: 100%;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        position: relative;
+    }
+
+    /* =================================
+       MAIN HEADER
+    ================================= */
+    .chat-main-header {
+        background: white;
+        padding: 20px 0;
+        border-bottom: 1px solid #e9ecef;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+    }
+
+    .chat-main-header h1 {
+        color: #2d3748;
+        font-weight: 700;
+        margin: 0;
+        font-size: 1.8rem;
+    }
+
+    .connection-status {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .status-indicator {
+        padding: 8px 16px;
+        border-radius: 25px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .status-indicator.online {
+        background: rgba(40, 167, 69, 0.1);
+        color: #28a745;
+        border: 1px solid rgba(40, 167, 69, 0.2);
+    }
+
+    .status-indicator.offline {
+        background: rgba(220, 53, 69, 0.1);
+        color: #dc3545;
+        border: 1px solid rgba(220, 53, 69, 0.2);
+    }
+
+    /* =================================
+       MAIN CONTENT AREA
+    ================================= */
+    .chat-main-content {
+        padding: 0 20px 100px 20px;
+    }
+
+    /* =================================
+       SEARCH BOX
+    ================================= */
+    .search-box {
+        position: relative;
+    }
+
+    .search-box i {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #6c757d;
+        z-index: 2;
+    }
+
+    .search-box .form-control {
+        padding-left: 45px;
+        border-radius: 25px;
+        border: 2px solid #e9ecef;
+        height: 45px;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+    }
+
+    .search-box .form-control:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    /* =================================
+       CUSTOMER CARDS
+    ================================= */
+    .customer-card {
+        background: white;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: 2px solid transparent;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .customer-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .customer-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        border-color: #667eea;
+    }
+
+    .customer-card:hover::before {
+        opacity: 1;
+    }
+
+    .customer-card.active {
+        border-color: #667eea;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        transform: translateY(-5px);
+    }
+
+    .customer-card.active::before {
+        opacity: 1;
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    .customer-avatar-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .customer-avatar {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 32px;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .customer-card.active .customer-avatar {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+    }
+
+    .customer-status {
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: 3px solid white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .customer-status.online {
+        background: #28a745;
+        color: #28a745;
+    }
+
+    .customer-status.offline {
+        background: #6c757d;
+        color: #6c757d;
+    }
+
+    .customer-status i {
+        font-size: 8px;
+    }
+
+    .customer-info {
+        text-align: center;
+        flex: 1;
+    }
+
+    .customer-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #2d3748;
+    }
+
+    .customer-card.active .customer-name {
+        color: white;
+    }
+
+    .customer-email {
+        font-size: 0.9rem;
+        color: #6c757d;
+        margin-bottom: 15px;
+    }
+
+    .customer-card.active .customer-email {
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .customer-actions {
+        margin-top: auto;
+    }
+
+    .chat-status {
+        font-size: 0.8rem;
+        padding: 5px 12px;
+        border-radius: 15px;
+        background: #f8f9fa;
+        color: #6c757d;
+        display: inline-block;
+    }
+
+    .customer-card.active .chat-status {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+    }
+
+    .customer-chat-btn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background: #f8f9fa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #667eea;
+        font-size: 16px;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .customer-card:hover .customer-chat-btn {
+        opacity: 1;
+    }
+
+    .customer-card.active .customer-chat-btn {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        opacity: 1;
+    }
+
+    /* =================================
+       STATISTICS CARDS
+    ================================= */
+    .chat-statistics {
+        background: white;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .stat-card {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 20px;
+        border-radius: 12px;
+        background: #f8f9fa;
+        transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+        background: #e9ecef;
+    }
+
+    .stat-card i {
+        font-size: 2rem;
+        color: #667eea;
+        width: 50px;
+        text-align: center;
+    }
+
+    .stat-info h3 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin: 0;
+        color: #2d3748;
+    }
+
+    .stat-info p {
+        margin: 0;
+        color: #6c757d;
+        font-size: 0.9rem;
+    }
+
+    /* =================================
+       NO CUSTOMERS STATE
+    ================================= */
+    .no-customers {
+        background: white;
+        border-radius: 15px;
+        padding: 60px 40px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* =================================
+       CHAT WINDOWS - UPDATED POSITIONING
+    ================================= */
+    .chat-windows-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 15px;
+        z-index: 999;
+        max-width: calc(100vw - 40px);
+        flex-wrap: wrap;
+    }
+
+    .chat-window {
+        width: 350px;
+        height: 450px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        transition: all 0.3s ease;
+        position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .chat-window.minimized {
+        height: 50px;
+        overflow: hidden;
+    }
+
+    .chat-window.dragging {
+        transform: rotate(3deg) scale(1.05);
+        z-index: 1100;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .chat-window-header {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 15px 20px;
+        border-radius: 15px 15px 0 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: move;
+        user-select: none;
+    }
+
+    .chat-window-title {
+        font-weight: 600;
+        font-size: 1rem;
+    }
+
+    .chat-window-controls {
+        display: flex;
+        gap: 8px;
+    }
+
+    .chat-control-btn {
+        width: 28px;
+        height: 28px;
+        border: none;
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-size: 14px;
+    }
+
+    .chat-control-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.1);
+    }
+
+    .chat-window-messages {
+        flex: 1;
+        padding: 15px;
+        overflow-y: auto;
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        min-height: 320px;
+    }
+
+    .chat-window.minimized .chat-window-messages,
+    .chat-window.minimized .chat-window-input {
+        display: none;
+    }
+
+    .chat-window-input {
+        padding: 15px;
+        background: white;
+        border-radius: 0 0 15px 15px;
+        border-top: 1px solid #e9ecef;
+    }
+
+    .chat-input-group {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .chat-input-field {
+        flex: 1;
+        border: 2px solid #e9ecef;
+        border-radius: 25px;
+        padding: 12px 18px;
+        font-size: 0.9em;
+        resize: none;
+        height: 40px;
+        transition: all 0.3s ease;
+    }
+
+    .chat-input-field:focus {
+        border-color: #667eea;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .chat-send-btn {
+        width: 40px;
+        height: 40px;
+        border: none;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 16px;
+    }
+
+    .chat-send-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    /* =================================
+       MESSAGES
+    ================================= */
+    .message {
+        margin-bottom: 15px;
+        display: flex;
+        align-items: flex-end;
+        animation: fadeInUp 0.3s ease;
+    }
+
+    .message.sent {
+        justify-content: flex-end;
+    }
+
+    .message.received {
+        justify-content: flex-start;
+    }
+
+    .message-bubble {
+        max-width: 75%;
+        padding: 12px 16px;
+        border-radius: 18px;
+        position: relative;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        word-wrap: break-word;
+    }
+
+    .message.sent .message-bubble {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        border-bottom-right-radius: 6px;
+    }
+
+    .message.received .message-bubble {
+        background: white;
+        color: #333;
+        border: 1px solid #e9ecef;
+        border-bottom-left-radius: 6px;
+    }
+
+    .message-content {
+        line-height: 1.4;
+        word-wrap: break-word;
+    }
+
+    .message-time {
+        font-size: 0.7em;
+        opacity: 0.7;
+        margin-top: 5px;
+        text-align: right;
+        display: block;
+    }
+
+    .message.sent .message-time {
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .message.received .message-time {
+        color: #6c757d;
+    }
+
+    /* =================================
+       RESPONSIVE DESIGN
+    ================================= */
+    @@media (max-width: 1200px) {
+        .chat-windows-container {
+            max-width: calc(100vw - 40px);
+        }
+
+        .chat-window {
+            width: 300px;
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .customer-card {
+            margin-bottom: 20px;
+        }
+
+        .chat-windows-container {
+            bottom: 10px;
+            right: 10px;
+            left: 10px;
+            flex-direction: ` column-reverse;
+            align-items: flex-end;
+        }
+
+        .chat-window {
+            width: 100%;
+            max-width: 350px;
+        }
+
+        .chat-main-content {
+            padding: 0 10px 100px 10px;
+        }
+    }
+
+    /* =================================
+       ANIMATIONS
+    ================================= */
+    @@keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(15px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @@keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @@keyframes slideOutRight {
+        from {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        to {
+            opacity: 0;
+            transform: translateX(100px);
+        }
+    }
+
+    /* =================================
+       SCROLLBAR STYLES
+    ================================= */
+    .chat-window-messages::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .chat-window-messages::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 3px;
+    }
+
+    .chat-window-messages::-webkit-scrollbar-thumb {
+        background: rgba(102, 126, 234, 0.3);
+        border-radius: 3px;
+    }
+
+    .chat-window-messages::-webkit-scrollbar-thumb:hover {
+        background: rgba(102, 126, 234, 0.5);
+    }
+</style>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.0/signalr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        (function () {
+            'use strict';
+
+            console.log('🚀 MultiChat Module Starting...');
+            console.log('Current User ID:', '@currentUserId');
+            console.log('Current User Role: Admin');
+
+            // =================================
+            // LOCAL VARIABLES
+            // =================================
+            let multiChatConnection;
+            let activeWindows = new Map();
+            let currentUser = '@currentUserId';
+            let draggedWindow = null;
+            let dragOffset = { x: 0, y: 0 };
+            let isConnected = false;
+
+            // =================================
+            // INITIALIZATION
+            // =================================
+            function init() {
+                console.log('🔄 Initializing MultiChat...');
+
+                // FORCE disable and cleanup any existing ChatWidget
+                const chatToggle = document.getElementById('chatToggle');
+                const chatWidget = document.getElementById('chatWidget');
+                if (chatToggle) {
+                    chatToggle.remove();
+                    console.log('🙈 ChatWidget toggle removed');
+                }
+                if (chatWidget) {
+                    chatWidget.remove();
+                    console.log('🙈 ChatWidget removed');
+                }
+
+                if (window.chatConnection) {
+                    console.log('🧹 Cleaning up existing chat widget connection');
+                    window.chatConnection.stop();
+                    window.chatConnection = null;
+                }
+
+                updateConnectionStatus('Đang kết nối...', false);
+                initializeSignalR();
+                setupEventListeners();
+                updateStatistics();
+            }
+
+            function initializeSignalR() {
+                console.log('🔄 Initializing SignalR for MultiChat...');
+
+                multiChatConnection = new signalR.HubConnectionBuilder()
+                    .withUrl("/chathub")
+                    .configureLogging(signalR.LogLevel.Information)
+                    .withAutomaticReconnect()
+                    .build();
+
+                // Assign to global scope for ChatWidget to detect
+                window.multiChatConnection = multiChatConnection;
+
+                multiChatConnection.onreconnecting(() => updateConnectionStatus('Đang kết nối lại...', false));
+                multiChatConnection.onreconnected(() => {
+                    updateConnectionStatus('Đã kết nối', true);
+                    isConnected = true;
+                });
+                multiChatConnection.onclose(() => {
+                    updateConnectionStatus('Mất kết nối', false);
+                    isConnected = false;
+                });
+
+                multiChatConnection.on("ReceiveMessage", (senderName, message, role, senderId) => {
+                    console.log('📨 MultiChat received message:', { senderName, message, role, senderId });
+                    handleIncomingMessage(senderName, message, role, parseInt(senderId));
+                });
+
+                multiChatConnection.on("NewMessageNotification", (senderId, senderName) => {
+                    showToast(`Tin nhắn mới từ ${senderName}`, 'info');
+                    // You might want to highlight the user card here
+                });
+
+                multiChatConnection.start()
+                    .then(() => {
+                        console.log('✅ MultiChat SignalR connected successfully');
+                        updateConnectionStatus('Đã kết nối', true);
+                        isConnected = true;
+                    })
+                    .catch(err => {
+                        console.error('❌ MultiChat SignalR connection failed:', err);
+                        updateConnectionStatus('Kết nối thất bại', false);
+                        showToast('Không thể kết nối đến server chat', 'error');
+                    });
+            }
+
+            function updateConnectionStatus(text, connected) {
+                const indicator = document.getElementById('connectionIndicator');
+                if (indicator) {
+                    indicator.innerHTML = `<i class="bi bi-circle-fill"></i> ${text}`;
+                    indicator.className = `status-indicator ${connected ? 'online' : 'offline'}`;
+                }
+                isConnected = connected;
+            }
+
+            // =================================
+            // CHAT WINDOW MANAGEMENT
+            // =================================
+            function openChatWindow(userId, userName) {
+                if (!isConnected) {
+                    showToast('Chưa kết nối đến server chat. Đang thử lại...', 'warning');
+                    reconnectSignalR();
+                    return;
+                }
+
+                const container = document.getElementById('chatWindowsContainer');
+                if (!container) {
+                    console.error('❌ chatWindowsContainer not found!');
+                    return;
+                }
+
+                document.querySelectorAll('.customer-card').forEach(c => c.classList.remove('active'));
+                const card = document.querySelector(`.customer-card-wrapper[data-user-id='${userId}'] .customer-card`);
+                if(card) card.classList.add('active');
+
+
+                if (activeWindows.has(userId)) {
+                    const existingWindow = document.getElementById(`chat-window-${userId}`);
+                    if (existingWindow) {
+                        existingWindow.classList.remove('minimized');
+                        return;
+                    }
+                }
+
+                    const chatWindow = createChatWindow(userId, userName);
+                    container.appendChild(chatWindow);
+                activeWindows.set(userId, { element: chatWindow, userName: userName });
+                
+                        loadChatHistory(userId);
+                    setupDragAndDrop(chatWindow);
+                    updateStatistics();
+            }
+
+            function createChatWindow(userId, userName) {
+                const windowDiv = document.createElement('div');
+                windowDiv.id = `chat-window-${userId}`;
+                windowDiv.className = 'chat-window';
+                windowDiv.dataset.userId = userId;
+
+                windowDiv.innerHTML = `
+                        <div class="chat-window-header">
+                            <div class="chat-window-title">${userName}</div>
+                            <div class="chat-window-controls">
+                            <button class="chat-control-btn" onclick="MultiChatApp.minimizeWindow(${userId})"><i class="bi bi-dash"></i></button>
+                            <button class="chat-control-btn" onclick="MultiChatApp.closeWindow(${userId})"><i class="bi bi-x"></i></button>
+                            </div>
+                        </div>
+                    <div class="chat-window-messages" id="messages-${userId}"><div class="loading">Đang tải...</div></div>
+                        <div class="chat-window-input">
+                            <div class="chat-input-group">
+                            <input type="text" class="chat-input-field" id="input-${userId}" placeholder="Nhập tin nhắn..." onkeypress="MultiChatApp.handleInputKeyPress(event, ${userId})">
+                            <button class="chat-send-btn" onclick="MultiChatApp.sendMessage(${userId})"><i class="bi bi-send"></i></button>
+                            </div>
+                    </div>`;
+                return windowDiv;
+            }
+
+            function minimizeWindow(userId) {
+                const window = document.getElementById(`chat-window-${userId}`);
+                if (window) window.classList.toggle('minimized');
+            }
+
+            function closeWindow(userId) {
+                const window = document.getElementById(`chat-window-${userId}`);
+                if (window) {
+                        window.remove();
+                        activeWindows.delete(userId);
+                    const card = document.querySelector(`.customer-card-wrapper[data-user-id='${userId}'] .customer-card`);
+                    if(card) card.classList.remove('active');
+                        updateStatistics();
+                }
+            }
+
+            // =================================
+            // MESSAGE HANDLING
+            // =================================
+                        function sendMessage(userId) {
+                const input = document.getElementById(`input-${userId}`);
+                if (!input || !input.value.trim()) return;
+
+                if (!multiChatConnection || multiChatConnection.state !== signalR.HubConnectionState.Connected) {
+                    showToast('Mất kết nối. Đang thử gửi lại.', 'error');
+                    reconnectSignalR().then(() => {
+                         multiChatConnection.invoke("SendMessage", input.value.trim(), userId).catch(err => console.error(err));
+                        });
+                    return;
+                }
+
+                multiChatConnection.invoke("SendMessage", input.value.trim(), userId)
+                    .then(() => { input.value = ""; })
+                    .catch(err => {
+                        console.error('❌ Error sending message:', err);
+                        showToast('Lỗi gửi tin nhắn.', 'error');
+                    });
+            }
+
+            function handleInputKeyPress(event, userId) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    sendMessage(userId);
+                }
+            }
+
+            function handleIncomingMessage(senderName, message, role, senderId) {
+
+            }
+
+            function addMessageToWindow(windowUserId, senderName, message, role, senderId) {
+                const messagesDiv = document.getElementById(`messages-${windowUserId}`);
+                if (!messagesDiv) return;
+
+                const loading = messagesDiv.querySelector('.loading');
+                if (loading) loading.remove();
+
+                const messageDiv = document.createElement('div');
+                const isSender = senderId == currentUser;
+                messageDiv.className = `message ${isSender ? 'sent' : 'received'}`;
+
+                const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+                messageDiv.innerHTML = `
+                        <div class="message-bubble">
+                            <div class="message-content">${message}</div>
+                            <div class="message-time">${currentTime}</div>
+                        </div>
+                    `;
+
+                messagesDiv.appendChild(messageDiv);
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }
+
+            function loadChatHistory(userId) {
+                console.log(`📜 Loading chat history for user ${userId}`);
+
+                fetch(`/Chat/GetHistory?otherUserId=${userId}`)
+                    .then(response => {
+                        if (!response.ok) throw new Error('Network response was not ok');
+                        return response.json();
+                    })
+                    .then(messages => {
+                        const messagesDiv = document.getElementById(`messages-${userId}`);
+                        if (messagesDiv) {
+                            messagesDiv.innerHTML = '';
+                            messages.forEach(msg => {
+                                addMessageToWindow(userId, msg.senderName, msg.content, msg.senderRole, msg.senderId);
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('❌ Error loading chat history:', error);
+                        const messagesDiv = document.getElementById(`messages-${userId}`);
+                        if (messagesDiv) {
+                            messagesDiv.innerHTML = '<div class="error-message">Không thể tải lịch sử chat</div>';
+                        }
+                    });
+            }
+
+            // =================================
+            // UI FUNCTIONS
+            // =================================
+            function minimizeAllWindows() {
+                activeWindows.forEach((windowData, userId) => {
+                    if (!windowData.minimized) {
+                        minimizeWindow(userId);
+                    }
+                });
+            }
+
+            function closeAllWindows() {
+                const userIds = Array.from(activeWindows.keys());
+                userIds.forEach(userId => closeWindow(userId));
+            }
+
+            function refreshUserList() {
+                showToast('Đang tải lại...', 'info');
+                setTimeout(() => location.reload(), 500);
+            }
+
+            function filterUsers() {
+                const searchTerm = document.getElementById('userSearchInput').value.toLowerCase();
+                const customerWrappers = document.querySelectorAll('.customer-card-wrapper');
+
+                customerWrappers.forEach(wrapper => {
+                    const userName = wrapper.dataset.userName.toLowerCase();
+                    const userEmail = wrapper.dataset.userEmail.toLowerCase();
+
+                    if (userName.includes(searchTerm) || userEmail.includes(searchTerm)) {
+                        wrapper.style.display = 'block';
+                    } else {
+                        wrapper.style.display = 'none';
+                    }
+                });
+            }
+
+            function updateStatistics() {
+                const activeChatsEl = document.getElementById('activeChats');
+                if (activeChatsEl) {
+                    activeChatsEl.textContent = activeWindows.size;
+                }
+            }
+
+            // =================================
+            // DEBUG FUNCTIONS
+            // =================================
+            function debugTest() {
+                console.log('🧪 Testing chat window creation...');
+                updateDebugInfo('Testing chat window...');
+
+                const firstUserCard = document.querySelector('.customer-card-wrapper');
+                if (firstUserCard) {
+                    const userId = parseInt(firstUserCard.dataset.userId);
+                    const userName = firstUserCard.dataset.userName;
+                    console.log(`🧪 Testing with user: ${userName} (${userId})`);
+                    openChatWindow(userId, userName);
+                } else {
+                    console.error('❌ No user cards found for testing');
+                    showToast('Không tìm thấy user để test', 'error');
+                }
+            }
+
+            function debugClear() {
+                const debugContent = document.getElementById('debugContent');
+                if (debugContent) {
+                    debugContent.innerHTML = `
+                            <div>SignalR: <span id="debugSignalR">❌</span></div>
+                            <div>Active Windows: <span id="debugWindows">0</span></div>
+                            <div>Container: <span id="debugContainer">❌</span></div>
+                            <div>Last Action: <span id="debugLastAction">None</span></div>
+                        `;
+                }
+                console.clear();
+                console.log('🧹 Debug cleared');
+            }
+
+                        function updateDebugInfo(action = '') {
+                if (action) {
+                    const debugLastAction = document.getElementById('debugLastAction');
+                    if (debugLastAction) debugLastAction.textContent = action;
+                }
+                
+                const debugSignalR = document.getElementById('debugSignalR');
+                const debugWindows = document.getElementById('debugWindows');
+                const debugContainer = document.getElementById('debugContainer');
+                
+                if (debugSignalR) {
+                    let connectionText = '❌';
+                    if (multiChatConnection) {
+                        switch (multiChatConnection.state) {
+                            case signalR.HubConnectionState.Connected:
+                                connectionText = '✅ Connected';
+                                break;
+                            case signalR.HubConnectionState.Connecting:
+                                connectionText = '🔄 Connecting';
+                                break;
+                            case signalR.HubConnectionState.Disconnected:
+                                connectionText = '❌ Disconnected';
+                                break;
+                            case signalR.HubConnectionState.Disconnecting:
+                                connectionText = '⏳ Disconnecting';
+                                break;
+                            case signalR.HubConnectionState.Reconnecting:
+                                connectionText = '🔄 Reconnecting';
+                                break;
+                            default:
+                                connectionText = '❓ ' + multiChatConnection.state;
+                        }
+                    }
+                    debugSignalR.textContent = connectionText;
+                }
+                
+                if (debugWindows) {
+                    debugWindows.textContent = activeWindows.size;
+                }
+                
+                if (debugContainer) {
+                    const container = document.getElementById('chatWindowsContainer');
+                    debugContainer.textContent = container ? '✅' : '❌';
+                }
+            }
+
+            // =================================
+            // DRAG AND DROP
+            // =================================
+            function setupDragAndDrop(chatWindow) {
+                const header = chatWindow.querySelector('.chat-window-header');
+
+                header.addEventListener('mousedown', startDragging);
+
+                function startDragging(e) {
+                    draggedWindow = chatWindow;
+                    draggedWindow.classList.add('dragging');
+
+                    const rect = chatWindow.getBoundingClientRect();
+                    dragOffset.x = e.clientX - rect.left;
+                    dragOffset.y = e.clientY - rect.top;
+
+                    document.addEventListener('mousemove', drag);
+                    document.addEventListener('mouseup', stopDragging);
+
+                    e.preventDefault();
+                }
+
+                function drag(e) {
+                    if (!draggedWindow) return;
+
+                    const x = e.clientX - dragOffset.x;
+                    const y = e.clientY - dragOffset.y;
+
+                    const maxX = window.innerWidth - draggedWindow.offsetWidth;
+                    const maxY = window.innerHeight - draggedWindow.offsetHeight;
+
+                    const boundedX = Math.max(0, Math.min(x, maxX));
+                    const boundedY = Math.max(0, Math.min(y, maxY));
+
+                    draggedWindow.style.position = 'fixed';
+                    draggedWindow.style.left = boundedX + 'px';
+                    draggedWindow.style.top = boundedY + 'px';
+                    draggedWindow.style.right = 'auto';
+                    draggedWindow.style.bottom = 'auto';
+                }
+
+                function stopDragging() {
+                    if (draggedWindow) {
+                        draggedWindow.classList.remove('dragging');
+                        draggedWindow = null;
+                    }
+
+                    document.removeEventListener('mousemove', drag);
+                    document.removeEventListener('mouseup', stopDragging);
+                }
+            }
+
+            // =================================
+            // UTILITIES
+            // =================================
+            function showToast(message, type = 'info') {
+                const toastContainer = document.getElementById('toastContainer');
+                if (!toastContainer) return;
+
+                const toastId = 'toast-' + Date.now();
+
+                const bgColor = {
+                    'success': 'bg-success',
+                    'error': 'bg-danger',
+                    'warning': 'bg-warning',
+                    'info': 'bg-info'
+                }[type] || 'bg-info';
+
+                const toastHtml = `
+                        <div id="${toastId}" class="toast align-items-center text-white ${bgColor} border-0" role="alert">
+                            <div class="d-flex">
+                                <div class="toast-body">${message}</div>
+                                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                            </div>
+                        </div>
+                    `;
+
+                toastContainer.insertAdjacentHTML('beforeend', toastHtml);
+
+                const toastElement = document.getElementById(toastId);
+                if (typeof bootstrap !== 'undefined' && bootstrap.Toast) {
+                    const toast = new bootstrap.Toast(toastElement, { delay: 4000 });
+                    toast.show();
+
+                    toastElement.addEventListener('hidden.bs.toast', () => {
+                        toastElement.remove();
+                    });
+                } else {
+                    // Fallback if Bootstrap not available
+                    setTimeout(() => toastElement.remove(), 4000);
+                }
+            }
+
+            function setupEventListeners() {
+                document.addEventListener('keydown', function (event) {
+                    if (event.key === 'Escape') {
+                        minimizeAllWindows();
+                    }
+                });
+
+                window.addEventListener('resize', function () {
+                    activeWindows.forEach((windowData, userId) => {
+                        const window = document.getElementById(`chat-window-${userId}`);
+                        if (window && window.style.position === 'fixed') {
+                            const rect = window.getBoundingClientRect();
+                            if (rect.right > window.innerWidth || rect.bottom > window.innerHeight) {
+                                window.style.right = '20px';
+                                window.style.bottom = '20px';
+                                window.style.left = 'auto';
+                                window.style.top = 'auto';
+                            }
+                        }
+                    });
+                });
+
+                // Update debug info every 3 seconds
+                setInterval(() => {
+                    updateDebugInfo();
+                }, 3000);
+            }
+
+            // =================================
+            // EXPOSE TO GLOBAL SCOPE
+            // =================================
+            window.MultiChatApp = {
+                openChatWindow: openChatWindow,
+                minimizeWindow: minimizeWindow,
+                closeWindow: closeWindow,
+                sendMessage: sendMessage,
+                handleInputKeyPress: handleInputKeyPress,
+                minimizeAllWindows: minimizeAllWindows,
+                closeAllWindows: closeAllWindows,
+                refreshUserList: refreshUserList,
+                filterUsers: filterUsers,
+                debugTest: debugTest,
+                debugClear: debugClear,
+                updateDebugInfo: updateDebugInfo
+            };
+
+            // =================================
+            // START APPLICATION
+            // =================================
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+
+        })(); // End of IIFE
+    </script>
+}

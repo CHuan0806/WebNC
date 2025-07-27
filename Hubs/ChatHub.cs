@@ -14,110 +14,99 @@ namespace QLNhaSach1.Hubs
             _context = context;
         }
 
-        public async Task SendMessage(string message, int? receiverId = null)
+            public async Task SendMessage(string message, int? receiverId = null)
+    {
+        try
         {
+            if (string.IsNullOrEmpty(Context.UserIdentifier))
+                throw new HubException("User not authenticated");
+
+            if (string.IsNullOrWhiteSpace(message))
+                throw new HubException("Message cannot be empty");
+
+            int senderId = int.Parse(Context.UserIdentifier);
+            var sender = await _context.Users.FindAsync(senderId);
+            if (sender == null)
+                throw new HubException("Sender not found");
+
+            int targetReceiverId;
+
+            Console.WriteLine($"SendMessage - SenderId: {senderId}, ReceiverIdParam: {receiverId}, SenderRole: {sender.Role}");
+
+            if (sender.Role == Role.Admin)
+            {
+                if (!receiverId.HasValue)
+                    throw new HubException("Admin must specify a receiver");
+
+                var receiver = await _context.Users.FindAsync(receiverId.Value);
+                if (receiver == null || receiver.Role == Role.Admin)
+                {
+                    throw new HubException("Invalid receiver");
+                }
+
+                targetReceiverId = receiverId.Value;
+                Console.WriteLine($"Admin sending to user {targetReceiverId}, Username: {receiver.UserName}");
+            }
+            else
+            {
+                var admin = await _context.Users.FirstOrDefaultAsync(u => u.Role == Role.Admin);
+                if (admin == null)
+                {
+                    throw new HubException("Admin not found");
+                }
+
+                targetReceiverId = admin.UserId;
+                Console.WriteLine($"User sending to admin {targetReceiverId}, Username: {admin.UserName}");
+            }
+
+            // Validate that both users exist before creating message
+            var targetUser = await _context.Users.FindAsync(targetReceiverId);
+            if (targetUser == null)
+            {
+                throw new HubException("Target user not found");
+            }
+
+            var chatMessage = new ChatMessage
+            {
+                SenderId = senderId,
+                ReceiverId = targetReceiverId,
+                Content = message.Trim(),
+                SentAt = DateTime.UtcNow,
+                IsRead = false
+            };
+
+            _context.ChatMessages.Add(chatMessage);
+            
             try
             {
-                if (string.IsNullOrEmpty(Context.UserIdentifier))
-                    throw new HubException("User not authenticated");
-
-                int senderId = int.Parse(Context.UserIdentifier);
-                var sender = await _context.Users.FindAsync(senderId);
-                if (sender == null)
-                    throw new HubException("Sender not found");
-
-                int targetReceiverId;
-
-                Console.WriteLine($"SendMessage - SenderId: {senderId}, ReceiverIdParam: {receiverId}, SenderRole: {sender.Role}");
-
-                if (sender.Role == Role.Admin)
-                {
-                    if (!receiverId.HasValue)
-                        throw new HubException("Admin must specify a receiver");
-
-                    var receiver = await _context.Users.FindAsync(receiverId.Value);
-                    if (receiver == null)
-                    {
-                        Console.WriteLine($"Receiver with ID {receiverId.Value} not found in database.");
-                        throw new HubException("Receiver not found");
-                    }
-
-                    // SỬA LỖI: Chỉ kiểm tra nếu receiver là admin và khác với sender
-                    if (receiver.Role == Role.Admin && receiver.UserId != senderId)
-                    {
-                        Console.WriteLine($"Receiver with ID {receiverId.Value} is another Admin, which is invalid.");
-                        throw new HubException("Cannot send message to another admin");
-                    }
-
-                    // Nếu admin gửi cho chính mình, chuyển thành gửi cho user đầu tiên
-                    if (receiver.UserId == senderId)
-                    {
-                        var firstUser = await _context.Users.FirstOrDefaultAsync(u => u.Role == Role.User);
-                        if (firstUser == null)
-                            throw new HubException("No users available to chat with");
-
-                        targetReceiverId = firstUser.UserId;
-                        Console.WriteLine($"Admin sending to first available user {targetReceiverId}, Username: {firstUser.UserName}");
-                    }
-                    else
-                    {
-                        targetReceiverId = receiverId.Value;
-                        Console.WriteLine($"Admin sending to user {targetReceiverId}, Username: {receiver.UserName}");
-                    }
-                }
-                else
-                {
-                    var admin = await _context.Users.FirstOrDefaultAsync(u => u.Role == Role.Admin);
-                    if (admin == null)
-                    {
-                        Console.WriteLine("No admin user found in database.");
-                        throw new HubException("Admin not found");
-                    }
-
-                    targetReceiverId = admin.UserId;
-                    Console.WriteLine($"User sending to admin {targetReceiverId}, Username: {admin.UserName}");
-                }
-
-                var chatMessage = new ChatMessage
-                {
-                    SenderId = senderId,
-                    ReceiverId = targetReceiverId,
-                    Content = message,
-                    SentAt = DateTime.UtcNow
-                };
-
-                _context.ChatMessages.Add(chatMessage);
                 await _context.SaveChangesAsync();
-
-                // Send message to receiver
-                await Clients.User(targetReceiverId.ToString()).SendAsync("ReceiveMessage",
-                    sender.UserName,
-                    message,
-                    sender.Role.ToString(),
-                    senderId);
-
-                // Send message back to sender for UI update
-                if (senderId != targetReceiverId)
-                {
-                    await Clients.Caller.SendAsync("ReceiveMessage",
-                        sender.UserName,
-                        message,
-                        sender.Role.ToString(),
-                        senderId);
-                }
-
-                // Notify receiver of new message
-                await Clients.User(targetReceiverId.ToString()).SendAsync("NewMessageNotification",
-                    senderId, sender.UserName);
-
-                Console.WriteLine($"Message sent successfully from {senderId} to {targetReceiverId}");
             }
-            catch (Exception ex)
+            catch (Exception dbEx)
             {
-                Console.WriteLine($"SendMessage ERROR: {ex}");
-                throw new HubException($"Message send failed: {ex.Message}");
+                Console.WriteLine($"Database save error: {dbEx.Message}");
+                throw new HubException($"Failed to save message: {dbEx.Message}");
             }
+
+            // CHỈ GỬI MỘT LẦN - Gửi tin nhắn cho người nhận
+            await Clients.User(targetReceiverId.ToString()).SendAsync("ReceiveMessage",
+                sender.UserName, message, sender.Role.ToString(), senderId);
+
+            // CHỈ GỬI MỘT LẦN - Gửi tin nhắn về cho người gửi (để cập nhật UI)
+            await Clients.Caller.SendAsync("ReceiveMessage",
+                sender.UserName, message, sender.Role.ToString(), senderId);
+
+            // CHỈ GỬI MỘT LẦN - Thông báo tin nhắn mới
+            await Clients.User(targetReceiverId.ToString()).SendAsync("NewMessageNotification",
+                senderId, sender.UserName);
+
+            Console.WriteLine($"Message sent successfully from {senderId} to {targetReceiverId}");
         }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"SendMessage ERROR: {ex}");
+            throw new HubException($"Message send failed: {ex.Message}");
+        }
+    }
 
         public override async Task OnConnectedAsync()
         {

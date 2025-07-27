@@ -20,3 +20,9 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* DISABLE chat widget ở trang MultiChat */
+body[data-page="admin-multichat"] #chatToggle,
+body[data-page="admin-multichat"] #chatWidget {
+    display: none !important;
+}

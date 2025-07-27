@@ -120,23 +120,40 @@ namespace QLNhaSach1.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetHistory(int otherUserId)
+        public IActionResult GetHistory(int? otherUserId)
         {
             var userIdStr = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (string.IsNullOrEmpty(userIdStr) || !int.TryParse(userIdStr, out int currentUserId))
                 return Unauthorized();
 
+            var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+            int targetUserId;
+
+            if (userRole == "Admin")
+            {
+                if (!otherUserId.HasValue)
+                    return BadRequest("Admin must specify a user to chat with");
+                targetUserId = otherUserId.Value;
+            }
+            else
+            {
+                var admin = _context.Users.FirstOrDefault(u => u.Role == Role.Admin);
+                if (admin == null)
+                    return Json(new List<object>());
+                targetUserId = admin.UserId;
+            }
+
             var messages = _context.ChatMessages
                 .Include(m => m.Sender)
                 .Include(m => m.Receiver)
-                .Where(m => (m.SenderId == currentUserId && m.ReceiverId == otherUserId)
-                         || (m.SenderId == otherUserId && m.ReceiverId == currentUserId))
+                .Where(m => (m.SenderId == currentUserId && m.ReceiverId == targetUserId)
+                         || (m.SenderId == targetUserId && m.ReceiverId == currentUserId))
                 .OrderBy(m => m.SentAt)
                 .Select(m => new
                 {
                     senderId = m.SenderId,
                     senderName = m.Sender.UserName,
-                    receiverName = m.Receiver.UserName, // THÊM NGƯỜI NHẬN
+                    senderRole = m.Sender.Role.ToString(),
                     content = m.Content,
                     sentAt = m.SentAt
                 })
@@ -290,6 +307,24 @@ namespace QLNhaSach1.Controllers
                 .ToList();
 
             return Json(messages);
+        }
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> MarkMessageAsRead(int userId)
+        {
+            var adminId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            var unreadMessages = await _context.ChatMessages
+                .Where(m => m.SenderId == userId && m.ReceiverId == adminId && !m.IsRead)
+                .ToListAsync();
+
+            foreach (var message in unreadMessages)
+            {
+                message.IsRead = true;
+            }
+
+            await _context.SaveChangesAsync();
+            return Ok();
         }
     }
 }

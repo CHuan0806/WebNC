@@ -80,7 +80,7 @@ public class AdminController : Controller
         return result;
     }
 
-    private string GetStatusDisplayName(string status)
+        private string GetStatusDisplayName(string status)
     {
         return status switch
         {
@@ -90,6 +90,19 @@ public class AdminController : Controller
             "Cancelled" => "Đã hủy",
             _ => status
         };
+    }
+
+    [HttpGet]
+    public IActionResult MultiChat()
+    {
+        // Lấy danh sách tất cả người dùng không phải admin để chat
+        var users = _context.Users
+            .Where(u => u.Role == Role.User)
+            .Select(u => new { u.UserId, u.UserName, u.Email })
+            .ToList();
+
+        ViewBag.Users = users;
+        return View();
     }
 }
 

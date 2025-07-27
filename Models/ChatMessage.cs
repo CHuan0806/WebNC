@@ -10,4 +10,7 @@ public class ChatMessage
 
     public User? Sender { get; set; }
     public User? Receiver { get; set; }
+
+    public bool IsRead { get; set; } = false; 
+    
 }
