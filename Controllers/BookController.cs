@@ -49,7 +49,7 @@ public class BookController : Controller
         {
             _context.Books.Add(viewModel.Book);
             await _context.SaveChangesAsync();
-            await _cacheService.RemoveAsync("discount:list");
+            await _cacheService.RemoveAsync("book:list:");
 
             return RedirectToAction(nameof(Index));
         }
@@ -82,7 +82,7 @@ public class BookController : Controller
         {
             _context.Update(viewModel.Book);
             await _context.SaveChangesAsync();
-            await _cacheService.RemoveAsync("discount:list");
+            await _cacheService.RemoveAsync("book:list:");
 
             return RedirectToAction(nameof(Index));
         }
@@ -106,7 +106,7 @@ public class BookController : Controller
         {
             _context.Books.Remove(book);
             await _context.SaveChangesAsync();
-            await _cacheService.RemoveAsync("discount:list");
+            await _cacheService.RemoveAsync("book:list:");
 
         }
         return RedirectToAction(nameof(Index));

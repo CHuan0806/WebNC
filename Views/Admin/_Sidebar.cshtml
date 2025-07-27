@@ -68,9 +68,6 @@
                 <a class="collapse-item" asp-controller="User" asp-action="Index">
                     <i class="fas fa-fw fa-user me-2"></i>Khách hàng
                 </a>
-                <a class="collapse-item" href="/admin/roles">
-                    <i class="fas fa-fw fa-key me-2"></i>Phân quyền
-                </a>
             </div>
         </div>
     </li>
@@ -112,17 +109,19 @@
             </div>
         </div>
     </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
-
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    <!-- Heading Quản lý giảm giá-->
+    <div class="sidebar-heading">
+        Quản lý giảm giá
     </div>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+    <!-- Nav Item - Chat Support -->
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Discount" asp-action="Index">
+            <i class="fas fa-ticket-alt"></i>
+            <span>Mã giảm giá</span>
+        </a>
+    </li>
+    
 
     <!-- Heading Hỗ trợ khách hàng -->
     <div class="sidebar-heading">
